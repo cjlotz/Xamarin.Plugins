@@ -41,6 +41,14 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Lotz.Xam.Messaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.0.0\lib\MonoAndroid10\Lotz.Xam.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.0.0\lib\MonoAndroid10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -55,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -69,16 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Lotz.Xam.Messaging.Abstractions\Lotz.Xam.Messaging.Abstractions.csproj">
-      <Project>{b4292775-3bb9-4ff2-8d20-b3d483bf1701}</Project>
-      <Name>Lotz.Xam.Messaging.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Lotz.Xam.Messaging.Android\Lotz.Xam.Messaging.Android.csproj">
-      <Project>{f419ad4f-942a-4fe7-8e90-6e15bd85c1d0}</Project>
-      <Name>Lotz.Xam.Messaging.Android</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

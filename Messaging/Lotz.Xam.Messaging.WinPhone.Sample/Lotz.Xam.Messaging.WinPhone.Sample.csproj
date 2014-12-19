@@ -118,6 +118,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
@@ -151,14 +152,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lotz.Xam.Messaging.Abstractions\Lotz.Xam.Messaging.Abstractions.csproj">
-      <Project>{b4292775-3bb9-4ff2-8d20-b3d483bf1701}</Project>
-      <Name>Lotz.Xam.Messaging.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Lotz.Xam.Messaging.WinPhone\Lotz.Xam.Messaging.WinPhone.csproj">
-      <Project>{f6af2061-8eae-4a8f-ba87-174045993f2c}</Project>
-      <Name>Lotz.Xam.Messaging.WinPhone</Name>
-    </ProjectReference>
+    <Reference Include="Lotz.Xam.Messaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.0.0\lib\wp8\Lotz.Xam.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.0.0\lib\wp8\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

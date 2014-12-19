@@ -79,17 +79,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Lotz.Xam.Messaging.Abstractions\Lotz.Xam.Messaging.Abstractions.csproj">
-      <Project>{b4292775-3bb9-4ff2-8d20-b3d483bf1701}</Project>
-      <Name>Lotz.Xam.Messaging.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Lotz.Xam.Messaging.WinPhoneRT\Lotz.Xam.Messaging.WinPhoneRT.csproj">
-      <Project>{97194a4f-4123-41df-94d6-45c0b64c687b}</Project>
-      <Name>Lotz.Xam.Messaging.WinPhoneRT</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="..\Lotz.Xam.Messaging.Android.Sample\SamplesExtensions.cs">
       <Link>SamplesExtensions.cs</Link>
     </Compile>
@@ -123,6 +112,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Lotz.Xam.Messaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.0.0\lib\wpa81\Lotz.Xam.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.0.0\lib\wpa81\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
