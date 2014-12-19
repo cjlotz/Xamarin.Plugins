@@ -3,12 +3,12 @@
    <metadata minClientVersion="2.8.3">
        <id>Xam.Plugins.Messaging</id>
        <version>1.0.0.0</version>
-       <title>Xamarin Messaging Plugin</title>
+       <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
        <licenseUrl>https://github.com/cjlotz/Xamarin.Plugins/blob/master/LICENSE.md</licenseUrl>
        <projectUrl>https://github.com/cjlotz/Xamarin.Plugins</projectUrl>
-       <iconUrl>https://github.com/cjlotz/Xamarin.Plugins/blob/master/Messaging/Common/Messaging.png</iconUrl>
+       <iconUrl>https://github.com/cjlotz/Xamarin.Plugins/blob/master/Messaging/Common/MessagingSmall.png</iconUrl>
        <requireLicenseAcceptance>false</requireLicenseAcceptance>
        <summary>
           Cross platform Messaging (phone, sms and email) for Xamarin and Windows.
