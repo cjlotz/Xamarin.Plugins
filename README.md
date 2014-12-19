@@ -1,22 +1,22 @@
-# Xamarin Plugins #
+# Xamarin Plugins
 
 Welcome to my repository of cross-platform Xamarin Plugins.
 
-## Xam.Plugins.Messaging ##
+## Xam.Plugins.Messaging
 
 ![Logo](https://github.com/cjlotz/Xamarin.Plugins/blob/master/Messaging/Common/Messaging.png)
 
 The Messaging plugin makes it possible to make a phone call, send a sms or send an e-mail using the default messaging applications on the different mobile platforms.
 
-### NuGet ###
+### NuGet 
 
 You can install the Messaging plugin from [NuGet](https://www.nuget.org/packages/Xam.Plugins.Messaging/)
 
-### Examples ###
+### Examples 
 
 Source code examples of using the Messaging plugin on the different mobile platforms can be found by opening the `Lotz.Xam.Messaging.Samples.sln`.
 
-### API Design ### 
+### API Design
 
 The Messaging Pluging makes use of `IEmailTask`, `ISmsTask` and `IPhoneCallTask` abstractions to send an e-mail, send a sms or make a phone call respectively.  These abstractions are defined within the `Lotz.Xam.Messaging.Abstractions` PCL library.  Platform specific implementations for these different abstractions are provided within a `Lotz.Xam.Messaging` library for the different platforms.
 
@@ -43,7 +43,7 @@ public interface IPhoneCallTask
 }
 ```
 
-### Using the API ###
+### Using the API 
 The messaging API's can be accessed on the different mobile platforms using the `MessagingPlugin` container class and a platform specific implementation of the `IMessagingContext` interface.  The context is required to send through platform specific information like the current `Activity` on Android or the `UIViewController` on iOS.  Here are some snippets to illustrate how to access the API from within an `Activity`, `UIViewController` or Windows `Page`.  
 
 ```csharp
