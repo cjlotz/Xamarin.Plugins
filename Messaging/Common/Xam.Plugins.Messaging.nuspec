@@ -8,7 +8,7 @@
        <owners>Carel Lotz</owners>
        <licenseUrl>https://github.com/cjlotz/Xamarin.Plugins/blob/master/LICENSE.md</licenseUrl>
        <projectUrl>https://github.com/cjlotz/Xamarin.Plugins</projectUrl>
-       <iconUrl>http://refractored.com/images/tts_icon_large.png</iconUrl>
+       <iconUrl>https://github.com/cjlotz/Xamarin.Plugins/blob/master/Messaging/Common/Messaging.png</iconUrl>
        <requireLicenseAcceptance>false</requireLicenseAcceptance>
        <summary>
           Cross platform Messaging for Xamarin and Windows.
