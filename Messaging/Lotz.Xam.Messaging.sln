@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotz.Xam.Messaging.WinPhone
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotz.Xam.Messaging.iOSUnified", "Lotz.Xam.Messaging.iOSUnified\Lotz.Xam.Messaging.iOSUnified.csproj", "{805582FD-96E6-47B9-88AD-AEB97E2226C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotz.Xam.Messaging.iOS", "Lotz.Xam.Messaging.iOS\Lotz.Xam.Messaging.iOS.csproj", "{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,16 @@ Global
 		{805582FD-96E6-47B9-88AD-AEB97E2226C8}.Release|ARM.ActiveCfg = Release|Any CPU
 		{805582FD-96E6-47B9-88AD-AEB97E2226C8}.Release|x64.ActiveCfg = Release|Any CPU
 		{805582FD-96E6-47B9-88AD-AEB97E2226C8}.Release|x86.ActiveCfg = Release|Any CPU
+		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|ARM.ActiveCfg = Release|Any CPU
+		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|x64.ActiveCfg = Release|Any CPU
+		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

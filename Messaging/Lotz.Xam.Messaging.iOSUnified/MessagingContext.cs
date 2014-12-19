@@ -1,5 +1,9 @@
 using Lotz.Xam.Messaging.Abstractions;
+#if __UNIFIED__
 using UIKit;
+#else
+using MonoTouch.UIKit;
+#endif
 
 namespace Lotz.Xam.Messaging
 {

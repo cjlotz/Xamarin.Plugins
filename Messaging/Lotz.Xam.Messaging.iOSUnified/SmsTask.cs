@@ -1,8 +1,13 @@
 using System;
 using System.Threading.Tasks;
 using Lotz.Xam.Messaging.Abstractions;
+#if __UNIFIED__
 using MessageUI;
 using UIKit;
+#else
+using MonoTouch.MessageUI;
+using MonoTouch.UIKit;
+#endif
 
 namespace Lotz.Xam.Messaging
 {
