@@ -40,8 +40,8 @@
   <Target Name="Build" DependsOnTargets="$(BuildDependsOn)">
     <MSBuild Projects="$(SolutionName)" Targets="Build"
              Properties="Configuration=$(Configuration)"/>
-  </Target>
-
+  </Target>  
+  
   <Target Name="Rebuild" DependsOnTargets="$(BuildDependsOn)">
     <MSBuild Projects="$(SolutionName)" Targets="Rebuild"
              Properties="Configuration=$(Configuration)"/>

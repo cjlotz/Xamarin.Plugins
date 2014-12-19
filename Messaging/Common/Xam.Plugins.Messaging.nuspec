@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-   <metadata minClientVersion="2.8.3">
+   <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>1.0.0.0</version>
+       <version>1.0.1</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
        <licenseUrl>https://github.com/cjlotz/Xamarin.Plugins/blob/master/LICENSE.md</licenseUrl>
        <projectUrl>https://github.com/cjlotz/Xamarin.Plugins</projectUrl>
-       <iconUrl>https://github.com/cjlotz/Xamarin.Plugins/blob/master/Messaging/Common/MessagingSmall.png</iconUrl>
+       <iconUrl>https://raw.githubusercontent.com/cjlotz/Xamarin.Plugins/master/Messaging/Common/MessagingSmall.png</iconUrl>
        <requireLicenseAcceptance>false</requireLicenseAcceptance>
        <summary>
           Cross platform Messaging (phone, sms and email) for Xamarin and Windows.
@@ -16,6 +16,10 @@
        <description>
            Xamarin and Windows plugin to make a phone call, send a sms or send an e-mail using the default messaging applications on the different Xamarin and Windows mobile platforms.
        </description>
+       <releaseNotes>
+         Xamarin and Windows plugin to make a phone call, send a sms or send an e-mail using the default messaging applications on the different Xamarin and Windows mobile platforms.
+         Downgraded the minimum NuGet version to 2.8.1
+       </releaseNotes>
        <tags>xamarin, xamarin.forms, android, ios, windows phone, winrt, email, sms</tags>
        <dependencies>
        </dependencies>
