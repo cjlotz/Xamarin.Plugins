@@ -1,3 +1,4 @@
+using System;
 using Lotz.Xam.Messaging.Abstractions;
 using Microsoft.Phone.Tasks;
 
@@ -15,13 +16,19 @@ namespace Lotz.Xam.Messaging
 
         public void SendSms(SmsMessageRequest sms)
         {
-            SmsComposeTask smsComposeTask = new SmsComposeTask
-                                            {
-                                                To = sms.DestinationAddress,
-                                                Body = sms.Message
-                                            };
+            if (sms == null)
+                throw new ArgumentNullException("sms");
 
-            smsComposeTask.Show();
+            if (CanSendSms)
+            {
+                SmsComposeTask smsComposeTask = new SmsComposeTask
+                                                {
+                                                    To = sms.DestinationAddress,
+                                                    Body = sms.Message
+                                                };
+
+                smsComposeTask.Show();
+            }
         }
 
         #endregion

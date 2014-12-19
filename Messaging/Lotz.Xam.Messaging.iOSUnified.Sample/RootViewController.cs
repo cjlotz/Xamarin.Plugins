@@ -4,6 +4,8 @@ using UIKit;
 
 namespace Lotz.Xam.Messaging.iOSUnified.Sample
 {
+    // NOTE: No sample provided on iOS Classic as the API usage is precisely the same
+
     public partial class RootViewController : UIViewController
     {
         public RootViewController(IntPtr handle)

@@ -1,3 +1,4 @@
+using System;
 using Windows.ApplicationModel.Chat;
 using Lotz.Xam.Messaging.Abstractions;
 
@@ -15,10 +16,16 @@ namespace Lotz.Xam.Messaging
 
         public void SendSms(SmsMessageRequest sms)
         {
-            var msg = new ChatMessage { Body = sms.Message };
-            msg.Recipients.Add(sms.DestinationAddress);
+            if (sms == null)
+                throw new ArgumentNullException("sms");
 
-            ChatMessageManager.ShowComposeSmsMessageAsync(msg);
+            if (CanSendSms)
+            {
+                var msg = new ChatMessage { Body = sms.Message };
+                msg.Recipients.Add(sms.DestinationAddress);
+
+                ChatMessageManager.ShowComposeSmsMessageAsync(msg);
+            }
         }
 
         #endregion

@@ -2,7 +2,6 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Lotz.Xam.Messaging.Abstractions;
 using Lotz.Xam.Messaging.Samples;
 
 namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
@@ -45,7 +44,8 @@ namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
 
         private void ButtonPhoneCall_OnClick(object sender, RoutedEventArgs e)
         {
-            MessagingPlugin.PhoneDialer().MakeSamplePhoneCall();
+            MessagingPlugin.PhoneDialer(new MessagingContext())
+                .MakeSamplePhoneCall();
         }
 
         private void ButtonSendEmail_OnClick(object sender, RoutedEventArgs e)
@@ -53,7 +53,8 @@ namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
             // NOTE: On Windows Phone Emulator, an exception occurs when using the email compose task. 
             // Test the email compose task on a physical device.
 
-            MessagingPlugin.EmailMessenger().SendSampleEmail();
+            MessagingPlugin.EmailMessenger(new MessagingContext())
+                .SendSampleEmail();
         }
 
         private void ButtonSendSms_OnClick(object sender, RoutedEventArgs e)
@@ -61,7 +62,8 @@ namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
             // NOTE: On Windows Phone Emulator, the SMS message always appears to be sent successfully, but the message is not actually sent. 
             // The emulator uses Fake GSM and always has a false Subscriber Identity Module (SIM) card.
 
-            MessagingPlugin.SmsMessenger().SendSampleSms();
+            MessagingPlugin.SmsMessenger(new MessagingContext())
+                .SendSampleSms();
         }
 
         #endregion

@@ -11,12 +11,12 @@
        <iconUrl>https://github.com/cjlotz/Xamarin.Plugins/blob/master/Messaging/Common/Messaging.png</iconUrl>
        <requireLicenseAcceptance>false</requireLicenseAcceptance>
        <summary>
-          Cross platform Messaging for Xamarin and Windows.
+          Cross platform Messaging for Xamarin and Windows.  Supports Android, iOS and Windows Phone and Windows Phone RT.
        </summary>
        <description>
-           Xamarin and Windows plugin to perform messaging functionality to send sms, make phone call or send email.
+           Xamarin and Windows plugin to make a phone call, send a sms or email across different mobile platforms.
        </description>
-       <tags>xamarin, xamarin.forms, android, ios, windows phone, winrt, universal apps, email, sms</tags>
+       <tags>xamarin, xamarin.forms, android, ios, windows phone, winrt, email, sms</tags>
        <dependencies>
        </dependencies>
    </metadata>

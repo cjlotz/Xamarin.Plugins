@@ -29,6 +29,9 @@ namespace Lotz.Xam.Messaging
 
         public void SendEmail(EmailMessageRequest email)
         {
+            if (email == null)
+                throw new ArgumentNullException("email");
+
             if (CanSendEmail)
             {
                 _mailController = new MFMailComposeViewController();

@@ -7,6 +7,9 @@ using MonoTouch.UIKit;
 
 namespace Lotz.Xam.Messaging
 {
+    /// <summary>
+    ///     iOS context containing the current <see cref="UIViewController"/>
+    /// </summary>
     public class MessagingContext : IMessagingContext
     {
         public MessagingContext(UIViewController viewController)

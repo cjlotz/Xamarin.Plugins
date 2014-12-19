@@ -17,7 +17,7 @@ namespace Lotz.Xam.Messaging
             if (string.IsNullOrWhiteSpace(number))
                 throw new ArgumentNullException("number");
 
-            PhoneCallManager.ShowPhoneCallUI(number, name);
+            PhoneCallManager.ShowPhoneCallUI(number, name ?? "");
         }
 
         #endregion

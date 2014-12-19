@@ -1,6 +1,7 @@
+using System;
 using Android.Content;
-using Android.Net;
 using Lotz.Xam.Messaging.Abstractions;
+using Uri = Android.Net.Uri;
 
 namespace Lotz.Xam.Messaging
 {
@@ -21,11 +22,17 @@ namespace Lotz.Xam.Messaging
 
         public void SendSms(SmsMessageRequest sms)
         {
-            var smsUri = Uri.Parse("smsto:" + sms.DestinationAddress);
-            var smsIntent = new Intent(Intent.ActionSendto, smsUri);
-            smsIntent.PutExtra("sms_body", sms.Message);
+            if (sms == null)
+                throw new ArgumentNullException("sms");
 
-            _context.Activity.StartActivity(smsIntent);
+            if (CanSendSms)
+            {
+                var smsUri = Uri.Parse("smsto:" + sms.DestinationAddress);
+                var smsIntent = new Intent(Intent.ActionSendto, smsUri);
+                smsIntent.PutExtra("sms_body", sms.Message);
+
+                _context.Activity.StartActivity(smsIntent);
+            }
         }
 
         #endregion

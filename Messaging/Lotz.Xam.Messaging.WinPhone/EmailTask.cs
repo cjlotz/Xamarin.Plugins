@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lotz.Xam.Messaging.Abstractions;
@@ -17,16 +18,21 @@ namespace Lotz.Xam.Messaging
 
         public void SendEmail(EmailMessageRequest email)
         {
-            EmailComposeTask emailComposeTask = new EmailComposeTask
-                                                {
-                                                    Subject = email.Subject,
-                                                    Body = email.Message,
-                                                    To = ToDelimitedString(email.Recipients, ";"),
-                                                    Cc = ToDelimitedString(email.RecipientsCc, ";"),
-                                                    Bcc = ToDelimitedString(email.RecipientsBcc, ";")
-                                                };
+            if (email == null)
+                throw new ArgumentNullException("email");
 
-            emailComposeTask.Show();
+            if (CanSendEmail)
+            {
+                EmailComposeTask emailComposeTask = new EmailComposeTask
+                                                    {
+                                                        Subject = email.Subject,
+                                                        Body = email.Message,
+                                                        To = ToDelimitedString(email.Recipients, ";"),
+                                                        Cc = ToDelimitedString(email.RecipientsCc, ";"),
+                                                        Bcc = ToDelimitedString(email.RecipientsBcc, ";")
+                                                    };
+                emailComposeTask.Show();
+            }
         }
 
         #endregion

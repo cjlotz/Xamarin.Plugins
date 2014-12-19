@@ -29,6 +29,9 @@ namespace Lotz.Xam.Messaging
 
         public void SendSms(SmsMessageRequest sms)
         {
+            if (sms == null)
+                throw new ArgumentNullException("sms");
+
             if (CanSendSms)
             {
                 _smsController = new MFMessageComposeViewController();

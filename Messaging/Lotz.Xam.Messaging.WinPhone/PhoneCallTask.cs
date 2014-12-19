@@ -21,7 +21,7 @@ namespace Lotz.Xam.Messaging
             Microsoft.Phone.Tasks.PhoneCallTask dialer = new Microsoft.Phone.Tasks.PhoneCallTask
                                                          {
                                                              PhoneNumber = number,
-                                                             DisplayName = name
+                                                             DisplayName = name ?? ""
                                                          };
             dialer.Show();
         }

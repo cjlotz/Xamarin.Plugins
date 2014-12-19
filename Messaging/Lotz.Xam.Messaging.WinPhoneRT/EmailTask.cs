@@ -1,3 +1,4 @@
+using System;
 using Windows.ApplicationModel.Email;
 using Lotz.Xam.Messaging.Abstractions;
 
@@ -18,24 +19,30 @@ namespace Lotz.Xam.Messaging
 
         public void SendEmail(EmailMessageRequest email)
         {
-            var mail = new EmailMessage();
-            mail.Subject = email.Subject;
-            mail.Body = email.Message;
+            if (email == null)
+                throw new ArgumentNullException("email");
 
-            foreach (var recipient in email.Recipients)
+            if (CanSendEmail)
             {
-                mail.To.Add(new EmailRecipient(recipient));
-            }
-            foreach (var recipient in email.RecipientsCc)
-            {
-                mail.CC.Add(new EmailRecipient(recipient));
-            }
-            foreach (var recipient in email.RecipientsBcc)
-            {
-                mail.Bcc.Add(new EmailRecipient(recipient));
-            }
+                var mail = new EmailMessage();
+                mail.Subject = email.Subject;
+                mail.Body = email.Message;
 
-            EmailManager.ShowComposeNewEmailAsync(mail);
+                foreach (var recipient in email.Recipients)
+                {
+                    mail.To.Add(new EmailRecipient(recipient));
+                }
+                foreach (var recipient in email.RecipientsCc)
+                {
+                    mail.CC.Add(new EmailRecipient(recipient));
+                }
+                foreach (var recipient in email.RecipientsBcc)
+                {
+                    mail.Bcc.Add(new EmailRecipient(recipient));
+                }
+
+                EmailManager.ShowComposeNewEmailAsync(mail);
+            }
         }
 
         #endregion

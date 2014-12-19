@@ -3,7 +3,7 @@ using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
 {
-    public static class MessagingExtensions
+    internal static class MessagingExtensions
     {
         #region Methods
 
