@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using Lotz.Xam.Messaging.Abstractions;
 #if __UNIFIED__
 using MessageUI;
@@ -23,17 +22,25 @@ namespace Lotz.Xam.Messaging
 
         #region IEmailTask Members
 
-        public Task SendEmailAsync(EmailMessageRequest email)
+        public bool CanSendEmail
         {
-            var tcs = new TaskCompletionSource<object>();
+            get { return MFMailComposeViewController.CanSendMail; }
+        }
 
-            if (MFMailComposeViewController.CanSendMail)
+        public void SendEmail(EmailMessageRequest email)
+        {
+            if (CanSendEmail)
             {
                 _mailController = new MFMailComposeViewController();
-
-                _mailController.SetToRecipients(email.Recipients.ToArray());
                 _mailController.SetSubject(email.Subject);
                 _mailController.SetMessageBody(email.Message, false);
+                _mailController.SetToRecipients(email.Recipients.ToArray());
+
+                if (email.RecipientsCc.Count > 0)
+                    _mailController.SetCcRecipients(email.RecipientsCc.ToArray());
+
+                if (email.RecipientsBcc.Count > 0)
+                    _mailController.SetBccRecipients(email.RecipientsBcc.ToArray());
 
                 EventHandler<MFComposeResultEventArgs> handler = null;
                 handler = (sender, e) =>
@@ -47,19 +54,12 @@ namespace Lotz.Xam.Messaging
                     }
 
                     uiViewController.DismissViewController(true, () => { });
-                    tcs.SetResult(null);
                 };
 
                 _mailController.Finished += handler;
 
                 _context.ViewController.PresentViewController(_mailController, true, () => {});
             }
-            else
-            {
-                tcs.SetResult(null);
-            }
-
-            return tcs.Task;
         }
 
         #endregion

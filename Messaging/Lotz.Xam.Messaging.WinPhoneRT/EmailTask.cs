@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Email;
 using Lotz.Xam.Messaging.Abstractions;
 
@@ -13,7 +11,12 @@ namespace Lotz.Xam.Messaging
 
         #region IEmailTask Members
 
-        public Task SendEmailAsync(EmailMessageRequest email)
+        public bool CanSendEmail
+        {
+            get { return true; }
+        }
+
+        public void SendEmail(EmailMessageRequest email)
         {
             var mail = new EmailMessage();
             mail.Subject = email.Subject;
@@ -32,7 +35,7 @@ namespace Lotz.Xam.Messaging
                 mail.Bcc.Add(new EmailRecipient(recipient));
             }
 
-            return EmailManager.ShowComposeNewEmailAsync(mail).AsTask();
+            EmailManager.ShowComposeNewEmailAsync(mail);
         }
 
         #endregion

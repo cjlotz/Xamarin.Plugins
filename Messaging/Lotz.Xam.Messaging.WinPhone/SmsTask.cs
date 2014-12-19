@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Lotz.Xam.Messaging.Abstractions;
 using Microsoft.Phone.Tasks;
 
@@ -12,7 +11,9 @@ namespace Lotz.Xam.Messaging
 
         #region ISmsTask Members
 
-        public Task SendSmsAsync(SmsMessageRequest sms)
+        public bool CanSendSms { get { return true; } }
+
+        public void SendSms(SmsMessageRequest sms)
         {
             SmsComposeTask smsComposeTask = new SmsComposeTask
                                             {
@@ -21,8 +22,6 @@ namespace Lotz.Xam.Messaging
                                             };
 
             smsComposeTask.Show();
-
-            return Task.FromResult<object>(null);
         }
 
         #endregion

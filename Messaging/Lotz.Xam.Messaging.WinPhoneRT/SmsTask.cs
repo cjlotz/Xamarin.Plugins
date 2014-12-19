@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Chat;
 using Lotz.Xam.Messaging.Abstractions;
 
@@ -13,13 +11,14 @@ namespace Lotz.Xam.Messaging
 
         #region ISmsTask Members
 
-        public Task SendSmsAsync(SmsMessageRequest sms)
+        public bool CanSendSms { get { return true; } }
+
+        public void SendSms(SmsMessageRequest sms)
         {
-            var msg = new ChatMessage();
-            msg.Body = sms.Message;
+            var msg = new ChatMessage { Body = sms.Message };
             msg.Recipients.Add(sms.DestinationAddress);
 
-            return ChatMessageManager.ShowComposeSmsMessageAsync(msg).AsTask();
+            ChatMessageManager.ShowComposeSmsMessageAsync(msg);
         }
 
         #endregion

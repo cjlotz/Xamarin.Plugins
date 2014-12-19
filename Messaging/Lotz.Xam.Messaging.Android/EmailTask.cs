@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Android.Content;
 using Lotz.Xam.Messaging.Abstractions;
 
@@ -16,7 +14,9 @@ namespace Lotz.Xam.Messaging
 
         #region IEmailTask Members
 
-        public Task SendEmailAsync(EmailMessageRequest email)
+        public bool CanSendEmail { get { return true; } }
+
+        public void SendEmail(EmailMessageRequest email)
         {
             // NOTE: http://developer.xamarin.com/recipes/android/networking/email/send_an_email/
 
@@ -30,8 +30,6 @@ namespace Lotz.Xam.Messaging
             emailIntent.PutExtra(Intent.ExtraText, email.Message);
 
             _context.Activity.StartActivity(emailIntent);
-
-            return Task.FromResult<object>(null);
         }
 
         #endregion

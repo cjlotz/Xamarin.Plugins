@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using Lotz.Xam.Messaging.Abstractions;
 #if __UNIFIED__
 using MessageUI;
@@ -13,7 +12,7 @@ namespace Lotz.Xam.Messaging
 {
     public class SmsTask : ISmsTask
     {
-        private MessagingContext _context;
+        private readonly MessagingContext _context;
         private MFMessageComposeViewController _smsController;
 
         public SmsTask(IMessagingContext context)
@@ -23,11 +22,14 @@ namespace Lotz.Xam.Messaging
 
         #region ISmsTask Members
 
-        public Task SendSmsAsync(SmsMessageRequest sms)
+        public bool CanSendSms
         {
-            var tcs = new TaskCompletionSource<object>();
+            get { return MFMessageComposeViewController.CanSendText; }
+        }
 
-            if (MFMessageComposeViewController.CanSendText)
+        public void SendSms(SmsMessageRequest sms)
+        {
+            if (CanSendSms)
             {
                 _smsController = new MFMessageComposeViewController();
 
@@ -46,19 +48,12 @@ namespace Lotz.Xam.Messaging
                     }
 
                     uiViewController.DismissViewController(true, () => { });
-                    tcs.SetResult(null);
                 };
 
                 _smsController.Finished += handler;
 
                 _context.ViewController.PresentViewController(_smsController, true, () => {});
             }
-            else
-            {
-                tcs.SetResult(null);
-            }
-
-            return tcs.Task;
         }
 
         #endregion

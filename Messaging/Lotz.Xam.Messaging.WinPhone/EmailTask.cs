@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Lotz.Xam.Messaging.Abstractions;
 using Microsoft.Phone.Tasks;
 
@@ -14,7 +13,9 @@ namespace Lotz.Xam.Messaging
 
         #region IEmailTask Members
 
-        public Task SendEmailAsync(EmailMessageRequest email)
+        public bool CanSendEmail { get { return true; } }
+
+        public void SendEmail(EmailMessageRequest email)
         {
             EmailComposeTask emailComposeTask = new EmailComposeTask
                                                 {
@@ -26,9 +27,11 @@ namespace Lotz.Xam.Messaging
                                                 };
 
             emailComposeTask.Show();
-
-            return Task.FromResult<object>(null);
         }
+
+        #endregion
+
+        #region Methods
 
         private static string ToDelimitedString(IList<string> collection, string delimiter)
         {

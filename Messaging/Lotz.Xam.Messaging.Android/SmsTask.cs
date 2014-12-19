@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Android.Content;
 using Android.Net;
 using Lotz.Xam.Messaging.Abstractions;
@@ -18,15 +17,15 @@ namespace Lotz.Xam.Messaging
 
         #region ISmsTask Members
 
-        public Task SendSmsAsync(SmsMessageRequest sms)
+        public bool CanSendSms { get { return true; } }
+
+        public void SendSms(SmsMessageRequest sms)
         {
             var smsUri = Uri.Parse("smsto:" + sms.DestinationAddress);
             var smsIntent = new Intent(Intent.ActionSendto, smsUri);
             smsIntent.PutExtra("sms_body", sms.Message);
 
             _context.Activity.StartActivity(smsIntent);
-
-            return Task.FromResult<object>(null);
         }
 
         #endregion

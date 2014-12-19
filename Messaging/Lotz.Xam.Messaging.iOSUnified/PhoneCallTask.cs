@@ -1,3 +1,4 @@
+using System;
 using Lotz.Xam.Messaging.Abstractions;
 #if __UNIFIED__
 using Foundation;
@@ -20,7 +21,10 @@ namespace Lotz.Xam.Messaging
 
         public void MakePhoneCall(string number, string name = null)
         {
-            var nsurl = new NSUrl("tel:" + number);
+            if (string.IsNullOrWhiteSpace(number))
+                throw new ArgumentNullException("number");
+
+            var nsurl = new NSUrl("tel://" + number);
             UIApplication.SharedApplication.OpenUrl(nsurl);
         }        
 

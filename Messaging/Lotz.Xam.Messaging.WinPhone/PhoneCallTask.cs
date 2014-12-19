@@ -1,3 +1,4 @@
+using System;
 using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
@@ -10,8 +11,13 @@ namespace Lotz.Xam.Messaging
 
         #region IPhoneCallTask Members
 
+        // Requires ID_CAP_PHONEDIALER capabilities
+
         public void MakePhoneCall(string number, string name = null)
         {
+            if (string.IsNullOrWhiteSpace(number))
+                throw new ArgumentNullException("number");
+
             Microsoft.Phone.Tasks.PhoneCallTask dialer = new Microsoft.Phone.Tasks.PhoneCallTask
                                                          {
                                                              PhoneNumber = number,
