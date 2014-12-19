@@ -34,6 +34,9 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Common\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Lotz.Xam.Messaging.iOSUnified\EmailTask.cs">
       <Link>EmailTask.cs</Link>
     </Compile>

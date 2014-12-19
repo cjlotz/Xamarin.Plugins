@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotz.Xam.Messaging.iOSUnifi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotz.Xam.Messaging.iOS", "Lotz.Xam.Messaging.iOS\Lotz.Xam.Messaging.iOS.csproj", "{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5E8390D7-3136-44C6-800B-336F568D185C}"
+	ProjectSection(SolutionItems) = preProject
+		Common\GlobalAssemblyInfo.cs = Common\GlobalAssemblyInfo.cs
+		Common\Xam.Plugins.Messaging.nuspec = Common\Xam.Plugins.Messaging.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

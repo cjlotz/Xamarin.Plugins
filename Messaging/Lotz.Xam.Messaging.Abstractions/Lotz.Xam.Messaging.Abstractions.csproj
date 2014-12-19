@@ -37,6 +37,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Common\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="IEmailTask.cs" />
     <Compile Include="IMessagingContext.cs" />
     <Compile Include="IPhoneCallTask.cs" />

@@ -83,6 +83,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Common\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Lotz.Xam.Messaging\MessagingPlugin.cs">
       <Link>MessagingPlugin.cs</Link>
     </Compile>
