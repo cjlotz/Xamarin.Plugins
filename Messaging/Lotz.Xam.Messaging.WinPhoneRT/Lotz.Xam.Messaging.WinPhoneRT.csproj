@@ -96,7 +96,6 @@
       <Link>MessagingPlugin.cs</Link>
     </Compile>
     <Compile Include="EmailTask.cs" />
-    <Compile Include="MessagingContext.cs" />
     <Compile Include="PhoneCallTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmsTask.cs" />

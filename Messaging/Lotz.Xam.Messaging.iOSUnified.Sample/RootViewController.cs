@@ -39,20 +39,17 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
 
         private void ButtonMakePhoneCall_TouchUpInside(object o, EventArgs eventArgs)
         {
-            MessagingPlugin.PhoneDialer(new MessagingContext(this))
-                .MakeSamplePhoneCall();
+            MessagingPlugin.PhoneDialer.MakeSamplePhoneCall();
         }
 
         private void ButtonSendEmail_TouchUpInside(object o, EventArgs eventArgs)
         {
-            MessagingPlugin.EmailMessenger(new MessagingContext(this))
-                .SendSampleEmail();
+            MessagingPlugin.EmailMessenger.SendSampleEmail();
         }
 
         private void ButtonSendSms_TouchUpInside(object o, EventArgs eventArgs)
         {
-            MessagingPlugin.SmsMessenger(new MessagingContext(this))
-                .SendSampleSms();
+            MessagingPlugin.SmsMessenger.SendSampleSms();
         }
 
         #endregion

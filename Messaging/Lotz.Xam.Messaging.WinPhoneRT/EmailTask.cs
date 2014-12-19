@@ -4,9 +4,9 @@ using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
 {
-    public class EmailTask : IEmailTask
+    internal class EmailTask : IEmailTask
     {
-        public EmailTask(IMessagingContext context)
+        public EmailTask()
         {
         }
 

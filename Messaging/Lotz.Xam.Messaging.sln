@@ -19,6 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotz.Xam.Messaging.iOS", "L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5E8390D7-3136-44C6-800B-336F568D185C}"
 	ProjectSection(SolutionItems) = preProject
+		Common\Build.cmd = Common\Build.cmd
 		..\build.proj = ..\build.proj
 		Common\GlobalAssemblyInfo.cs = Common\GlobalAssemblyInfo.cs
 		Common\Xam.Plugins.Messaging.nuspec = Common\Xam.Plugins.Messaging.nuspec

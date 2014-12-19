@@ -42,7 +42,6 @@
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="IEmailTask.cs" />
-    <Compile Include="IMessagingContext.cs" />
     <Compile Include="IPhoneCallTask.cs" />
     <Compile Include="ISmsTask.cs">
       <SubType>Code</SubType>

@@ -10,11 +10,10 @@ using MonoTouch.UIKit;
 
 namespace Lotz.Xam.Messaging
 {
-    public class PhoneCallTask : IPhoneCallTask
+    internal class PhoneCallTask : IPhoneCallTask
     {
-        public PhoneCallTask(IMessagingContext context)
+        public PhoneCallTask()
         {
-            // context not required
         }
 
         #region IPhoneCallTask Members

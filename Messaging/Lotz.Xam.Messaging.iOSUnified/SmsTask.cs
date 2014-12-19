@@ -10,14 +10,12 @@ using MonoTouch.UIKit;
 
 namespace Lotz.Xam.Messaging
 {
-    public class SmsTask : ISmsTask
+    internal class SmsTask : ISmsTask
     {
-        private readonly MessagingContext _context;
         private MFMessageComposeViewController _smsController;
 
-        public SmsTask(IMessagingContext context)
+        public SmsTask()
         {
-            _context = context.AsPlatformContext();
         }
 
         #region ISmsTask Members
@@ -55,7 +53,7 @@ namespace Lotz.Xam.Messaging
 
                 _smsController.Finished += handler;
 
-                _context.ViewController.PresentViewController(_smsController, true, () => {});
+                _smsController.PresentUsingRootViewController();
             }
         }
 

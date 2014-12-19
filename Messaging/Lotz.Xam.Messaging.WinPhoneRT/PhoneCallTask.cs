@@ -4,9 +4,9 @@ using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
 {
-    public class PhoneCallTask : IPhoneCallTask
+    internal class PhoneCallTask : IPhoneCallTask
     {
-        public PhoneCallTask(IMessagingContext context)
+        public PhoneCallTask()
         {
         }
 
