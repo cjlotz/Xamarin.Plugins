@@ -23,7 +23,7 @@ namespace Lotz.Xam.Messaging
             {
                 SmsComposeTask smsComposeTask = new SmsComposeTask
                                                 {
-                                                    To = sms.DestinationAddress,
+                                                    To = sms.ReceiverAddress,
                                                     Body = sms.Message
                                                 };
 

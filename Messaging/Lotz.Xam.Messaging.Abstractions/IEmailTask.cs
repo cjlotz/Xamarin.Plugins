@@ -34,6 +34,10 @@ namespace Lotz.Xam.Messaging.Abstractions
         private List<string> _recipientsBcc;
         private List<string> _recipientsCc;
 
+        /// <summary>
+        ///     Create new email request
+        /// </summary>
+        /// <param name="to">Email recipient</param>
         public EmailMessageRequest(string to)
         {
             if (string.IsNullOrWhiteSpace(to))
@@ -42,6 +46,12 @@ namespace Lotz.Xam.Messaging.Abstractions
             Recipients = new List<string> { to };
         }
 
+        /// <summary>
+        ///     Create new email request
+        /// </summary>
+        /// <param name="to">Email recipient</param>
+        /// <param name="subject">Email subject</param>
+        /// <param name="message">Email message</param>
         public EmailMessageRequest(string to, string subject, string message)
             : this(to)
         {

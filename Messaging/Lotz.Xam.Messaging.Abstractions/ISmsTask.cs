@@ -38,15 +38,20 @@ namespace Lotz.Xam.Messaging.Abstractions
     /// </summary>
     public class SmsMessageRequest
     {
-        public SmsMessageRequest(string destinationAddress, string message)
+        /// <summary>
+        ///     Create a new Sms request
+        /// </summary>
+        /// <param name="receiverAddress">Sms receiver</param>
+        /// <param name="message">Sms message</param>
+        public SmsMessageRequest(string receiverAddress, string message)
         {
-            if (string.IsNullOrWhiteSpace(destinationAddress))
-                throw new ArgumentNullException("destinationAddress");
+            if (string.IsNullOrWhiteSpace(receiverAddress))
+                throw new ArgumentNullException("receiverAddress");
 
             if (string.IsNullOrWhiteSpace(message))
                 throw new ArgumentNullException("message");
 
-            DestinationAddress = destinationAddress;
+            ReceiverAddress = receiverAddress;
             Message = message;
         }
 
@@ -55,7 +60,7 @@ namespace Lotz.Xam.Messaging.Abstractions
         /// <summary>
         ///     Gets the address to send the sms to.
         /// </summary>
-        public string DestinationAddress { get; private set; }
+        public string ReceiverAddress { get; private set; }
 
         /// <summary>
         ///     Gets the message to send within the sms.

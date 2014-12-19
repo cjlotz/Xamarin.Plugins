@@ -36,7 +36,7 @@ namespace Lotz.Xam.Messaging
             {
                 _smsController = new MFMessageComposeViewController();
 
-                _smsController.Recipients = new[] { sms.DestinationAddress };
+                _smsController.Recipients = new[] { sms.ReceiverAddress };
                 _smsController.Body = sms.Message;
 
                 EventHandler<MFMessageComposeResultEventArgs> handler = null;

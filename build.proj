@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="BuildPackage" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildProjectDirectory)\Build.tasks" />
+
+  <PropertyGroup>
+    <XamarinPluginsRoot>$(MSBuildProjectDirectory)</XamarinPluginsRoot>
+    <XamarinPluginName Condition="'$(XamarinPluginName)' == ''">Messaging</XamarinPluginName>
+    <XamarinPluginPath>$(XamarinPluginsRoot)\$(XamarinPluginName)</XamarinPluginPath>
+    <NugetExe>$(XamarinPluginsRoot)\.nuget\NuGet.exe</NugetExe>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <MajorVersion Condition="'$(MajorVersion)' == ''">1</MajorVersion>
+    <MinorVersion Condition="'$(MinorVersion)' == ''">0</MinorVersion>
+    <Build Condition="'$(Build)' == ''">0</Build>
+    <Revision Condition="'$(Revision)' == ''">0</Revision>
+    
+    <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(Build).$(Revision)</AssemblyVersion>
+    <AssemblyFileVersion>$(MajorVersion).$(MinorVersion).$(Build).$(Revision)</AssemblyFileVersion>
+    <PackageVersion>$(MajorVersion).$(MinorVersion).$(Build)</PackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <RegexTransform Include="$(XamarinPluginPath)\Common\GlobalAssemblyInfo.cs">
+      <Find>AssemblyVersion\("\d+\.\d+\.\d+\.\d+"\)</Find>
+      <ReplaceWith>AssemblyVersion("$(AssemblyVersion)")</ReplaceWith>
+    </RegexTransform>
+    <RegexTransform Include="$(XamarinPluginPath)\Common\GlobalAssemblyInfo.cs">
+      <Find>AssemblyFileVersion\("\d+\.\d+\.\d+\.\d+"\)</Find>
+      <ReplaceWith>AssemblyFileVersion("$(AssemblyFileVersion)")</ReplaceWith>
+    </RegexTransform>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <BuildDependsOn>RestorePackages;UpdateVersion</BuildDependsOn>
+    <SolutionName Condition="'$(SolutionName)' == ''">$(XamarinPluginPath)\Lotz.Xam.$(XamarinPluginName).sln</SolutionName>
+  </PropertyGroup>
+
+  <Target Name="Build" DependsOnTargets="$(BuildDependsOn)">
+    <MSBuild Projects="$(SolutionName)" Targets="Build"
+             Properties="Configuration=$(Configuration)"/>
+  </Target>
+
+  <Target Name="Rebuild" DependsOnTargets="$(BuildDependsOn)">
+    <MSBuild Projects="$(SolutionName)" Targets="Rebuild"
+             Properties="Configuration=$(Configuration)"/>
+  </Target>
+
+  <Target Name="Clean">
+    <MSBuild Projects="$(SolutionName)" Targets="Clean"
+             Properties="Configuration=$(Configuration)"/>
+  </Target>
+
+  <Target Name="RestorePackages">
+    <Exec Command="&quot;$(NuGetExe)&quot; restore &quot;$(SolutionName)&quot;" />
+  </Target>
+  
+  <Target Name="UpdateVersion">
+    <RegexTransform Items="@(RegexTransform)" />
+  </Target>
+
+  <Target Name="BuildPackage" DependsOnTargets="Build">
+    <MakeDir Directories="$(XamarinPluginPath)\Output" Condition="!Exists('$(XamarinPluginPath)\Output')" />
+    <Exec Command="&quot;$(NuGetExe)&quot; pack $(XamarinPluginPath)\Common\Xam.Plugins.$(XamarinPluginName).nuspec -NoPackageAnalysis -o &quot;$(XamarinPluginPath)\Output&quot; -Version $(PackageVersion)" />
+  </Target>
+  
+</Project>

@@ -22,7 +22,7 @@ namespace Lotz.Xam.Messaging
             if (CanSendSms)
             {
                 var msg = new ChatMessage { Body = sms.Message };
-                msg.Recipients.Add(sms.DestinationAddress);
+                msg.Recipients.Add(sms.ReceiverAddress);
 
                 ChatMessageManager.ShowComposeSmsMessageAsync(msg);
             }

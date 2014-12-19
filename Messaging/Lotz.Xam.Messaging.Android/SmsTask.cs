@@ -27,7 +27,7 @@ namespace Lotz.Xam.Messaging
 
             if (CanSendSms)
             {
-                var smsUri = Uri.Parse("smsto:" + sms.DestinationAddress);
+                var smsUri = Uri.Parse("smsto:" + sms.ReceiverAddress);
                 var smsIntent = new Intent(Intent.ActionSendto, smsUri);
                 smsIntent.PutExtra("sms_body", sms.Message);
 
