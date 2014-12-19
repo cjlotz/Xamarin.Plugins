@@ -44,16 +44,15 @@ public interface IPhoneCallTask
 ```
 
 ### Using the API 
-The messaging API's can be accessed on the different mobile platforms using the `MessagingPlugin` container class and a platform specific implementation of the `IMessagingContext` interface.  The context is required to send through platform specific information like the current `Activity` on Android or the `UIViewController` on iOS.  Here are some snippets to illustrate how to access the API from within an `Activity`, `UIViewController` or Windows `Page`.  
+The messaging API's can be accessed on the different mobile platforms using the `MessagingPlugin` container class.  Here are some snippets to illustrate how to access the API from within an `Activity`, `UIViewController` or Windows `Page`.  
 
 ```csharp
 // Make a phone call
-var dialer = MessagingPlugin.PhoneDialer(new MessagingContext(this));
-dialer.MakePhoneCall("+272193343499");
+MessagingPlugin.PhoneDialer.MakePhoneCall("+272193343499");
 ```
 ```csharp
 // Send sms
-var smsTask = MessagingPlugin.SmsMessenger(new MessagingContext(this));
+var smsTask = MessagingPlugin.SmsMessenger;
 if (smsTask.CanSendSms)
 {
    var sms = new SmsMessageRequest("+27213894839493", "Well hello there from Xam.Messaging.Plugin");
@@ -62,14 +61,11 @@ if (smsTask.CanSendSms)
 ``` 
 ```csharp
 // Send e-mail
-var emailTask = MessagingPlugin.EmailMessenger(new MessagingContext(this));
+var emailTask = MessagingPlugin.EmailMessenger;
 if (emailTask.CanSendEmail)
 {
-    var email = new EmailMessageRequest("to.plugins@xamarin.com", "Xamarin Messaging Plugin",
-        "Well hello there from Xam.Messaging.Plugin");
-    
+    var email = new EmailMessageRequest("to.plugins@xamarin.com", "Xamarin Messaging Plugin", "Well hello there from Xam.Messaging.Plugin");
 	email.RecipientsCc.Add("cc.plugins@xamarin.com");
-
     emailTask.SendEmail(email);
 }           
 ```

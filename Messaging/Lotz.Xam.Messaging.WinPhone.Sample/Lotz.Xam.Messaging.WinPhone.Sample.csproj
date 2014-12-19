@@ -152,13 +152,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Lotz.Xam.Messaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lotz.Xam.Messaging, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xam.Plugins.Messaging.1.0.0\lib\wp8\Lotz.Xam.Messaging.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.1.0\lib\wp8\Lotz.Xam.Messaging.dll</HintPath>
     </Reference>
-    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xam.Plugins.Messaging.1.0.0\lib\wp8\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.1.0\lib\wp8\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />

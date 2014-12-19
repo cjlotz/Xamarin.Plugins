@@ -6,9 +6,9 @@ using Microsoft.Phone.Tasks;
 
 namespace Lotz.Xam.Messaging
 {
-    public class EmailTask : IEmailTask
+    internal class EmailTask : IEmailTask
     {
-        public EmailTask(IMessagingContext context)
+        public EmailTask()
         {
         }
 

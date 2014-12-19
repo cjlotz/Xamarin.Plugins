@@ -7,13 +7,10 @@ namespace Lotz.Xam.Messaging
 {
     // NOTE: http://developer.xamarin.com/recipes/android/networking/sms/send_an_sms/
 
-    public class SmsTask : ISmsTask
+    internal class SmsTask : ISmsTask
     {
-        private readonly MessagingContext _context;
-
-        public SmsTask(IMessagingContext context)
+        public SmsTask()
         {
-            _context = context.AsPlatformContext();
         }
 
         #region ISmsTask Members
@@ -31,7 +28,7 @@ namespace Lotz.Xam.Messaging
                 var smsIntent = new Intent(Intent.ActionSendto, smsUri);
                 smsIntent.PutExtra("sms_body", sms.Message);
 
-                _context.Activity.StartActivity(smsIntent);
+                smsIntent.StartNewActivity();
             }
         }
 

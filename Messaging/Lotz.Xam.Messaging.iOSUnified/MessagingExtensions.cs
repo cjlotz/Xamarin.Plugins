@@ -1,5 +1,9 @@
 using System;
-using Lotz.Xam.Messaging.Abstractions;
+#if __UNIFIED__
+using UIKit;
+#else
+using MonoTouch.UIKit;
+#endif
 
 namespace Lotz.Xam.Messaging
 {
@@ -7,17 +11,12 @@ namespace Lotz.Xam.Messaging
     {
         #region Methods
 
-        public static MessagingContext AsPlatformContext(this IMessagingContext context)
+        public static void PresentUsingRootViewController(this UIViewController controller)
         {
-            if (context == null)
-                throw new ArgumentNullException("context");
+            if (controller == null)
+                throw new ArgumentNullException("controller");
 
-            var iOSContext = context as MessagingContext;
-
-            if (iOSContext == null)
-                throw new ArgumentException("Context not of type iOS MessagingContext", "context");
-
-            return iOSContext;
+            UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(controller, true, () => {});
         }
 
         #endregion

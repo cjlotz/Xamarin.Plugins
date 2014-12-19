@@ -1,5 +1,5 @@
 using System;
-using Lotz.Xam.Messaging.Abstractions;
+using Android.Content;
 
 namespace Lotz.Xam.Messaging
 {
@@ -7,17 +7,15 @@ namespace Lotz.Xam.Messaging
     {
         #region Methods
 
-        public static MessagingContext AsPlatformContext(this IMessagingContext context)
+        public static void StartNewActivity(this Intent intent)
         {
-            if (context == null)
-                throw new ArgumentNullException("context");
+            if (intent == null)
+                throw new ArgumentNullException("intent");
 
-            var androidContext = context as MessagingContext;
-
-            if (androidContext == null)
-                throw new ArgumentException("Context not of type Android MessagingContext", "context");
-
-            return androidContext;
+            intent.SetFlags(ActivityFlags.ClearTop);
+            intent.SetFlags(ActivityFlags.NewTask);
+            
+            Android.App.Application.Context.StartActivity(intent);
         }
 
         #endregion

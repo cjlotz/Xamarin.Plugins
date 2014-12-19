@@ -4,9 +4,9 @@ using Microsoft.Phone.Tasks;
 
 namespace Lotz.Xam.Messaging
 {
-    public class SmsTask : ISmsTask
+    internal class SmsTask : ISmsTask
     {
-        public SmsTask(IMessagingContext context)
+        public SmsTask()
         {
         }
 

@@ -35,22 +35,19 @@ namespace Lotz.Xam.Messaging.Android.Sample
 
         private void ButtonPhoneCall_Click(object sender, EventArgs eventArgs)
         {
-            MessagingPlugin.PhoneDialer(new MessagingContext(this))
-                .MakeSamplePhoneCall();
+            MessagingPlugin.PhoneDialer.MakeSamplePhoneCall();
         }
 
         private void ButtonSendEmail_Click(object sender, EventArgs eventArgs)
         {
-            MessagingPlugin.EmailMessenger(new MessagingContext(this))
-                .SendSampleEmail();
+            MessagingPlugin.EmailMessenger.SendSampleEmail();
         }
 
         private void ButtonSendSms_Click(object sender, EventArgs eventArgs)
         {
             // NOTE: requires android.permission.SEND_SMS permission in the Android manifest.
 
-            MessagingPlugin.SmsMessenger(new MessagingContext(this))
-                .SendSampleSms();
+            MessagingPlugin.SmsMessenger.SendSampleSms();
         }
 
         #endregion

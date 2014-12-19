@@ -4,13 +4,10 @@ using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
 {
-    public class EmailTask : IEmailTask
+    internal class EmailTask : IEmailTask
     {
-        private readonly MessagingContext _context;
-
-        public EmailTask(IMessagingContext context)
+        public EmailTask()
         {
-            _context = context.AsPlatformContext();
         }
 
         #region IEmailTask Members
@@ -35,7 +32,7 @@ namespace Lotz.Xam.Messaging
                 emailIntent.PutExtra(Intent.ExtraSubject, email.Subject);
                 emailIntent.PutExtra(Intent.ExtraText, email.Message);
 
-                _context.Activity.StartActivity(emailIntent);
+                emailIntent.StartNewActivity();
             }
         }
 

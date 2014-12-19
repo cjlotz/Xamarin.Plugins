@@ -10,14 +10,12 @@ using MonoTouch.UIKit;
 
 namespace Lotz.Xam.Messaging
 {
-    public class EmailTask : IEmailTask
+    internal class EmailTask : IEmailTask
     {
-        public EmailTask(IMessagingContext context)
+        public EmailTask()
         {
-            _context = context.AsPlatformContext();
         }
 
-        private readonly MessagingContext _context;
         private MFMailComposeViewController _mailController;
 
         #region IEmailTask Members
@@ -61,7 +59,7 @@ namespace Lotz.Xam.Messaging
 
                 _mailController.Finished += handler;
 
-                _context.ViewController.PresentViewController(_mailController, true, () => {});
+                _mailController.PresentUsingRootViewController();
             }
         }
 

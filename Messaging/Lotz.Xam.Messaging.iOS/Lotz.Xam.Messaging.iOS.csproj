@@ -43,9 +43,6 @@
     <Compile Include="..\Lotz.Xam.Messaging.iOSUnified\EmailTask.cs">
       <Link>EmailTask.cs</Link>
     </Compile>
-    <Compile Include="..\Lotz.Xam.Messaging.iOSUnified\MessagingContext.cs">
-      <Link>MessagingContext.cs</Link>
-    </Compile>
     <Compile Include="..\Lotz.Xam.Messaging.iOSUnified\MessagingExtensions.cs">
       <Link>MessagingExtensions.cs</Link>
     </Compile>
