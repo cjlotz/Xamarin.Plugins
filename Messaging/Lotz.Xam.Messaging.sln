@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotz.Xam.Messaging.WinPhone
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotz.Xam.Messaging.WinPhone", "Lotz.Xam.Messaging.WinPhone\Lotz.Xam.Messaging.WinPhone.csproj", "{F6AF2061-8EAE-4A8F-BA87-174045993F2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotz.Xam.Messaging.iOS", "Lotz.Xam.Messaging.iOS\Lotz.Xam.Messaging.iOS.csproj", "{805582FD-96E6-47B9-88AD-AEB97E2226C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lotz.Xam.Messaging.iOSUnified", "Lotz.Xam.Messaging.iOSUnified\Lotz.Xam.Messaging.iOSUnified.csproj", "{805582FD-96E6-47B9-88AD-AEB97E2226C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
