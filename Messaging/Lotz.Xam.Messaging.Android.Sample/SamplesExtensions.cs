@@ -8,7 +8,10 @@ namespace Lotz.Xam.Messaging.Samples
 
         public static void MakeSamplePhoneCall(this IPhoneCallTask phoneCall)
         {
-            phoneCall.MakePhoneCall("+272193343499", "Xamarin Demo User");
+            if (phoneCall.CanMakePhoneCall)
+            {
+                phoneCall.MakePhoneCall("+272193343499", "Xamarin Demo User");
+            }
         }
 
         public static void SendSampleEmail(this IEmailTask emailTask)
@@ -28,8 +31,7 @@ namespace Lotz.Xam.Messaging.Samples
         {
             if (smsTask.CanSendSms)
             {
-                var sms = new SmsMessageRequest("+27213894839493", "Well hello there from Xam.Messaging.Plugin");
-                smsTask.SendSms(sms);
+                smsTask.SendSms("+27213894839493", "Well hello there from Xam.Messaging.Plugin");
             }
         }
 
