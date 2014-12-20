@@ -24,6 +24,14 @@ namespace Lotz.Xam.Messaging.Abstractions
         /// </summary>
         /// <param name="email">Email request to send</param>
         void SendEmail(EmailMessageRequest email);
+
+        /// <summary>
+        ///     Send an email using the default email application on the device
+        /// </summary>
+        /// <param name="to">Email recipient</param>
+        /// <param name="subject">Email subject</param>
+        /// <param name="message">Email message</param>
+        void SendEmail(string to, string subject, string message);
     }
 
     /// <summary>

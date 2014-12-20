@@ -14,17 +14,20 @@ namespace Lotz.Xam.Messaging
 
         public bool CanSendSms { get { return true; } }
 
-        public void SendSms(SmsMessageRequest sms)
+        public void SendSms(string recipient, string message)
         {
-            if (sms == null)
-                throw new ArgumentNullException("sms");
+            if (string.IsNullOrWhiteSpace(recipient))
+                throw new ArgumentNullException("recipient");
+
+            if (string.IsNullOrWhiteSpace(message))
+                throw new ArgumentNullException("message");
 
             if (CanSendSms)
             {
                 SmsComposeTask smsComposeTask = new SmsComposeTask
                                                 {
-                                                    To = sms.ReceiverAddress,
-                                                    Body = sms.Message
+                                                    To = recipient,
+                                                    Body = message
                                                 };
 
                 smsComposeTask.Show();

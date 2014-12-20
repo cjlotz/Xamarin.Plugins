@@ -25,17 +25,20 @@ namespace Lotz.Xam.Messaging
             get { return MFMessageComposeViewController.CanSendText; }
         }
 
-        public void SendSms(SmsMessageRequest sms)
+        public void SendSms(string recipient, string message)
         {
-            if (sms == null)
-                throw new ArgumentNullException("sms");
+            if (string.IsNullOrWhiteSpace(recipient))
+                throw new ArgumentNullException("recipient");
+
+            if (string.IsNullOrWhiteSpace(message))
+                throw new ArgumentNullException("message");
 
             if (CanSendSms)
             {
                 _smsController = new MFMessageComposeViewController();
 
-                _smsController.Recipients = new[] { sms.ReceiverAddress };
-                _smsController.Body = sms.Message;
+                _smsController.Recipients = new[] { recipient };
+                _smsController.Body = message;
 
                 EventHandler<MFMessageComposeResultEventArgs> handler = null;
                 handler = (sender, args) =>

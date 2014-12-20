@@ -18,13 +18,21 @@ namespace Lotz.Xam.Messaging
 
         #region IPhoneCallTask Members
 
+        public bool CanMakePhoneCall
+        {
+            get { return true; }
+        }
+
         public void MakePhoneCall(string number, string name = null)
         {
             if (string.IsNullOrWhiteSpace(number))
                 throw new ArgumentNullException("number");
 
-            var nsurl = new NSUrl("tel://" + number);
-            UIApplication.SharedApplication.OpenUrl(nsurl);
+            if (CanMakePhoneCall)
+            {
+                var nsurl = new NSUrl("tel://" + number);
+                UIApplication.SharedApplication.OpenUrl(nsurl);                
+            }
         }        
 
         #endregion

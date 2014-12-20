@@ -10,6 +10,11 @@
     public interface IPhoneCallTask
     {
         /// <summary>
+        ///     Gets a value indicating whether the device can make a phone call
+        /// </summary>
+        bool CanMakePhoneCall { get; }
+
+        /// <summary>
         ///     Make a phone call using the default dialer UI on the device.
         /// </summary>
         /// <param name="number">Number to phone</param>

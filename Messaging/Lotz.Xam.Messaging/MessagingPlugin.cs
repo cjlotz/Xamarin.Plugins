@@ -4,12 +4,14 @@ using Lotz.Xam.Messaging.Abstractions;
 namespace Lotz.Xam.Messaging
 {
     /// <summary>
-    ///     Container API for accessing the various Messaging plugin API's
+    ///     Container API for accessing the various Messaging plugin task API's
     /// </summary>
-    public static class MessagingPlugin 
+    public static class MessagingPlugin
     {
+        #region Properties
+
         /// <summary>
-        /// Gets an instance of the platform implementation for the <see cref="IEmailTask"/>
+        ///     Gets an instance of the platform implementation for the <see cref="IEmailTask" />
         /// </summary>
         public static IEmailTask EmailMessenger
         {
@@ -24,7 +26,7 @@ namespace Lotz.Xam.Messaging
         }
 
         /// <summary>
-        /// Gets an instance of the platform implementation for the <see cref="IPhoneCallTask"/>
+        ///     Gets an instance of the platform implementation for the <see cref="IPhoneCallTask" />
         /// </summary>
         public static IPhoneCallTask PhoneDialer
         {
@@ -39,7 +41,7 @@ namespace Lotz.Xam.Messaging
         }
 
         /// <summary>
-        /// Gets an instance of the platform implementation for the <see cref="ISmsTask"/>
+        ///     Gets an instance of the platform implementation for the <see cref="ISmsTask" />
         /// </summary>
         public static ISmsTask SmsMessenger
         {
@@ -53,9 +55,15 @@ namespace Lotz.Xam.Messaging
             }
         }
 
+        #endregion
+
+        #region Methods
+
         internal static Exception NotImplementedInReferenceAssembly()
         {
             return new NotImplementedException("This functionality is not implemented in the portable version of this assembly.  You should reference the Xam.Plugins.Messaging NuGet package from your main application project in order to reference the platform-specific implementation.");
         }
+
+        #endregion
     }
 }

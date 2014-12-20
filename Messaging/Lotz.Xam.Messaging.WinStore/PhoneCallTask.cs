@@ -1,5 +1,4 @@
-using System;
-using Windows.ApplicationModel.Calls;
+using System.Diagnostics;
 using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
@@ -14,16 +13,12 @@ namespace Lotz.Xam.Messaging
 
         public bool CanMakePhoneCall
         {
-            get { return true; }
+            get { return false; }
         }
 
         public void MakePhoneCall(string number, string name = null)
         {
-            if (string.IsNullOrWhiteSpace(number))
-                throw new ArgumentNullException("number");
-
-            if (CanMakePhoneCall)
-                PhoneCallManager.ShowPhoneCallUI(number, name ?? "");
+            Debug.WriteLine("Messaging not supported on Windows Store apps.");
         }
 
         #endregion

@@ -11,19 +11,26 @@ namespace Lotz.Xam.Messaging
 
         #region IPhoneCallTask Members
 
-        // Requires ID_CAP_PHONEDIALER capabilities
+        public bool CanMakePhoneCall
+        {
+            get { return true; }
+        }
 
         public void MakePhoneCall(string number, string name = null)
         {
             if (string.IsNullOrWhiteSpace(number))
                 throw new ArgumentNullException("number");
 
-            Microsoft.Phone.Tasks.PhoneCallTask dialer = new Microsoft.Phone.Tasks.PhoneCallTask
-                                                         {
-                                                             PhoneNumber = number,
-                                                             DisplayName = name ?? ""
-                                                         };
-            dialer.Show();
+            // NOTE: Requires ID_CAP_PHONEDIALER capabilities
+            if (CanMakePhoneCall)
+            {
+                Microsoft.Phone.Tasks.PhoneCallTask dialer = new Microsoft.Phone.Tasks.PhoneCallTask
+                                                             {
+                                                                 PhoneNumber = number,
+                                                                 DisplayName = name ?? ""
+                                                             };
+                dialer.Show();
+            }
         }
 
         #endregion

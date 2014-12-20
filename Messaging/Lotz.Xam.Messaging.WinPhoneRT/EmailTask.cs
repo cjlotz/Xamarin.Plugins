@@ -45,6 +45,11 @@ namespace Lotz.Xam.Messaging
             }
         }
 
+        public void SendEmail(string to, string subject, string message)
+        {
+            SendEmail(new EmailMessageRequest(to, subject, message));
+        }
+
         #endregion
     }
 }

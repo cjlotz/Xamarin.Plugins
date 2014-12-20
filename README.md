@@ -39,6 +39,7 @@ public interface ISmsTask
 ```csharp
 public interface IPhoneCallTask
 {
+	bool CanMakePhoneCall { get; }
     void MakePhoneCall(string number, string name = null);
 }
 ```
@@ -48,16 +49,15 @@ The messaging API's can be accessed on the different mobile platforms using the 
 
 ```csharp
 // Make a phone call
-MessagingPlugin.PhoneDialer.MakePhoneCall("+272193343499");
+var phoneCallTask = MessagingPlugin.PhoneDialer;
+if (phoneCallTask.CanMakePhoneCall) 
+	phoneCallTask.MakePhoneCall("+272193343499");
 ```
 ```csharp
 // Send sms
 var smsTask = MessagingPlugin.SmsMessenger;
 if (smsTask.CanSendSms)
-{
-   var sms = new SmsMessageRequest("+27213894839493", "Well hello there from Xam.Messaging.Plugin");
-   smsTask.SendSms(sms);
-}
+   smsTask.SendSms("+27213894839493", "Well hello there from Xam.Messaging.Plugin");
 ``` 
 ```csharp
 // Send e-mail

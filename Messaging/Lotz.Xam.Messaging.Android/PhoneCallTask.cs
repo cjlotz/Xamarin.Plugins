@@ -14,17 +14,25 @@ namespace Lotz.Xam.Messaging
 
         #region IPhoneCallTask Members
 
+        public bool CanMakePhoneCall
+        {
+            get { return true; }
+        }
+
         public void MakePhoneCall(string number, string name = null)
         {
             if (string.IsNullOrWhiteSpace(number))
                 throw new ArgumentNullException("number");
 
-            var phoneNumber = PhoneNumberUtils.FormatNumber(number);
+            if (CanMakePhoneCall)
+            {
+                var phoneNumber = PhoneNumberUtils.FormatNumber(number);
 
-            Uri telUri = Uri.Parse("tel:" + phoneNumber);
-            var dialIntent = new Intent(Intent.ActionDial, telUri);
+                Uri telUri = Uri.Parse("tel:" + phoneNumber);
+                var dialIntent = new Intent(Intent.ActionDial, telUri);
 
-            dialIntent.StartNewActivity();
+                dialIntent.StartNewActivity();
+            }
         }
 
         #endregion
