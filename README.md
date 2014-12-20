@@ -25,6 +25,7 @@ public interface IEmailTask
 {
     bool CanSendEmail { get; }
     void SendEmail(EmailMessageRequest email);
+    void SendEmail(string to, string subject, string message);
 }
 ```
 
@@ -32,7 +33,7 @@ public interface IEmailTask
 public interface ISmsTask
 {
     bool CanSendSms { get; }
-    void SendSms(SmsMessageRequest sms);
+    void SendSms(string recipient, string message);
 }
 ```
 
@@ -60,12 +61,16 @@ if (smsTask.CanSendSms)
    smsTask.SendSms("+27213894839493", "Well hello there from Xam.Messaging.Plugin");
 ``` 
 ```csharp
-// Send e-mail
+// Send e-mail 
 var emailTask = MessagingPlugin.EmailMessenger;
 if (emailTask.CanSendEmail)
 {
+	// Use the EmailMessageRequest to send to multiple recipients, CC and BCC
     var email = new EmailMessageRequest("to.plugins@xamarin.com", "Xamarin Messaging Plugin", "Well hello there from Xam.Messaging.Plugin");
 	email.RecipientsCc.Add("cc.plugins@xamarin.com");
     emailTask.SendEmail(email);
+
+	// Use simple API overload to send mail to single receiver
+	emailTask.SendEmail("to.plugins@xamarin.com", "Xamarin Messaging Plugin", "Well hello there from Xam.Messaging.Plugin");
 }           
 ```
