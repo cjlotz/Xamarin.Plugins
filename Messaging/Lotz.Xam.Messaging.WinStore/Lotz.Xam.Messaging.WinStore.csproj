@@ -9,8 +9,8 @@
     <ProjectGuid>{ABC36F16-6973-4EDF-8691-B368495491E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lotz.Xam.Messaging.WinStore</RootNamespace>
-    <AssemblyName>Lotz.Xam.Messaging.WinStore</AssemblyName>
+    <RootNamespace>Lotz.Xam.Messaging</RootNamespace>
+    <AssemblyName>Lotz.Xam.Messaging</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
@@ -33,6 +33,7 @@
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Lotz.Xam.Messaging.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
