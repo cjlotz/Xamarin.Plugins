@@ -18,10 +18,13 @@ namespace Lotz.Xam.Messaging.Samples
         {
             if (emailTask.CanSendEmail)
             {
-                var email = new EmailMessageRequest("to.plugins@xamarin.com", "Xamarin Messaging Plugin",
-                    "Well hello there from Xam.Messaging.Plugin");
-
-                email.RecipientsCc.Add("cc.plugins@xamarin.com");
+                var email = new EmailMessageBuilder()
+                    .To("to.plugins@xamarin.com")
+                    .Cc("cc.plugins@xamarin.com")
+                    .Bcc(new[] { "bcc1.plugins@xamarin.com", "bcc2.plugins@xamarin.com" })
+                    .Subject("Xamarin Messaging Plugin")
+                    .Body("Well hello there from Xam.Messaging.Plugin")
+                    .Build();
 
                 emailTask.SendEmail(email);
             }

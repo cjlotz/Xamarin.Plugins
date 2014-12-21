@@ -41,13 +41,13 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Lotz.Xam.Messaging, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lotz.Xam.Messaging, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xam.Plugins.Messaging.1.2.0\lib\MonoAndroid10\Lotz.Xam.Messaging.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.3.0\lib\MonoAndroid10\Lotz.Xam.Messaging.dll</HintPath>
     </Reference>
-    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xam.Plugins.Messaging.1.2.0\lib\MonoAndroid10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.3.0\lib\MonoAndroid10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
