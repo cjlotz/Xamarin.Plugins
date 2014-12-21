@@ -10,19 +10,19 @@ namespace Lotz.Xam.Messaging.Abstractions
     {
         private List<string> _recipientsBcc;
         private List<string> _recipientsCc;
+        private List<string> _recipients;
 
         /// <summary>
         ///     Create new email request
         /// </summary>
         /// <param name="to">Email recipient</param>
         public EmailMessageRequest(string to)
+            : this()
         {
             if (string.IsNullOrWhiteSpace(to))
                 throw new ArgumentNullException("to");
 
-            Recipients = new List<string> { to };
-            Subject = string.Empty;
-            Message = string.Empty;
+            Recipients.Add(to);
         }
 
         /// <summary>
@@ -34,8 +34,14 @@ namespace Lotz.Xam.Messaging.Abstractions
         public EmailMessageRequest(string to, string subject, string message)
             : this(to)
         {
-            Subject = subject ?? string.Empty;
-            Message = message ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(subject))
+                throw new ArgumentNullException("subject");
+
+            if (string.IsNullOrWhiteSpace(message))
+                throw new ArgumentNullException("message");
+
+            Subject = subject;
+            Message = message;
         }
 
         /// <summary>
@@ -43,6 +49,8 @@ namespace Lotz.Xam.Messaging.Abstractions
         /// </summary>
         internal EmailMessageRequest()
         {
+            Subject = string.Empty;
+            Message = string.Empty;
         }
 
         #region Properties
@@ -55,7 +63,11 @@ namespace Lotz.Xam.Messaging.Abstractions
         /// <summary>
         ///     List of To recipients
         /// </summary>
-        public List<string> Recipients { get; private set; }
+        public List<string> Recipients
+        {
+            get { return _recipients ?? (_recipients = new List<string>()); }
+            set { _recipients = value; }            
+        }
 
         /// <summary>
         ///     List of Bcc recipients
