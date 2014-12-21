@@ -26,9 +26,15 @@ namespace Lotz.Xam.Messaging
                 Intent emailIntent = new Intent(Intent.ActionSend);
                 emailIntent.SetType("message/rfc822");
 
-                emailIntent.PutExtra(Intent.ExtraEmail, email.Recipients.ToArray());
-                emailIntent.PutExtra(Intent.ExtraCc, email.RecipientsCc.ToArray());
-                emailIntent.PutExtra(Intent.ExtraBcc, email.RecipientsBcc.ToArray());
+                if (email.Recipients.Count > 0)
+                    emailIntent.PutExtra(Intent.ExtraEmail, email.Recipients.ToArray());
+
+                if (email.RecipientsCc.Count > 0)
+                    emailIntent.PutExtra(Intent.ExtraCc, email.RecipientsCc.ToArray());
+
+                if (email.RecipientsBcc.Count > 0)
+                    emailIntent.PutExtra(Intent.ExtraBcc, email.RecipientsBcc.ToArray());
+
                 emailIntent.PutExtra(Intent.ExtraSubject, email.Subject);
                 emailIntent.PutExtra(Intent.ExtraText, email.Message);
 

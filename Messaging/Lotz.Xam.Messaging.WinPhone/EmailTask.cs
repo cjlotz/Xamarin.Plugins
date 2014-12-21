@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Lotz.Xam.Messaging.Abstractions;
 using Microsoft.Phone.Tasks;
 
@@ -27,9 +26,9 @@ namespace Lotz.Xam.Messaging
                                                     {
                                                         Subject = email.Subject,
                                                         Body = email.Message,
-                                                        To = ToDelimitedString(email.Recipients, ";"),
-                                                        Cc = ToDelimitedString(email.RecipientsCc, ";"),
-                                                        Bcc = ToDelimitedString(email.RecipientsBcc, ";")
+                                                        To = ToDelimitedAddress(email.Recipients),
+                                                        Cc = ToDelimitedAddress(email.RecipientsCc),
+                                                        Bcc = ToDelimitedAddress(email.RecipientsBcc)
                                                     };
                 emailComposeTask.Show();
             }
@@ -44,10 +43,9 @@ namespace Lotz.Xam.Messaging
 
         #region Methods
 
-        private static string ToDelimitedString(IList<string> collection, string delimiter)
+        private static string ToDelimitedAddress(ICollection<string> collection)
         {
-            string delimited = string.Empty;
-            return collection.Aggregate(delimited, (current, stringValue) => current + (stringValue + delimiter));
+            return collection.Count == 0 ? string.Empty : string.Join(";", collection);
         }
 
         #endregion
