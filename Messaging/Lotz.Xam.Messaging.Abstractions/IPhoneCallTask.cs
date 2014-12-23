@@ -1,4 +1,4 @@
-﻿namespace Lotz.Xam.Messaging.Abstractions
+﻿namespace Lotz.Xam.Messaging
 {
     /// <summary>
     ///     Abstraction for making cross-platform phone calls on the device.

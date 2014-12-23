@@ -1,7 +1,5 @@
-﻿namespace Lotz.Xam.Messaging.Abstractions
+﻿namespace Lotz.Xam.Messaging
 {
-    // TODO: Consider adding Attachments
-
     /// <summary>
     ///     Abstraction for sending cross-platform email messages using
     ///     the default mail application on the device.
@@ -17,8 +15,8 @@
         ///     Send the <paramref name="email" /> using the default email application
         ///     on the device
         /// </summary>
-        /// <param name="email">Email request to send</param>
-        void SendEmail(EmailMessageRequest email);
+        /// <param name="email">Email to send</param>
+        void SendEmail(IEmailMessage email);
 
         /// <summary>
         ///     Send an email using the default email application on the device

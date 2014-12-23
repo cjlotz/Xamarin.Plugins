@@ -1,6 +1,5 @@
 using System;
 using Windows.ApplicationModel.Chat;
-using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
 {

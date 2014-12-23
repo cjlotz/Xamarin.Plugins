@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lotz.Xam.Messaging.Abstractions
+namespace Lotz.Xam.Messaging
 {
     /// <summary>
-    ///     Email request used for sending e-mails.
+    ///     Email used for sending e-mails.
     /// </summary>
-    public class EmailMessageRequest
+    internal class EmailMessage : IEmailMessage
     {
         private List<string> _recipientsBcc;
         private List<string> _recipientsCc;
         private List<string> _recipients;
-
+        private List<IEmailAttachment> _attachments;
+ 
         /// <summary>
         ///     Create new email request
         /// </summary>
         /// <param name="to">Email recipient</param>
-        public EmailMessageRequest(string to)
+        public EmailMessage(string to)
             : this()
         {
             if (string.IsNullOrWhiteSpace(to))
@@ -31,7 +32,7 @@ namespace Lotz.Xam.Messaging.Abstractions
         /// <param name="to">Email recipient</param>
         /// <param name="subject">Email subject</param>
         /// <param name="message">Email message</param>
-        public EmailMessageRequest(string to, string subject, string message)
+        public EmailMessage(string to, string subject, string message)
             : this(to)
         {
             if (string.IsNullOrWhiteSpace(subject))
@@ -47,8 +48,8 @@ namespace Lotz.Xam.Messaging.Abstractions
         /// <summary>
         ///     Constructor used by the <see cref="EmailMessageBuilder"/>
         /// </summary>
-        internal EmailMessageRequest()
-        {
+        internal EmailMessage()
+        {            
             Subject = string.Empty;
             Message = string.Empty;
         }
@@ -68,6 +69,15 @@ namespace Lotz.Xam.Messaging.Abstractions
         ///     HTML content type is only supported on Android and iOS platforms
         /// </remarks>
         public bool IsHtml { get; set; }
+
+        /// <summary>
+        ///     List of attachments.
+        /// </summary>
+        public List<IEmailAttachment> Attachments
+        {
+            get { return _attachments ?? (_attachments = new List<IEmailAttachment>()); }
+            set { _attachments = value; }
+        }
 
         /// <summary>
         ///     List of To recipients
@@ -100,19 +110,6 @@ namespace Lotz.Xam.Messaging.Abstractions
         ///     Email subject
         /// </summary>
         public string Subject { get; set; }
-
-        #endregion
-
-        #region Methods
-
-        /// <summary>
-        ///     Gets a builder to construct a new <see cref="EmailMessageRequest"/> with.
-        /// </summary>
-        /// <returns><see cref="EmailMessageBuilder"/> instance to construct email message</returns>
-        public static EmailMessageBuilder Builder()
-        {
-            return new EmailMessageBuilder();
-        }
 
         #endregion
     }

@@ -1,7 +1,6 @@
 using System;
 using Android.Content;
 using Android.Telephony;
-using Lotz.Xam.Messaging.Abstractions;
 using Uri = Android.Net.Uri;
 
 namespace Lotz.Xam.Messaging

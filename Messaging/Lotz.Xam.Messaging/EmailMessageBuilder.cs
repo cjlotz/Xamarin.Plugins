@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace Lotz.Xam.Messaging.Abstractions
+namespace Lotz.Xam.Messaging
 {
     /// <summary>
-    ///     Builder pattern for constructing a <see cref="EmailMessageRequest" />
+    ///     Builder pattern for constructing a <see cref="EmailMessage" />
     /// </summary>
     public class EmailMessageBuilder
     {
-        private readonly EmailMessageRequest _email;
+        private readonly EmailMessage _email;
 
         public EmailMessageBuilder()
         {
-            _email = new EmailMessageRequest();
+            _email = new EmailMessage();
         }
 
         #region Methods
@@ -38,18 +38,49 @@ namespace Lotz.Xam.Messaging.Abstractions
             return this;
         }
 
-        public EmailMessageBuilder BodyAsHtml(string body)
+#if __ANDROID__ || __IOS__
+
+        public EmailMessageBuilder BodyAsHtml(string htmlBody)
         {
-            if (!string.IsNullOrEmpty(body))
-            {
-                _email.Message = body;
+            if (!string.IsNullOrEmpty(htmlBody))
+            {                
+                _email.Message = htmlBody;
                 _email.IsHtml = true;
             }
 
             return this;
         }
 
-        public EmailMessageRequest Build()
+#endif
+
+#if __ANDROID__
+
+        public EmailMessageBuilder WithAttachment(string filePath)
+        {
+            _email.Attachments.Add(new EmailAttachment(filePath));
+            return this;
+        }
+
+#elif __IOS__
+
+
+        public EmailMessageBuilder WithAttachment(string fileName, System.IO.Stream content, string contentType)
+        {
+            _email.Attachments.Add(new EmailAttachment(fileName, content, contentType));
+            return this;
+        }
+
+#elif WINDOWS_PHONE_APP
+
+        public EmailMessageBuilder WithAttachment(Windows.Storage.IStorageFile file)
+        {
+            _email.Attachments.Add(new EmailAttachment(file));
+            return this;
+        }
+
+#endif
+
+        public IEmailMessage Build()
         {
             return _email;
         }
@@ -91,10 +122,5 @@ namespace Lotz.Xam.Messaging.Abstractions
         }
 
         #endregion
-
-        public static implicit operator EmailMessageRequest(EmailMessageBuilder builder)
-        {
-            return builder.Build();
-        }
     }
 }

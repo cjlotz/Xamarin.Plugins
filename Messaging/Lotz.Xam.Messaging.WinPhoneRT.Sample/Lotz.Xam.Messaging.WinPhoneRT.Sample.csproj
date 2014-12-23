@@ -79,6 +79,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Lotz.Xam.Messaging.Sample\SamplesExtensions.cs">
+      <Link>SamplesExtensions.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -111,23 +114,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Lotz.Xam.Messaging, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lotz.Xam.Messaging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xam.Plugins.Messaging.1.4.0\lib\wpa81\Lotz.Xam.Messaging.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.2.0.0\lib\wpa81\Lotz.Xam.Messaging.dll</HintPath>
     </Reference>
-    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xam.Plugins.Messaging.1.4.0\lib\wpa81\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.2.0.0\lib\wpa81\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Lotz.Xam.Messaging.Sample\Lotz.Xam.Messaging.Sample.csproj">
-      <Project>{e66e780a-3d9c-45e9-b3c1-325498e8324b}</Project>
-      <Name>Lotz.Xam.Messaging.Sample</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

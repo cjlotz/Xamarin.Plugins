@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>1.4.0</version>
+       <version>2.0.0</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
@@ -17,14 +17,19 @@
            Xamarin and Windows plugin to make a phone call, send a sms or send an e-mail using the default messaging applications on the different Xamarin and Windows mobile platforms.
        </description>
        <releaseNotes>
-         v1.4
-         - Added HTML support (only supported on Android/iOS)
-         v1.3
-         - Added new EmailMessageBuilder
-         v1.2
-         - Added new IPhoneCallTask.CanMakePhoneCall
-         - Added IEmailTask.SendEmail overload to make it easier to send simple email request
-         - Added Windows Store assembly. Does not support making phone calls or sending sms and only partial e-mail support via mailto protocol.
+v2.0
+- Added support for attachments via IEmailAttachment abstraction (supported on Android, iOS and WinPhone RT only)
+- Added IEmailMessage abstraction
+- Breaking change: Deprecated EmailMessageRequest - use IEmailMessage instead
+- Breaking change: Deprecated Lotz.Xamarin.Messaging.Abstractions namespace - use Lotz.Xamarin.Messaging instead
+v1.4
+- Added HTML support (only supported on Android/iOS)
+v1.3
+- Added new EmailMessageBuilder
+v1.2
+- Added new IPhoneCallTask.CanMakePhoneCall
+- Added IEmailTask.SendEmail overload to make it easier to send simple email request
+- Added Windows Store assembly. Does not support making phone calls or sending sms and only partial e-mail support via mailto protocol.
        </releaseNotes>
        <tags>xamarin, xamarin.forms, android, ios, windows phone, winrt, email, sms</tags>
        <dependencies>

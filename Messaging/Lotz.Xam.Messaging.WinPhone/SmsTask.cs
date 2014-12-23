@@ -1,5 +1,4 @@
 using System;
-using Lotz.Xam.Messaging.Abstractions;
 using Microsoft.Phone.Tasks;
 
 namespace Lotz.Xam.Messaging

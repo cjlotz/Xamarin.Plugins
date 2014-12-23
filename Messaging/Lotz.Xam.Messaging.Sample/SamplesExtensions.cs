@@ -1,6 +1,4 @@
-﻿using Lotz.Xam.Messaging.Abstractions;
-
-namespace Lotz.Xam.Messaging.Sample
+﻿namespace Lotz.Xam.Messaging.Sample
 {
     public static class SamplesExtensions
     {
@@ -14,25 +12,37 @@ namespace Lotz.Xam.Messaging.Sample
             }
         }
 
-        public static void SendSampleEmail(this IEmailTask emailTask, bool sendAsHtml = false)
+        public static EmailMessageBuilder BuildSampleEmail(this IEmailTask emailTask, bool sendAsHtml = false)
+        {
+            var builder = new EmailMessageBuilder()
+                .To("to.plugins@xamarin.com")
+                .Cc("cc.plugins@xamarin.com")
+                .Bcc(new[] { "bcc1.plugins@xamarin.com", "bcc2.plugins@xamarin.com" })
+                .Subject("Xamarin Messaging Plugin");
+
+#if __ANDROID__ || __IOS__
+
+            if (sendAsHtml)
+                builder.BodyAsHtml("Well hello there from <b>Xam.Messaging.Plugin</b>");
+#endif
+            if (!sendAsHtml)
+                builder.Body("Well hello there from Xam.Messaging.Plugin");
+
+            return builder;
+        }
+
+        public static void SendSampleEmail(this IEmailTask emailTask, IEmailMessage email)
         {
             if (emailTask.CanSendEmail)
             {
-                var builder = new EmailMessageBuilder()
-                    .To("to.plugins@xamarin.com")
-                    .Cc("cc.plugins@xamarin.com")
-                    .Bcc(new[] { "bcc1.plugins@xamarin.com", "bcc2.plugins@xamarin.com" })
-                    .Subject("Xamarin Messaging Plugin");
-
-                if (sendAsHtml)
-                    builder.BodyAsHtml("Well hello there from <b>Xam.Messaging.Plugin</b>");
-                else
-                    builder.Body("Well hello there from Xam.Messaging.Plugin");
-
-                var email = builder.Build();
-
                 emailTask.SendEmail(email);
             }
+        }
+
+        public static void SendSampleEmail(this IEmailTask emailTask, bool sendAsHtml = false)
+        {
+            var email = emailTask.BuildSampleEmail(sendAsHtml).Build();
+            emailTask.SendSampleEmail(email);
         }
 
         public static void SendSampleSms(this ISmsTask smsTask)

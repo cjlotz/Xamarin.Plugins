@@ -40,6 +40,9 @@
     <Compile Include="..\Common\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Lotz.Xam.Messaging.iOSUnified\EmailAttachment.cs">
+      <Link>EmailAttachment.cs</Link>
+    </Compile>
     <Compile Include="..\Lotz.Xam.Messaging.iOSUnified\EmailTask.cs">
       <Link>EmailTask.cs</Link>
     </Compile>
@@ -51,6 +54,12 @@
     </Compile>
     <Compile Include="..\Lotz.Xam.Messaging.iOSUnified\SmsTask.cs">
       <Link>SmsTask.cs</Link>
+    </Compile>
+    <Compile Include="..\Lotz.Xam.Messaging\EmailMessage.cs">
+      <Link>EmailMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Lotz.Xam.Messaging\EmailMessageBuilder.cs">
+      <Link>EmailMessageBuilder.cs</Link>
     </Compile>
     <Compile Include="..\Lotz.Xam.Messaging\MessagingPlugin.cs">
       <Link>MessagingPlugin.cs</Link>

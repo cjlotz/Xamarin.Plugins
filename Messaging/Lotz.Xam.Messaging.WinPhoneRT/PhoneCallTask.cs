@@ -1,6 +1,5 @@
 using System;
 using Windows.ApplicationModel.Calls;
-using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
 {

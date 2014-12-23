@@ -1,5 +1,4 @@
 using System;
-using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
 {

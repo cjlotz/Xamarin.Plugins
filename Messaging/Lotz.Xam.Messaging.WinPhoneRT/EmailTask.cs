@@ -1,6 +1,6 @@
 using System;
+using System.Linq;
 using Windows.ApplicationModel.Email;
-using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
 {
@@ -17,17 +17,14 @@ namespace Lotz.Xam.Messaging
             get { return true; }
         }
 
-        public void SendEmail(EmailMessageRequest email)
+        public void SendEmail(IEmailMessage email)
         {
             if (email == null)
                 throw new ArgumentNullException("email");
 
-            if (email.IsHtml)
-                throw new PlatformNotSupportedException("Sending HTML email not supported for Windows Phone RT");
-
             if (CanSendEmail)
             {
-                var mail = new EmailMessage
+                var mail = new Windows.ApplicationModel.Email.EmailMessage
                            {
                                Subject = email.Subject, 
                                Body = email.Message
@@ -46,13 +43,19 @@ namespace Lotz.Xam.Messaging
                     mail.Bcc.Add(new EmailRecipient(recipient));
                 }
 
+                foreach (var attachment in email.Attachments.Cast<EmailAttachment>())
+                {
+                    mail.Attachments.Add(new Windows.ApplicationModel.Email.EmailAttachment(
+                        attachment.FileName, attachment.Content));
+                }
+
                 EmailManager.ShowComposeNewEmailAsync(mail);
             }
         }
 
         public void SendEmail(string to, string subject, string message)
         {
-            SendEmail(new EmailMessageRequest(to, subject, message));
+            SendEmail(new EmailMessage(to, subject, message));
         }
 
         #endregion

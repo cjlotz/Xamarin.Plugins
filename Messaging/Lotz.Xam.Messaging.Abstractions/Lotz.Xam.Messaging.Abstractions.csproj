@@ -8,7 +8,7 @@
     <ProjectGuid>{B4292775-3BB9-4FF2-8D20-B3D483BF1701}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lotz.Xam.Messaging.Abstractions</RootNamespace>
+    <RootNamespace>Lotz.Xam.Messaging</RootNamespace>
     <AssemblyName>Lotz.Xam.Messaging.Abstractions</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
@@ -43,8 +43,8 @@
     <Compile Include="..\Common\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="EmailMessageBuilder.cs" />
-    <Compile Include="EmailMessageRequest.cs" />
+    <Compile Include="IEmailAttachment.cs" />
+    <Compile Include="IEmailMessage.cs" />
     <Compile Include="IEmailTask.cs">
       <SubType>Code</SubType>
     </Compile>

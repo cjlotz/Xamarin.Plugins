@@ -1,4 +1,4 @@
-﻿namespace Lotz.Xam.Messaging.Abstractions
+﻿namespace Lotz.Xam.Messaging
 {
     /// <summary>
     ///     Abstraction for sending cross-platform sms messages using

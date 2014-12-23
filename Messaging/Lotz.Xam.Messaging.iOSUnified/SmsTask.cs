@@ -1,5 +1,4 @@
 using System;
-using Lotz.Xam.Messaging.Abstractions;
 #if __UNIFIED__
 using MessageUI;
 using UIKit;

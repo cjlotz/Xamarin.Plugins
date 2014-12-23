@@ -92,9 +92,16 @@
     <Compile Include="..\Common\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Lotz.Xam.Messaging\EmailMessage.cs">
+      <Link>EmailMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Lotz.Xam.Messaging\EmailMessageBuilder.cs">
+      <Link>EmailMessageBuilder.cs</Link>
+    </Compile>
     <Compile Include="..\Lotz.Xam.Messaging\MessagingPlugin.cs">
       <Link>MessagingPlugin.cs</Link>
     </Compile>
+    <Compile Include="EmailAttachment.cs" />
     <Compile Include="EmailTask.cs" />
     <Compile Include="PhoneCallTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

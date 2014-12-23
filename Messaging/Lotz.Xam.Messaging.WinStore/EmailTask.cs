@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using Windows.System;
-using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
 {
@@ -21,13 +20,10 @@ namespace Lotz.Xam.Messaging
             get { return true; }
         }
 
-        public void SendEmail(EmailMessageRequest email)
+        public void SendEmail(IEmailMessage email)
         {
             if (email == null)
                 throw new ArgumentNullException("email");
-
-            if (email.IsHtml)
-                throw new PlatformNotSupportedException("Sending HTML email not supported for Windows Store");
 
             if (CanSendEmail)
             {
@@ -54,7 +50,7 @@ namespace Lotz.Xam.Messaging
 
         public void SendEmail(string to, string subject, string message)
         {
-            SendEmail(new EmailMessageRequest(to, subject, message));
+            SendEmail(new EmailMessage(to, subject, message));
         }
 
         #endregion

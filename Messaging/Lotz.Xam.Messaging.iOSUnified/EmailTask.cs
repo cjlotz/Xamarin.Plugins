@@ -1,9 +1,11 @@
 using System;
-using Lotz.Xam.Messaging.Abstractions;
+using System.Linq;
 #if __UNIFIED__
+using Foundation;
 using MessageUI;
 using UIKit;
 #else
+using MonoTouch.Foundation;
 using MonoTouch.MessageUI;
 using MonoTouch.UIKit;
 #endif
@@ -25,7 +27,7 @@ namespace Lotz.Xam.Messaging
             get { return MFMailComposeViewController.CanSendMail; }
         }
 
-        public void SendEmail(EmailMessageRequest email)
+        public void SendEmail(IEmailMessage email)
         {
             if (email == null)
                 throw new ArgumentNullException("email");
@@ -34,7 +36,7 @@ namespace Lotz.Xam.Messaging
             {
                 _mailController = new MFMailComposeViewController();
                 _mailController.SetSubject(email.Subject);
-                _mailController.SetMessageBody(email.Message, email.IsHtml);
+                _mailController.SetMessageBody(email.Message, ((EmailMessage) email).IsHtml);
                 _mailController.SetToRecipients(email.Recipients.ToArray());
 
                 if (email.RecipientsCc.Count > 0)
@@ -42,6 +44,12 @@ namespace Lotz.Xam.Messaging
 
                 if (email.RecipientsBcc.Count > 0)
                     _mailController.SetBccRecipients(email.RecipientsBcc.ToArray());
+
+                foreach (var attachment in email.Attachments.Cast<EmailAttachment>())
+                {
+                    _mailController.AddAttachmentData(NSData.FromStream(attachment.Content),
+                        attachment.ContentType, attachment.FileName);
+                }
 
                 EventHandler<MFComposeResultEventArgs> handler = null;
                 handler = (sender, e) =>
@@ -65,7 +73,7 @@ namespace Lotz.Xam.Messaging
 
         public void SendEmail(string to, string subject, string message)
         {
-            SendEmail(new EmailMessageRequest(to, subject, message));
+            SendEmail(new EmailMessage(to, subject, message));
         }
 
         #endregion
