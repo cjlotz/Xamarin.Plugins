@@ -71,7 +71,7 @@ if (emailTask.CanSendEmail)
       .Cc("cc.plugins@xamarin.com")
       .Bcc(new[] { "bcc1.plugins@xamarin.com", "bcc2.plugins@xamarin.com" })
       .Subject("Xamarin Messaging Plugin")
-      .Body("Well hello there from Xam.Messaging.Plugin")
+      .Body("Well hello there from Xam.Messaging.Plugin")	// BodyAsHtml provides HTML support
       .Build();
 
     emailTask.SendEmail(email);

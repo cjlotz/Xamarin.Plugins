@@ -1,5 +1,6 @@
 using System;
 using Android.Content;
+using Android.Text;
 using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
@@ -36,7 +37,13 @@ namespace Lotz.Xam.Messaging
                     emailIntent.PutExtra(Intent.ExtraBcc, email.RecipientsBcc.ToArray());
 
                 emailIntent.PutExtra(Intent.ExtraSubject, email.Subject);
-                emailIntent.PutExtra(Intent.ExtraText, email.Message);
+
+                // NOTE: http://stackoverflow.com/questions/13756200/send-html-email-with-gmail-4-2-1
+
+                if (email.IsHtml)
+                    emailIntent.PutExtra(Intent.ExtraText, Html.FromHtml(email.Message));
+                else
+                    emailIntent.PutExtra(Intent.ExtraText, email.Message);
 
                 emailIntent.StartNewActivity();
             }

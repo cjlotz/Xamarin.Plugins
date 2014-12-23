@@ -34,7 +34,7 @@ namespace Lotz.Xam.Messaging
             {
                 _mailController = new MFMailComposeViewController();
                 _mailController.SetSubject(email.Subject);
-                _mailController.SetMessageBody(email.Message, false);
+                _mailController.SetMessageBody(email.Message, email.IsHtml);
                 _mailController.SetToRecipients(email.Recipients.ToArray());
 
                 if (email.RecipientsCc.Count > 0)

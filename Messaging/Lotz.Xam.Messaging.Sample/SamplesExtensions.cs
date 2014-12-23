@@ -1,6 +1,6 @@
-using Lotz.Xam.Messaging.Abstractions;
+﻿using Lotz.Xam.Messaging.Abstractions;
 
-namespace Lotz.Xam.Messaging.Samples
+namespace Lotz.Xam.Messaging.Sample
 {
     public static class SamplesExtensions
     {
@@ -14,17 +14,22 @@ namespace Lotz.Xam.Messaging.Samples
             }
         }
 
-        public static void SendSampleEmail(this IEmailTask emailTask)
+        public static void SendSampleEmail(this IEmailTask emailTask, bool sendAsHtml = false)
         {
             if (emailTask.CanSendEmail)
             {
-                var email = new EmailMessageBuilder()
+                var builder = new EmailMessageBuilder()
                     .To("to.plugins@xamarin.com")
                     .Cc("cc.plugins@xamarin.com")
                     .Bcc(new[] { "bcc1.plugins@xamarin.com", "bcc2.plugins@xamarin.com" })
-                    .Subject("Xamarin Messaging Plugin")
-                    .Body("Well hello there from Xam.Messaging.Plugin")
-                    .Build();
+                    .Subject("Xamarin Messaging Plugin");
+
+                if (sendAsHtml)
+                    builder.BodyAsHtml("Well hello there from <b>Xam.Messaging.Plugin</b>");
+                else
+                    builder.Body("Well hello there from Xam.Messaging.Plugin");
+
+                var email = builder.Build();
 
                 emailTask.SendEmail(email);
             }

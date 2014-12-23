@@ -2,7 +2,7 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
-using Lotz.Xam.Messaging.Samples;
+using Lotz.Xam.Messaging.Sample;
 
 namespace Lotz.Xam.Messaging.Android.Sample
 {
@@ -22,10 +22,12 @@ namespace Lotz.Xam.Messaging.Android.Sample
             // and attach an event to it
             Button buttonPhoneCall = FindViewById<Button>(Resource.Id.ButtonMakePhoneCall);
             Button buttonSendEmail = FindViewById<Button>(Resource.Id.ButtonSendEmail);
+            Button buttonSendHtmlEmail = FindViewById<Button>(Resource.Id.ButtonSendHtmlEmail);
             Button buttonSendSms = FindViewById<Button>(Resource.Id.ButtonSendSms);
 
             buttonPhoneCall.Click += ButtonPhoneCall_Click;
             buttonSendEmail.Click += ButtonSendEmail_Click;
+            buttonSendHtmlEmail.Click += ButtonSendHtmlEmail_Click;
             buttonSendSms.Click += ButtonSendSms_Click;
         }
 
@@ -41,6 +43,11 @@ namespace Lotz.Xam.Messaging.Android.Sample
         private void ButtonSendEmail_Click(object sender, EventArgs eventArgs)
         {
             MessagingPlugin.EmailMessenger.SendSampleEmail();
+        }
+
+        private void ButtonSendHtmlEmail_Click(object sender, EventArgs eventArgs)
+        {
+            MessagingPlugin.EmailMessenger.SendSampleEmail(true);
         }
 
         private void ButtonSendSms_Click(object sender, EventArgs eventArgs)

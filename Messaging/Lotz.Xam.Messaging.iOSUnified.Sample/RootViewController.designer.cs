@@ -24,6 +24,10 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton ButtonSendHtmlEmail { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton ButtonSendSms { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -35,6 +39,10 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
 			if (ButtonSendEmail != null) {
 				ButtonSendEmail.Dispose ();
 				ButtonSendEmail = null;
+			}
+			if (ButtonSendHtmlEmail != null) {
+				ButtonSendHtmlEmail.Dispose ();
+				ButtonSendHtmlEmail = null;
 			}
 			if (ButtonSendSms != null) {
 				ButtonSendSms.Dispose ();

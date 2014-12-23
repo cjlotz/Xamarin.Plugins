@@ -38,6 +38,17 @@ namespace Lotz.Xam.Messaging.Abstractions
             return this;
         }
 
+        public EmailMessageBuilder BodyAsHtml(string body)
+        {
+            if (!string.IsNullOrEmpty(body))
+            {
+                _email.Message = body;
+                _email.IsHtml = true;
+            }
+
+            return this;
+        }
+
         public EmailMessageRequest Build()
         {
             return _email;

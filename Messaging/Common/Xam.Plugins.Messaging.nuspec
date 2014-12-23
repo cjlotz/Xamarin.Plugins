@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>1.2.1</version>
+       <version>1.4.0</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
@@ -17,6 +17,8 @@
            Xamarin and Windows plugin to make a phone call, send a sms or send an e-mail using the default messaging applications on the different Xamarin and Windows mobile platforms.
        </description>
        <releaseNotes>
+         v1.4
+         - Added HTML support (only supported on Android/iOS)
          v1.3
          - Added new EmailMessageBuilder
          v1.2

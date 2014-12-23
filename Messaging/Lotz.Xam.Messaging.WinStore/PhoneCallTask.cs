@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 using Lotz.Xam.Messaging.Abstractions;
 
 namespace Lotz.Xam.Messaging
@@ -18,7 +18,7 @@ namespace Lotz.Xam.Messaging
 
         public void MakePhoneCall(string number, string name = null)
         {
-            Debug.WriteLine("Messaging not supported on Windows Store apps.");
+            throw new PlatformNotSupportedException("Making Phone call not supported on Windows Store");
         }
 
         #endregion

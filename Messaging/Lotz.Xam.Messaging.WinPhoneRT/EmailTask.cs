@@ -22,11 +22,16 @@ namespace Lotz.Xam.Messaging
             if (email == null)
                 throw new ArgumentNullException("email");
 
+            if (email.IsHtml)
+                throw new PlatformNotSupportedException("Sending HTML email not supported for Windows Phone RT");
+
             if (CanSendEmail)
             {
-                var mail = new EmailMessage();
-                mail.Subject = email.Subject;
-                mail.Body = email.Message;
+                var mail = new EmailMessage
+                           {
+                               Subject = email.Subject, 
+                               Body = email.Message
+                           };
 
                 foreach (var recipient in email.Recipients)
                 {

@@ -98,9 +98,6 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Lotz.Xam.Messaging.Android.Sample\SamplesExtensions.cs">
-      <Link>SamplesExtensions.cs</Link>
-    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Info.plist" />
@@ -116,18 +113,24 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Lotz.Xam.Messaging, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lotz.Xam.Messaging, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xam.Plugins.Messaging.1.3.0\lib\Xamarin.iOS10\Lotz.Xam.Messaging.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.4.0\lib\Xamarin.iOS10\Lotz.Xam.Messaging.dll</HintPath>
     </Reference>
-    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xam.Plugins.Messaging.1.3.0\lib\Xamarin.iOS10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.1.4.0\lib\Xamarin.iOS10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lotz.Xam.Messaging.Sample\Lotz.Xam.Messaging.Sample.csproj">
+      <Project>{e66e780a-3d9c-45e9-b3c1-325498e8324b}</Project>
+      <Name>Lotz.Xam.Messaging.Sample</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

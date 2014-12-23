@@ -1,7 +1,6 @@
 ﻿namespace Lotz.Xam.Messaging.Abstractions
 {
     // TODO: Consider adding Attachments
-    // TODO: Consider supporting HTML Body content
 
     /// <summary>
     ///     Abstraction for sending cross-platform email messages using

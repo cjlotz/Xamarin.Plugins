@@ -56,9 +56,18 @@ namespace Lotz.Xam.Messaging.Abstractions
         #region Properties
 
         /// <summary>
-        ///     Email message body.  Currently supportes only text context.
+        ///     Email message body.
         /// </summary>
         public string Message { get; set; }
+
+        /// <summary>
+        ///     Gets or set a value indicating whether the <see cref="Message"/> is HTML content
+        ///     or plain text.
+        /// </summary>
+        /// <remarks>
+        ///     HTML content type is only supported on Android and iOS platforms
+        /// </remarks>
+        public bool IsHtml { get; set; }
 
         /// <summary>
         ///     List of To recipients

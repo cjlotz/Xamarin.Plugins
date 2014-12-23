@@ -2,7 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Lotz.Xam.Messaging.Samples;
+using Lotz.Xam.Messaging.Sample;
 
 namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
 {

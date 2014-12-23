@@ -22,6 +22,9 @@ namespace Lotz.Xam.Messaging
 
             if (CanSendEmail)
             {
+                if (email.IsHtml)
+                    throw new PlatformNotSupportedException("Sending HTML email not supported for Windows Phone");
+
                 EmailComposeTask emailComposeTask = new EmailComposeTask
                                                     {
                                                         Subject = email.Subject,

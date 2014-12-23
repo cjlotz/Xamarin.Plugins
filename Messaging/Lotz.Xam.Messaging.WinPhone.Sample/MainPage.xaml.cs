@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using Lotz.Xam.Messaging.Samples;
+using Lotz.Xam.Messaging.Sample;
 using Microsoft.Phone.Controls;
 
 namespace Lotz.Xam.Messaging.WinPhone.Sample

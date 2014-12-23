@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
+using System.Text;
 using Windows.System;
 using Lotz.Xam.Messaging.Abstractions;
 
@@ -23,21 +26,27 @@ namespace Lotz.Xam.Messaging
             if (email == null)
                 throw new ArgumentNullException("email");
 
+            if (email.IsHtml)
+                throw new PlatformNotSupportedException("Sending HTML email not supported for Windows Store");
+
             if (CanSendEmail)
             {
-                if (email.Recipients.Count > 0)
-                    Debug.WriteLine("Can only send to single recipient on Window Store - using first recipient");
-
-                if (email.RecipientsCc.Count > 0)
-                    Debug.WriteLine("Cc recipients not supported on Windows Store - ignoring RecipientsCc");
+                // NOTE: Refer to http://www.faqs.org/rfcs/rfc2368.html for info on mailto protocol
 
                 if (email.RecipientsBcc.Count > 0)
-                    Debug.WriteLine("Bcc recipients not supported on Windows Store - ignoring RecipientsBcc");
+                    Debug.WriteLine("Bcc headers are inherently unsafe to include in a message generated from a URL - ignoring RecipientBcc");
 
-                var emailText = string.Format(@"mailto:{0}?subject={1}&body={2}",
-                    email.Recipients[0], email.Subject, email.Message);
+                var sb = new StringBuilder();
 
-                var escaped = Uri.EscapeUriString(emailText);
+                sb.AppendFormat(CultureInfo.InvariantCulture, "mailto:{0}?", ToDelimitedAddress(email.Recipients));
+                
+                if (email.RecipientsCc.Count > 0)
+                    sb.AppendFormat(CultureInfo.InvariantCulture, "cc={0}&", ToDelimitedAddress(email.RecipientsCc));
+
+                sb.AppendFormat(CultureInfo.InvariantCulture, "subject={0}&body={1}",
+                    email.Subject, email.Message);
+
+                var escaped = Uri.EscapeUriString(sb.ToString());
 
                 Launcher.LaunchUriAsync(new Uri(escaped, UriKind.Absolute));
             }
@@ -49,5 +58,15 @@ namespace Lotz.Xam.Messaging
         }
 
         #endregion
+
+        #region Methods
+
+        private static string ToDelimitedAddress(ICollection<string> collection)
+        {
+            return collection.Count == 0 ? string.Empty : string.Join(",", collection);
+        }
+
+        #endregion
+
     }
 }
