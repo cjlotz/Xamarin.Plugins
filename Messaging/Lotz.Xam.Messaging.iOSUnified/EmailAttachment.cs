@@ -16,7 +16,7 @@ namespace Lotz.Xam.Messaging
             if (string.IsNullOrWhiteSpace(contentType))
                 throw new ArgumentNullException("contentType");
 
-            FileName = fileName;
+            FileName = Path.GetFileName(fileName);
             Content = content;
             ContentType = contentType;
         }

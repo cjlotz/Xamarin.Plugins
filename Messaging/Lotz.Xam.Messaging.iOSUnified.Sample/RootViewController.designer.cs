@@ -20,6 +20,10 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton ButtonSendAttachmentsEmail { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton ButtonSendEmail { get; set; }
 
 		[Outlet]
@@ -35,6 +39,10 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
 			if (ButtonMakePhoneCall != null) {
 				ButtonMakePhoneCall.Dispose ();
 				ButtonMakePhoneCall = null;
+			}
+			if (ButtonSendAttachmentsEmail != null) {
+				ButtonSendAttachmentsEmail.Dispose ();
+				ButtonSendAttachmentsEmail = null;
 			}
 			if (ButtonSendEmail != null) {
 				ButtonSendEmail.Dispose ();

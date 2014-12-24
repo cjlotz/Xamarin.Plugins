@@ -12,7 +12,7 @@
             }
         }
 
-        public static EmailMessageBuilder BuildSampleEmail(this IEmailTask emailTask, bool sendAsHtml = false)
+        public static EmailMessageBuilder BuildSampleEmail(bool sendAsHtml = false)
         {
             var builder = new EmailMessageBuilder()
                 .To("to.plugins@xamarin.com")
@@ -41,7 +41,7 @@
 
         public static void SendSampleEmail(this IEmailTask emailTask, bool sendAsHtml = false)
         {
-            var email = emailTask.BuildSampleEmail(sendAsHtml).Build();
+            var email = BuildSampleEmail(sendAsHtml).Build();
             emailTask.SendSampleEmail(email);
         }
 

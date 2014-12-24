@@ -19,6 +19,11 @@
         android:layout_height="wrap_content"
         android:text="Send HTML Email" />
     <Button
+        android:id="@+id/ButtonSendAttachmentEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Attachment Email" />
+    <Button
         android:id="@+id/ButtonSendSms"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

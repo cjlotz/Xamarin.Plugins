@@ -49,6 +49,15 @@
                                     <action selector="UIButton6_TouchUpInside:" destination="16" id="15" eventType="touchUpInside"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="20" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="26" y="249" width="268" height="30"/>
+                                <state key="normal" title="Send Attachments Email">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="UIButton6_TouchUpInside:" destination="22" id="21" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -56,6 +65,7 @@
                         <outlet property="ButtonSendSms" destination="6" id="name-outlet-6"/>
                         <outlet property="ButtonSendEmail" destination="8" id="name-outlet-8"/>
                         <outlet property="ButtonSendHtmlEmail" destination="14" id="name-outlet-14"/>
+                        <outlet property="ButtonSendAttachmentsEmail" destination="20" id="name-outlet-20"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

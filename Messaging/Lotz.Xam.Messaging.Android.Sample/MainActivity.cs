@@ -1,14 +1,18 @@
 ﻿using System;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
 using Lotz.Xam.Messaging.Sample;
+using Xamarin.Media;
 
 namespace Lotz.Xam.Messaging.Android.Sample
 {
     [Activity(Label = "Xam Messaging Demo", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
+        private const int SelectPhoto = 1;
+
         #region Methods
 
         protected override void OnCreate(Bundle bundle)
@@ -23,11 +27,13 @@ namespace Lotz.Xam.Messaging.Android.Sample
             Button buttonPhoneCall = FindViewById<Button>(Resource.Id.ButtonMakePhoneCall);
             Button buttonSendEmail = FindViewById<Button>(Resource.Id.ButtonSendEmail);
             Button buttonSendHtmlEmail = FindViewById<Button>(Resource.Id.ButtonSendHtmlEmail);
+            Button buttonSendAttachmentEmail = FindViewById<Button>(Resource.Id.ButtonSendAttachmentEmail);
             Button buttonSendSms = FindViewById<Button>(Resource.Id.ButtonSendSms);
 
             buttonPhoneCall.Click += ButtonPhoneCall_Click;
             buttonSendEmail.Click += ButtonSendEmail_Click;
             buttonSendHtmlEmail.Click += ButtonSendHtmlEmail_Click;
+            buttonSendAttachmentEmail.Click += ButtonSendAttachmentEmail_Click;
             buttonSendSms.Click += ButtonSendSms_Click;
         }
 
@@ -48,6 +54,28 @@ namespace Lotz.Xam.Messaging.Android.Sample
         private void ButtonSendHtmlEmail_Click(object sender, EventArgs eventArgs)
         {
             MessagingPlugin.EmailMessenger.SendSampleEmail(true);
+        }
+
+        private void ButtonSendAttachmentEmail_Click(object sender, EventArgs eventArgs)
+        {
+            var picker = new MediaPicker(Application.Context);
+            var intent = picker.GetPickPhotoUI();
+
+            StartActivityForResult(intent, SelectPhoto);
+        }
+
+        protected async override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            if (resultCode == Result.Canceled || requestCode != SelectPhoto)
+                return;
+
+            MediaFile file = await data.GetMediaFileExtraAsync(this);
+
+            var email = SamplesExtensions.BuildSampleEmail()
+                .WithAttachment(file.Path)
+                .Build();
+
+            MessagingPlugin.EmailMessenger.SendSampleEmail(email);
         }
 
         private void ButtonSendSms_Click(object sender, EventArgs eventArgs)

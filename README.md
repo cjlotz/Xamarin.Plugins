@@ -24,7 +24,7 @@ The Messaging Pluging makes use of `IEmailTask`, `ISmsTask` and `IPhoneCallTask`
 public interface IEmailTask
 {
     bool CanSendEmail { get; }
-    void SendEmail(EmailMessageRequest email);
+    void SendEmail(IEmailMessage email);
     void SendEmail(string to, string subject, string message);
 }
 ```
@@ -49,19 +49,22 @@ public interface IPhoneCallTask
 The messaging API's can be accessed on the different mobile platforms using the `MessagingPlugin` container class.  Here are some snippets to illustrate how to access the API from within an `Activity`, `UIViewController` or Windows `Page`.  
 
 ```csharp
-// Make a phone call
+// Make Phone Call
 var phoneCallTask = MessagingPlugin.PhoneDialer;
 if (phoneCallTask.CanMakePhoneCall) 
 	phoneCallTask.MakePhoneCall("+272193343499");
-```
-```csharp
-// Send sms
+
+// Send Sms
 var smsTask = MessagingPlugin.SmsMessenger;
 if (smsTask.CanSendSms)
    smsTask.SendSms("+27213894839493", "Well hello there from Xam.Messaging.Plugin");
-``` 
-```csharp
-// Send e-mail 
+
+// Use SendEmail overload to send e-mail to single receiver
+var emailTask = MessagingPlugin.EmailMessenger;
+if (emailTask.CanSendEmail)
+	emailTask.SendEmail("to.plugins@xamarin.com", "Xamarin Messaging Plugin", "Well hello there from Xam.Messaging.Plugin");
+
+// Alternatively use EmailBuilder to construct more complex e-mail with multiple recipients, bcc, attachments etc. 
 var emailTask = MessagingPlugin.EmailMessenger;
 if (emailTask.CanSendEmail)
 {
@@ -71,12 +74,13 @@ if (emailTask.CanSendEmail)
       .Cc("cc.plugins@xamarin.com")
       .Bcc(new[] { "bcc1.plugins@xamarin.com", "bcc2.plugins@xamarin.com" })
       .Subject("Xamarin Messaging Plugin")
-      .Body("Well hello there from Xam.Messaging.Plugin")	// BodyAsHtml provides HTML support
+      .Body("Well hello there from Xam.Messaging.Plugin")
       .Build();
 
     emailTask.SendEmail(email);
-
-	// Use the simple API overload to send mail to single receiver
-	emailTask.SendEmail("to.plugins@xamarin.com", "Xamarin Messaging Plugin", "Well hello there from Xam.Messaging.Plugin");
 }           
 ```
+
+### Platform API Extensions
+
+Sending HTML body content and e-mail attachments are only supported on some platforms.  These are provided as platform specific extensions on the ```EmailBuilder``` class.  To add HTML body content use the ```EmailBuilder.BodyAsHtml``` extension.  To add attachments, use the ```EmailBuilder.WithAttachment``` overloads. Examples of using these extensions are provided in the ```Lotz.Xam.Messaging.Samples.sln``` for the different platforms.

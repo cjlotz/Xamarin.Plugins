@@ -1,6 +1,7 @@
 ﻿using System;
 using Lotz.Xam.Messaging.Sample;
 using UIKit;
+using Xamarin.Media;
 
 namespace Lotz.Xam.Messaging.iOSUnified.Sample
 {
@@ -22,6 +23,7 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
             ButtonMakePhoneCall.TouchUpInside += ButtonMakePhoneCall_TouchUpInside;
             ButtonSendEmail.TouchUpInside += ButtonSendEmail_TouchUpInside;
             ButtonSendHtmlEmail.TouchUpInside += ButtonSendHtmlEmail_TouchUpInside;
+            ButtonSendAttachmentsEmail.TouchUpInside += ButtonSendAttachmentsEmail_TouchUpInside;
             ButtonSendSms.TouchUpInside += ButtonSendSms_TouchUpInside;
         }
 
@@ -32,6 +34,7 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
             ButtonMakePhoneCall.TouchUpInside -= ButtonMakePhoneCall_TouchUpInside;
             ButtonSendEmail.TouchUpInside -= ButtonSendEmail_TouchUpInside;
             ButtonSendHtmlEmail.TouchUpInside -= ButtonSendHtmlEmail_TouchUpInside;
+            ButtonSendAttachmentsEmail.TouchUpInside -= ButtonSendAttachmentsEmail_TouchUpInside;
             ButtonSendSms.TouchUpInside -= ButtonSendSms_TouchUpInside;
         }
 
@@ -52,6 +55,24 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
         private void ButtonSendHtmlEmail_TouchUpInside(object o, EventArgs eventArgs)
         {
             MessagingPlugin.EmailMessenger.SendSampleEmail(true);
+        }
+
+        private async void ButtonSendAttachmentsEmail_TouchUpInside(object o, EventArgs eventArgs)
+        {
+            var mediaPicker = new MediaPicker();
+            MediaFile file = await mediaPicker.PickPhotoAsync();
+
+            if (file != null)
+            {
+                var fileName = System.IO.Path.GetFileName(file.Path);
+
+                // Assume image content is default jpeg
+                var email = SamplesExtensions.BuildSampleEmail()
+                    .WithAttachment(fileName, file.GetStream(), "image/jpeg")
+                    .Build();
+
+                MessagingPlugin.EmailMessenger.SendSampleEmail(email);
+            }
         }
 
         private void ButtonSendSms_TouchUpInside(object o, EventArgs eventArgs)

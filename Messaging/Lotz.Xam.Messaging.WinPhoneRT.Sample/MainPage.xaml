@@ -26,6 +26,7 @@
                 <Button x:Name="ButtonPhoneCall" Click="ButtonPhoneCall_OnClick">Make Phone Call</Button>
                 <Button x:Name="ButtonSendSms" Click="ButtonSendSms_OnClick">Send SMS</Button>
                 <Button x:Name="ButtonSendEmail" Click="ButtonSendEmail_OnClick">Send Email</Button>
+                <Button x:Name="ButtonSendAttachmentsEmail" Click="ButtonSendAttachmentsEmail_OnClick">Send Attachments Email</Button>
             </StackPanel>
         </Grid>
     </Grid>

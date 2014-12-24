@@ -18,7 +18,10 @@
     
     <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(Build).$(Revision)</AssemblyVersion>
     <AssemblyFileVersion>$(MajorVersion).$(MinorVersion).$(Build).$(Revision)</AssemblyFileVersion>
-    <PackageVersion>$(MajorVersion).$(MinorVersion).$(Build)</PackageVersion>
+    <AssemblyInformationalVersion Condition="'$(Prerelease)' == ''">$(MajorVersion).$(MinorVersion).$(Build)</AssemblyInformationalVersion>
+    <AssemblyInformationalVersion Condition="'$(Prerelease)' != ''">$(MajorVersion).$(MinorVersion).$(Build)-$(Prerelease)</AssemblyInformationalVersion>
+    <PackageVersion Condition="'$(Prerelease)' == ''">$(MajorVersion).$(MinorVersion).$(Build)</PackageVersion>
+    <PackageVersion Condition="'$(Prerelease)' != ''">$(MajorVersion).$(MinorVersion).$(Build)-$(Prerelease)</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +32,10 @@
     <RegexTransform Include="$(XamarinPluginPath)\Common\GlobalAssemblyInfo.cs">
       <Find>AssemblyFileVersion\("\d+\.\d+\.\d+\.\d+"\)</Find>
       <ReplaceWith>AssemblyFileVersion("$(AssemblyFileVersion)")</ReplaceWith>
+    </RegexTransform>
+    <RegexTransform Include="$(XamarinPluginPath)\Common\GlobalAssemblyInfo.cs">
+      <Find>AssemblyInformationalVersion\("\d+\.\d+\.\d+(?:-\w+)*"\)</Find>
+      <ReplaceWith>AssemblyInformationalVersion("$(AssemblyInformationalVersion)")</ReplaceWith>
     </RegexTransform>
   </ItemGroup>
 

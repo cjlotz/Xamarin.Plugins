@@ -1,4 +1,7 @@
 ﻿// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+
+using Windows.ApplicationModel.Activation;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -9,7 +12,7 @@ namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
     /// <summary>
     ///     An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : Page, IFileOpenPickerContinuable
     {
         public MainPage()
         {
@@ -17,6 +20,22 @@ namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
 
             NavigationCacheMode = NavigationCacheMode.Required;
         }
+
+        #region IFileOpenPickerContinuable Members
+
+        public void ContinueFileOpenPicker(FileOpenPickerContinuationEventArgs args)
+        {
+            if (args.Files.Count > 0)
+            {
+                var email = SamplesExtensions.BuildSampleEmail()
+                    .WithAttachment(args.Files[0])
+                    .Build();
+
+                MessagingPlugin.EmailMessenger.SendSampleEmail(email);
+            }
+        }
+
+        #endregion
 
         #region Methods
 
@@ -45,6 +64,25 @@ namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
         private void ButtonPhoneCall_OnClick(object sender, RoutedEventArgs e)
         {
             MessagingPlugin.PhoneDialer.MakeSamplePhoneCall();
+        }
+
+        private void ButtonSendAttachmentsEmail_OnClick(object sender, RoutedEventArgs e)
+        {
+            // NOTE: The calling app will be suspended and re-activated once the user has selected
+            // a photo. To handle the selection of the photo, implement the IFileOpenPickerContinuable
+            // on the Page that launched the SelectPicture call (see DeviceTaskApp for sample code)
+
+            var openPicker = new FileOpenPicker();
+
+            openPicker.ViewMode = PickerViewMode.Thumbnail;
+            openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            openPicker.FileTypeFilter.Add(".jpg");
+            openPicker.FileTypeFilter.Add(".jpeg");
+            openPicker.FileTypeFilter.Add(".png");
+
+            // Launch file open picker and caller app is suspended
+            // and may be terminated if required
+            openPicker.PickSingleFileAndContinue();
         }
 
         private void ButtonSendEmail_OnClick(object sender, RoutedEventArgs e)

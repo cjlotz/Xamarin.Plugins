@@ -55,6 +55,10 @@ namespace Lotz.Xam.Messaging
 
 #if __ANDROID__
 
+        /// <summary>
+        ///     Add the file located at <paramref name="filePath"/> as an attachment
+        /// </summary>
+        /// <param name="filePath">Full path to the file to attach</param>
         public EmailMessageBuilder WithAttachment(string filePath)
         {
             _email.Attachments.Add(new EmailAttachment(filePath));
@@ -63,7 +67,12 @@ namespace Lotz.Xam.Messaging
 
 #elif __IOS__
 
-
+        /// <summary>
+        ///     Add the <paramref name="content"/> as an attachment to the email.
+        /// </summary>
+        /// <param name="fileName">File name</param>
+        /// <param name="content">File content</param>
+        /// <param name="contentType">File content type (image/jpeg etc.)</param>
         public EmailMessageBuilder WithAttachment(string fileName, System.IO.Stream content, string contentType)
         {
             _email.Attachments.Add(new EmailAttachment(fileName, content, contentType));

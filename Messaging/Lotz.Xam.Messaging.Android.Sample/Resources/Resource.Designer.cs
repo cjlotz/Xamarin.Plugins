@@ -26,8 +26,6 @@ namespace Lotz.Xam.Messaging.Android.Sample
 		
 		public static void UpdateIdValues()
 		{
-			global::Lotz.Xam.Messaging.Resource.String.ApplicationName = global::Lotz.Xam.Messaging.Android.Sample.Resource.String.ApplicationName;
-			global::Lotz.Xam.Messaging.Resource.String.Hello = global::Lotz.Xam.Messaging.Android.Sample.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -65,14 +63,17 @@ namespace Lotz.Xam.Messaging.Android.Sample
 			// aapt resource value: 0x7f050000
 			public const int ButtonMakePhoneCall = 2131034112;
 			
+			// aapt resource value: 0x7f050003
+			public const int ButtonSendAttachmentEmail = 2131034115;
+			
 			// aapt resource value: 0x7f050001
 			public const int ButtonSendEmail = 2131034113;
 			
 			// aapt resource value: 0x7f050002
 			public const int ButtonSendHtmlEmail = 2131034114;
 			
-			// aapt resource value: 0x7f050003
-			public const int ButtonSendSms = 2131034115;
+			// aapt resource value: 0x7f050004
+			public const int ButtonSendSms = 2131034116;
 			
 			static Id()
 			{
