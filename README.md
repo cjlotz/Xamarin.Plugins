@@ -83,4 +83,23 @@ if (emailTask.CanSendEmail)
 
 ### Platform API Extensions
 
-Sending HTML body content and e-mail attachments are only supported on some platforms.  These are provided as platform specific extensions on the ```EmailBuilder``` class.  To add HTML body content use the ```EmailBuilder.BodyAsHtml``` extension.  To add attachments, use the ```EmailBuilder.WithAttachment``` overloads. Examples of using these extensions are provided in the ```Lotz.Xam.Messaging.Samples.sln``` for the different platforms.
+Sending HTML e-mail and adding e-mail attachments are only supported on some platforms.  These features are provided as platform specific extensions on the ```EmailBuilder``` class.  To add HTML body content use the ```EmailBuilder.BodyAsHtml``` extension (**iOS, Android**).  To add attachments, use the ```EmailBuilder.WithAttachment``` overloads (**iOS, Android, WinPhone RT**).  Platforms that do not support these features won't have these extensions available to use.  
+
+```csharp
+// Construct HTML email (iOS and Android only)
+var email = new EmailMessageBuilder()
+  .To("to.plugins@xamarin.com")
+  .Subject("Xamarin Messaging Plugin")
+  .BodyAsHtml("Well hello there from <a>Xam.Messaging.Plugin</a>")
+  .Build();
+
+// Construct email with attachment on Android (single file only)
+var email = new EmailMessageBuilder()
+  .To("to.plugins@xamarin.com")
+  .Subject("Xamarin Messaging Plugin")
+  .Body("Well hello there from Xam.Messaging.Plugin")
+  .WithAttachment("/storage/emulated/0/Android/data/MyApp/files/Pictures/temp/IMG_20141224_114954.jpg");
+  .Build();
+```
+
+Complete examples of using these extensions on the different platforms are provided in the ```Lotz.Xam.Messaging.Samples.sln```.
