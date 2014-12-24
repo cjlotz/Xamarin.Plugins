@@ -12,6 +12,27 @@ The Messaging plugin makes it possible to make a phone call, send a sms or send 
 
 You can install the Messaging plugin from [NuGet](https://www.nuget.org/packages/Xam.Plugins.Messaging/)
 
+### Release Notes
+
+v2.0
+- Added support for attachments via ```IEmailAttachment``` abstraction (supported on Android, iOS and WinPhone RT)
+- Added ```IEmailMessage``` abstraction
+- **Breaking change**: Deprecated ```EmailMessageRequest```.  Construct ```IEmailMessage``` using ```EmailMessageBuilder``` instead.
+- **Breaking change**: Changed ```IEmailTask.SendMail``` overload to use ```IEmailMessage```.
+- **Breaking change**: Deprecated ```Lotz.Xamarin.Messaging.Abstractions``` namespace. Use ```Lotz.Xamarin.Messaging``` instead.
+
+v1.4
+- Added HTML support (only supported on Android,iOS)
+
+v1.3
+- Added new ```EmailMessageBuilder```
+
+v1.2
+- Added new ```IPhoneCallTask.CanMakePhoneCall```
+- Added ```IEmailTask.SendEmail``` overload to make it easier to send simple email request
+- Added Windows Store assembly. Does not support making phone calls or sending sms and only partial e-mail support via ```mailto``` protocol.
+
+
 ### Examples 
 
 Source code examples of using the Messaging plugin on the different mobile platforms can be found by opening the `Lotz.Xam.Messaging.Samples.sln`.
@@ -59,16 +80,13 @@ var smsTask = MessagingPlugin.SmsMessenger;
 if (smsTask.CanSendSms)
    smsTask.SendSms("+27213894839493", "Well hello there from Xam.Messaging.Plugin");
 
-// Use SendEmail overload to send e-mail to single receiver
-var emailTask = MessagingPlugin.EmailMessenger;
-if (emailTask.CanSendEmail)
-	emailTask.SendEmail("to.plugins@xamarin.com", "Xamarin Messaging Plugin", "Well hello there from Xam.Messaging.Plugin");
-
-// Alternatively use EmailBuilder to construct more complex e-mail with multiple recipients, bcc, attachments etc. 
 var emailTask = MessagingPlugin.EmailMessenger;
 if (emailTask.CanSendEmail)
 {
-	// Use the builder fluent interface to create an email message 
+	// Send simple e-mail to single receiver without attachments, bcc, cc etc.
+	emailTask.SendEmail("to.plugins@xamarin.com", "Xamarin Messaging Plugin", "Well hello there from Xam.Messaging.Plugin");
+
+	// Alternatively use EmailBuilder fluent interface to construct more complex e-mail with multiple recipients, bcc, attachments etc. 
     var email = new EmailMessageBuilder()
       .To("to.plugins@xamarin.com")
       .Cc("cc.plugins@xamarin.com")
@@ -83,7 +101,7 @@ if (emailTask.CanSendEmail)
 
 ### Platform API Extensions
 
-Sending HTML e-mail and adding e-mail attachments are only supported on some platforms.  These features are provided as platform specific extensions on the ```EmailBuilder``` class.  To add HTML body content use the ```EmailBuilder.BodyAsHtml``` extension (**iOS, Android**).  To add attachments, use the ```EmailBuilder.WithAttachment``` overloads (**iOS, Android, WinPhone RT**).  Platforms that do not support these features won't have these extensions available to use.  
+Sending HTML e-mail and adding e-mail attachments are only supported on some platforms.  These features are provided as platform specific extensions on the ```EmailMessageBuilder``` class.  To add HTML body content use the ```EmailMessageBuilder.BodyAsHtml``` extension (**iOS, Android**).  To add attachments, use the ```EmailMessageBuilder.WithAttachment``` platform specific overloads (**iOS, Android, WinPhone RT**).  Platforms that do not support these features won't have these extensions available to use.  
 
 ```csharp
 // Construct HTML email (iOS and Android only)

@@ -20,7 +20,8 @@
 v2.0
 - Added support for attachments via IEmailAttachment abstraction (supported on Android, iOS and WinPhone RT only)
 - Added IEmailMessage abstraction
-- Breaking change: Deprecated EmailMessageRequest - use IEmailMessage instead
+- Breaking change: Deprecated EmailMessageRequest. Construct IEmailMessage using EmailMessageBuilder instead.
+- Breaking change: Changed IEmailTask.SendMail overload to use IEmailMessage.
 - Breaking change: Deprecated Lotz.Xamarin.Messaging.Abstractions namespace - use Lotz.Xamarin.Messaging instead
 v1.4
 - Added HTML support (only supported on Android/iOS)
