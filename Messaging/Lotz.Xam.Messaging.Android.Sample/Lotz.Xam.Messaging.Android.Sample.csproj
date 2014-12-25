@@ -44,11 +44,11 @@
   <ItemGroup>
     <Reference Include="Lotz.Xam.Messaging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.0.0-beta\lib\MonoAndroid10\Lotz.Xam.Messaging.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.2.0.0\lib\MonoAndroid10\Lotz.Xam.Messaging.dll</HintPath>
     </Reference>
     <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.0.0-beta\lib\MonoAndroid10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.2.0.0\lib\MonoAndroid10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />

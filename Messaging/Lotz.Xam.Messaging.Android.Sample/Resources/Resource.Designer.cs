@@ -26,6 +26,8 @@ namespace Lotz.Xam.Messaging.Android.Sample
 		
 		public static void UpdateIdValues()
 		{
+			global::Lotz.Xam.Messaging.Resource.String.ApplicationName = global::Lotz.Xam.Messaging.Android.Sample.Resource.String.ApplicationName;
+			global::Lotz.Xam.Messaging.Resource.String.Hello = global::Lotz.Xam.Messaging.Android.Sample.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
