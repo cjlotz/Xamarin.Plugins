@@ -11,9 +11,9 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <MajorVersion Condition="'$(MajorVersion)' == ''">1</MajorVersion>
+    <MajorVersion Condition="'$(MajorVersion)' == ''">2</MajorVersion>
     <MinorVersion Condition="'$(MinorVersion)' == ''">0</MinorVersion>
-    <Build Condition="'$(Build)' == ''">0</Build>
+    <Build Condition="'$(Build)' == ''">1</Build>
     <Revision Condition="'$(Revision)' == ''">0</Revision>
     
     <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(Build).$(Revision)</AssemblyVersion>

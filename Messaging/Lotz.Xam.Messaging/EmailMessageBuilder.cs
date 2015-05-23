@@ -19,14 +19,14 @@ namespace Lotz.Xam.Messaging
         public EmailMessageBuilder Bcc(string bcc)
         {
             if (!string.IsNullOrWhiteSpace(bcc))
-                _email.RecipientsCc.Add(bcc);
+                _email.RecipientsBcc.Add(bcc);
 
             return this;
         }
 
         public EmailMessageBuilder Bcc(IEnumerable<string> bcc)
         {
-            _email.RecipientsCc.AddRange(bcc);
+            _email.RecipientsBcc.AddRange(bcc);
             return this;
         }
 
