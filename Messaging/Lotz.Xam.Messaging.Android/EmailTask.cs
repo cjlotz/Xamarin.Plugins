@@ -12,7 +12,14 @@ namespace Lotz.Xam.Messaging
 
         #region IEmailTask Members
 
-        public bool CanSendEmail { get { return true; } }
+       public bool CanSendEmail
+       {
+           get 
+           {
+               var mgr = Android.App.Application.Context.PackageManager;
+               return mgr.QueryIntentActivities (new Intent (Intent.ActionSend), Android.Content.PM.PackageInfoFlags.MatchDefaultOnly).Count > 0;
+           }
+       }
 
         public void SendEmail(IEmailMessage email)
         {
