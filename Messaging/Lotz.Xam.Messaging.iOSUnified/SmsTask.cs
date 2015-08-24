@@ -26,9 +26,6 @@ namespace Lotz.Xam.Messaging
 
         public void SendSms(string recipient, string message)
         {
-            if (string.IsNullOrWhiteSpace(recipient))
-                throw new ArgumentNullException("recipient");
-
             if (string.IsNullOrWhiteSpace(message))
                 throw new ArgumentNullException("message");
 
@@ -36,7 +33,9 @@ namespace Lotz.Xam.Messaging
             {
                 _smsController = new MFMessageComposeViewController();
 
-                _smsController.Recipients = new[] { recipient };
+                if (!string.IsNullOrEmpty(recipient))
+                    _smsController.Recipients = new[] { recipient };
+                
                 _smsController.Body = message;
 
                 EventHandler<MFMessageComposeResultEventArgs> handler = null;
