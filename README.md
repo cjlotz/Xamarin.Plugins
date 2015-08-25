@@ -15,7 +15,8 @@ You can install the Messaging plugin from [NuGet](https://www.nuget.org/packages
 ### Release Notes
 
 v2.1
-- Allow specifying empty/null recipient for Sms, Email  
+- Allow specifying empty/null recipient for Sms, Email
+
 v2.0
 - Added support for attachments via ```IEmailAttachment``` abstraction (supported on Android, iOS and WinPhone RT)
 - Added ```IEmailMessage``` abstraction
