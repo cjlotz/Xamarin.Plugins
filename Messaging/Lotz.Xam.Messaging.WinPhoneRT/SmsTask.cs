@@ -15,16 +15,14 @@ namespace Lotz.Xam.Messaging
 
         public void SendSms(string recipient, string message)
         {
-            if (string.IsNullOrWhiteSpace(recipient))
-                throw new ArgumentNullException("recipient");
-
             if (string.IsNullOrWhiteSpace(message))
                 throw new ArgumentNullException("message");
 
             if (CanSendSms)
             {
                 var msg = new ChatMessage { Body = message };
-                msg.Recipients.Add(recipient);
+                if (!string.IsNullOrWhiteSpace(recipient))
+                    msg.Recipients.Add(recipient);
 
                 ChatMessageManager.ShowComposeSmsMessageAsync(msg);
             }

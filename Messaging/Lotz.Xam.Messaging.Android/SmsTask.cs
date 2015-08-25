@@ -24,7 +24,7 @@ namespace Lotz.Xam.Messaging
             if (CanSendSms)
             {
                 Uri smsUri;
-                if (!string.IsNullOrEmpty(recipient))
+                if (!string.IsNullOrWhiteSpace(recipient))
                     smsUri = Uri.Parse("smsto:" + recipient);
                 else
                     smsUri = Uri.Parse("smsto:");

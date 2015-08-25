@@ -15,9 +15,6 @@ namespace Lotz.Xam.Messaging
 
         public void SendSms(string recipient, string message)
         {
-            if (string.IsNullOrWhiteSpace(recipient))
-                throw new ArgumentNullException("recipient");
-
             if (string.IsNullOrWhiteSpace(message))
                 throw new ArgumentNullException("message");
 
@@ -25,9 +22,10 @@ namespace Lotz.Xam.Messaging
             {
                 SmsComposeTask smsComposeTask = new SmsComposeTask
                                                 {
-                                                    To = recipient,
                                                     Body = message
                                                 };
+                if (!string.IsNullOrWhiteSpace(recipient))
+                    smsComposeTask.To = recipient;
 
                 smsComposeTask.Show();
             }

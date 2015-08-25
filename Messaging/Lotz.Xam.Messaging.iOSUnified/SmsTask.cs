@@ -33,7 +33,7 @@ namespace Lotz.Xam.Messaging
             {
                 _smsController = new MFMessageComposeViewController();
 
-                if (!string.IsNullOrEmpty(recipient))
+                if (!string.IsNullOrWhiteSpace(recipient))
                     _smsController.Recipients = new[] { recipient };
                 
                 _smsController.Body = message;

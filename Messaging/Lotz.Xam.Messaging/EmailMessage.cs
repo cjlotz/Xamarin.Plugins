@@ -20,7 +20,7 @@ namespace Lotz.Xam.Messaging
         public EmailMessage(string to)
             : this()
         {
-            if (!string.IsNullOrEmpty(to))
+            if (!string.IsNullOrWhiteSpace(to))
                 Recipients.Add(to);
         }
 
