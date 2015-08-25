@@ -17,6 +17,8 @@
            Xamarin and Windows plugin to make a phone call, send a sms or send an e-mail using the default messaging applications on the different Xamarin and Windows mobile platforms.
        </description>
        <releaseNotes>
+v2.1.0
+- Allow specifying empty/null recipient for Sms, Email   
 v2.0.1
 - Resolved issued with Bcc being added to Cc recipients   
 v2.0
