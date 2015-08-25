@@ -18,15 +18,17 @@ namespace Lotz.Xam.Messaging
 
         public void SendSms(string recipient, string message)
         {
-            if (string.IsNullOrWhiteSpace(recipient))
-                throw new ArgumentNullException("recipient");
-
             if (string.IsNullOrWhiteSpace(message))
                 throw new ArgumentNullException("message");
 
             if (CanSendSms)
             {
-                var smsUri = Uri.Parse("smsto:" + recipient);
+                Uri smsUri;
+                if (!string.IsNullOrEmpty(recipient))
+                    smsUri = Uri.Parse("smsto:" + recipient);
+                else
+                    smsUri = Uri.Parse("smsto:");
+                
                 var smsIntent = new Intent(Intent.ActionSendto, smsUri);
                 smsIntent.PutExtra("sms_body", message);
 
