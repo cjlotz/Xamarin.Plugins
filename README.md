@@ -14,6 +14,10 @@ You can install the Messaging plugin from [NuGet](https://www.nuget.org/packages
 
 ### Release Notes
 
+v2.2.1
+- Allow specifying multiple email attachments for Android
+- Resolved issued with CanSendEmail not working on Android 5.0 and later
+
 v2.1
 - Allow specifying empty/null recipient for Sms, Email
 
