@@ -6,9 +6,9 @@ summary: Xamarin and Windows plugin to make a phone call, send a sms or send an 
 version: 2.2.1.0
 src-url: https://github.com/cjlotz/Xamarin.Plugins
 
-details: ../../Readme.md
+details: ../../Details.md
 license: ../../LICENSE.md
-getting-started: ../../Readme.md
+getting-started: ../../Details.md
 
 is_shell: true
 no_build: true
