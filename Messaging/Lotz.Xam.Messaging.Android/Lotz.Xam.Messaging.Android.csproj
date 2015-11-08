@@ -68,12 +68,6 @@
     <Compile Include="SmsTask.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Values\Strings.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Lotz.Xam.Messaging.Abstractions\Lotz.Xam.Messaging.Abstractions.csproj">
       <Project>{b4292775-3bb9-4ff2-8d20-b3d483bf1701}</Project>
       <Name>Lotz.Xam.Messaging.Abstractions</Name>
