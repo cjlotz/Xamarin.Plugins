@@ -30,17 +30,11 @@ namespace Lotz.Xam.Messaging
         /// <param name="to">Email recipient</param>
         /// <param name="subject">Email subject</param>
         /// <param name="message">Email message</param>
-        public EmailMessage(string to, string subject, string message)
+        public EmailMessage(string to = null, string subject = null, string message = null)
             : this(to)
         {
-            if (string.IsNullOrWhiteSpace(subject))
-                throw new ArgumentNullException("subject");
-
-            if (string.IsNullOrWhiteSpace(message))
-                throw new ArgumentNullException("message");
-
-            Subject = subject;
-            Message = message;
+            Subject = subject ?? string.Empty;
+            Message = message ?? string.Empty;
         }
 
         /// <summary>
