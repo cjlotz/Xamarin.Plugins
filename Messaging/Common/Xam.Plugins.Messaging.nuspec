@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>2.2.0</version>
+       <version>2.3.0</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
@@ -17,12 +17,15 @@
            Xamarin and Windows plugin to make a phone call, send a sms or send an e-mail using the default messaging applications on the different Xamarin and Windows mobile platforms.
        </description>
        <releaseNotes>
-v2.2.0
+v2.3.0
 -Allow specifying empty/null text and subject for Sms, Email
+v2.2.1
+- Allow specifying multiple email attachments for Android
+- Resolved issued with CanSendEmail not working on Android 5.0 and later
 v2.1.0
-- Allow specifying empty/null recipient for Sms, Email   
+- Allow specifying empty/null recipient for Sms, Email
 v2.0.1
-- Resolved issued with Bcc being added to Cc recipients   
+- Resolved issued with Bcc being added to Cc recipients
 v2.0
 - Added support for attachments via IEmailAttachment abstraction (supported on Android, iOS and WinPhone RT only)
 - Added IEmailMessage abstraction

@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Android.Content;
+using Android.OS;
 using Android.Text;
 
 namespace Lotz.Xam.Messaging
@@ -12,14 +14,17 @@ namespace Lotz.Xam.Messaging
 
         #region IEmailTask Members
 
-       public bool CanSendEmail
-       {
-           get 
-           {
-               var mgr = Android.App.Application.Context.PackageManager;
-               return mgr.QueryIntentActivities (new Intent (Intent.ActionSend), Android.Content.PM.PackageInfoFlags.MatchDefaultOnly).Count > 0;
-           }
-       }
+        public bool CanSendEmail
+        {
+            get
+            {
+                var mgr = Android.App.Application.Context.PackageManager;
+                var emailIntent = new Intent(Intent.ActionSend);
+                emailIntent.SetType("message/rfc822");
+
+                return emailIntent.ResolveActivity(mgr) != null;
+            }
+        }
 
         public void SendEmail(IEmailMessage email)
         {
@@ -28,12 +33,15 @@ namespace Lotz.Xam.Messaging
             if (email == null)
                 throw new ArgumentNullException("email");
 
-            if (email.Attachments.Count > 1)
-                throw new NotSupportedException("Cannot send more than once attachment for Android"); 
-
             if (CanSendEmail)
             {
-                Intent emailIntent = new Intent(Intent.ActionSend);
+                // NOTE: http://developer.android.com/guide/components/intents-common.html#Email
+
+                string intentAction = Intent.ActionSend;
+                if (email.Attachments.Count > 1)
+                    intentAction = Intent.ActionSendMultiple;
+
+                Intent emailIntent = new Intent(intentAction);
                 emailIntent.SetType("message/rfc822");
 
                 if (email.Recipients.Count > 0)
@@ -49,17 +57,24 @@ namespace Lotz.Xam.Messaging
 
                 // NOTE: http://stackoverflow.com/questions/13756200/send-html-email-with-gmail-4-2-1
 
-                if (((EmailMessage) email).IsHtml)
+                if (((EmailMessage)email).IsHtml)
                     emailIntent.PutExtra(Intent.ExtraText, Html.FromHtml(email.Message));
                 else
                     emailIntent.PutExtra(Intent.ExtraText, email.Message);
 
                 if (email.Attachments.Count > 0)
                 {
-                    var attachment = (EmailAttachment) email.Attachments[0];
-                    var uri = Android.Net.Uri.Parse("file://" + attachment.FilePath);
-                    
-                    emailIntent.PutExtra(Intent.ExtraStream, uri);
+                    var uris = new List<IParcelable>();
+                    foreach (var attachment in email.Attachments)
+                    {
+                        var uri = Android.Net.Uri.Parse("file://" + ((EmailAttachment)attachment).FilePath);
+                        uris.Add(uri);
+                    }
+
+                    if (uris.Count > 1)
+                        emailIntent.PutParcelableArrayListExtra(Intent.ExtraStream, uris);
+                    else
+                        emailIntent.PutExtra(Intent.ExtraStream, uris[0]);
                 }
 
                 emailIntent.StartNewActivity();

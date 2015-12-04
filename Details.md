@@ -1,48 +1,5 @@
-# Xamarin Plugins
-
-Welcome to my repository of cross-platform Xamarin Plugins.
-
-## Xam.Plugins.Messaging
-
-![Logo](https://github.com/cjlotz/Xamarin.Plugins/blob/master/Messaging/Common/Messaging.png)
 
 The Messaging plugin makes it possible to make a phone call, send a sms or send an e-mail using the default messaging applications on the different mobile platforms.
-
-### NuGet 
-
-You can install the Messaging plugin from [NuGet](https://www.nuget.org/packages/Xam.Plugins.Messaging/)
-
-### Release Notes
-
-v2.2.1
-- Allow specifying multiple email attachments for Android
-- Resolved issued with CanSendEmail not working on Android 5.0 and later
-
-v2.1
-- Allow specifying empty/null recipient for Sms, Email
-
-v2.0
-- Added support for attachments via ```IEmailAttachment``` abstraction (supported on Android, iOS and WinPhone RT)
-- Added ```IEmailMessage``` abstraction
-- **Breaking change**: Deprecated ```EmailMessageRequest```.  Construct ```IEmailMessage``` using ```EmailMessageBuilder``` instead.
-- **Breaking change**: Changed ```IEmailTask.SendMail``` overload to use ```IEmailMessage```.
-- **Breaking change**: Deprecated ```Lotz.Xamarin.Messaging.Abstractions``` namespace. Use ```Lotz.Xamarin.Messaging``` instead.
-
-v1.4
-- Added HTML support (only supported on Android,iOS)
-
-v1.3
-- Added new ```EmailMessageBuilder```
-
-v1.2
-- Added new ```IPhoneCallTask.CanMakePhoneCall```
-- Added ```IEmailTask.SendEmail``` overload to make it easier to send simple email request
-- Added Windows Store assembly. Does not support making phone calls or sending sms and only partial e-mail support via ```mailto``` protocol.
-
-
-### Examples 
-
-Source code examples of using the Messaging plugin on the different mobile platforms can be found by opening the `Lotz.Xam.Messaging.Samples.sln`.
 
 ### API Design
 
@@ -126,5 +83,3 @@ var email = new EmailMessageBuilder()
   .WithAttachment("/storage/emulated/0/Android/data/MyApp/files/Pictures/temp/IMG_20141224_114954.jpg");
   .Build();
 ```
-
-Complete examples of using these extensions on the different platforms are provided in the ```Lotz.Xam.Messaging.Samples.sln```.

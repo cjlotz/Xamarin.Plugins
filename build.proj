@@ -7,13 +7,14 @@
     <XamarinPluginName Condition="'$(XamarinPluginName)' == ''">Messaging</XamarinPluginName>
     <XamarinPluginPath>$(XamarinPluginsRoot)\$(XamarinPluginName)</XamarinPluginPath>
     <NugetExe>$(XamarinPluginsRoot)\.nuget\NuGet.exe</NugetExe>
+    <XamarinComponentExe>$(XamarinPluginsRoot)\.xamarin-component\xamarin-component.exe</XamarinComponentExe>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
   </PropertyGroup>
   
   <PropertyGroup>
     <MajorVersion Condition="'$(MajorVersion)' == ''">2</MajorVersion>
-    <MinorVersion Condition="'$(MinorVersion)' == ''">0</MinorVersion>
-    <Build Condition="'$(Build)' == ''">1</Build>
+    <MinorVersion Condition="'$(MinorVersion)' == ''">3</MinorVersion>
+    <Build Condition="'$(Build)' == ''">0</Build>
     <Revision Condition="'$(Revision)' == ''">0</Revision>
     
     <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(Build).$(Revision)</AssemblyVersion>
@@ -36,6 +37,14 @@
     <RegexTransform Include="$(XamarinPluginPath)\Common\GlobalAssemblyInfo.cs">
       <Find>AssemblyInformationalVersion\("\d+\.\d+\.\d+(?:-\w+)*"\)</Find>
       <ReplaceWith>AssemblyInformationalVersion("$(AssemblyInformationalVersion)")</ReplaceWith>
+    </RegexTransform>
+    <RegexTransform Include="$(XamarinPluginPath)\Common\component.yaml">
+      <Find>version: \d+\.\d+\.\d+\.\d+</Find>
+      <ReplaceWith>version: $(AssemblyFileVersion)</ReplaceWith>
+    </RegexTransform>
+    <RegexTransform Include="$(XamarinPluginPath)\Common\component.yaml">
+      <Find>Xam.Plugins.$(XamarinPluginName), Version=\d+\.\d+\.\d+\.\d+</Find>
+      <ReplaceWith>Xam.Plugins.$(XamarinPluginName), Version=$(AssemblyFileVersion)</ReplaceWith>
     </RegexTransform>
   </ItemGroup>
 
@@ -70,6 +79,12 @@
   <Target Name="BuildPackage" DependsOnTargets="Build">
     <MakeDir Directories="$(XamarinPluginPath)\Output" Condition="!Exists('$(XamarinPluginPath)\Output')" />
     <Exec Command="&quot;$(NuGetExe)&quot; pack $(XamarinPluginPath)\Common\Xam.Plugins.$(XamarinPluginName).nuspec -NoPackageAnalysis -o &quot;$(XamarinPluginPath)\Output&quot; -Version $(PackageVersion)" />
+  </Target>
+
+  <Target Name="BuildComponent" DependsOnTargets="BuildPackage">
+    <MakeDir Directories="$(XamarinPluginPath)\Output" Condition="!Exists('$(XamarinPluginPath)\Output')" />
+    <Exec Command="&quot;$(XamarinComponentExe)&quot; package $(XamarinPluginPath)\Common\ " />
+    <Move SourceFiles="$(XamarinPluginPath)\Common\Xam.Plugins.$(XamarinPluginName)-$(AssemblyFileVersion).xam" DestinationFolder="$(XamarinPluginPath)\Output" />
   </Target>
   
 </Project>
