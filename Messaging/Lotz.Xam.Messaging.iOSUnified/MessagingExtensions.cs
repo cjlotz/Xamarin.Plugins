@@ -31,15 +31,12 @@ namespace Lotz.Xam.Messaging
                 controller = UIApplication.SharedApplication.KeyWindow.RootViewController;
             }
 
-            if (controller.NavigationController != null)
+            if (controller?.NavigationController?.VisibleViewController != null)
             {
-                if (controller.NavigationController.VisibleViewController != null)
-                {
-                    return controller.NavigationController.VisibleViewController;
-                }
+                return controller.NavigationController.VisibleViewController;
             }
 
-            if (controller.IsViewLoaded && controller.View.Window != null)
+            if (controller.IsViewLoaded && controller?.View?.Window != null)
             {
                 return controller;
             }
@@ -48,13 +45,13 @@ namespace Lotz.Xam.Messaging
                 foreach (var childViewController in controller.ChildViewControllers)
                 {
                     var foundVisibleViewController = GetVisibleViewController(childViewController);
-                    if (foundVisibleViewController != null)
-                    {
-                        return foundVisibleViewController;
-                    }
+                    if (foundVisibleViewController == null)
+                        continue;
+
+                    return foundVisibleViewController;
                 }
             }
-            return null;
+            return controller;
         }
 
         #endregion

@@ -4,5 +4,5 @@
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Lotz.Xam.Messaging.iOSUnified")]
-[assembly: AssemblyDescription("Lotz.Xam.Messaging.iOSUnified")]
+[assembly: AssemblyTitle("Lotz.Xam.Messaging")]
+[assembly: AssemblyDescription("Lotz.Xam.Messaging")]

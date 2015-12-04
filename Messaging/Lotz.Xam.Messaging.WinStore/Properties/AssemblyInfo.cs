@@ -5,6 +5,6 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Lotz.Xam.Messaging.WinStore")]
-[assembly: AssemblyDescription("Lotz.Xam.Messaging.WinStore")]
+[assembly: AssemblyTitle("Lotz.Xam.Messaging")]
+[assembly: AssemblyDescription("Lotz.Xam.Messaging")]
 [assembly: ComVisible(false)]
