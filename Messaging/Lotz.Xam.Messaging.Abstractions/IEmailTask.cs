@@ -24,6 +24,6 @@
         /// <param name="to">Email recipient</param>
         /// <param name="subject">Email subject</param>
         /// <param name="message">Email message</param>        
-        void SendEmail(string to, string subject, string message);
+        void SendEmail(string to = null, string subject = null, string message = null);
     }
 }

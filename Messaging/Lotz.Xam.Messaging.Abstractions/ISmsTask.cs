@@ -24,6 +24,6 @@
         ///     On Android platform, the android.permission.SEND_SMS needs
         ///     to be added to the Android manifest.
         /// </remarks>
-        void SendSms(string recipient, string message);
+        void SendSms(string recipient = null, string message = null);
     }
 }
