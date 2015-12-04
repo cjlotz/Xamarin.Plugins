@@ -21,7 +21,7 @@ namespace Lotz.Xam.Messaging
         public void MakePhoneCall(string number, string name = null)
         {
             if (string.IsNullOrWhiteSpace(number))
-                throw new ArgumentNullException("number");
+                throw new ArgumentException("number");
 
             if (CanMakePhoneCall)
             {

@@ -16,10 +16,9 @@ namespace Lotz.Xam.Messaging
 
         public bool CanSendSms { get { return true; } }
 
-        public void SendSms(string recipient, string message)
+        public void SendSms(string recipient = null, string message = null)
         {
-            if (string.IsNullOrWhiteSpace(message))
-                throw new ArgumentNullException("message");
+            message = message ?? string.Empty;
 
             if (CanSendSms)
             {

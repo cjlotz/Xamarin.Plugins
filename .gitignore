@@ -17,7 +17,7 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
-
+*.csproj.bak
 # Roslyn cache directories
 *.ide/
 
