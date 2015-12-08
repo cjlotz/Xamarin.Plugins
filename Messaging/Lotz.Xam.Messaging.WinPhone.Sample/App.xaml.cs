@@ -6,9 +6,9 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using Lotz.Xam.Messaging.WinPhone.Sample.Resources;
+using Plugin.Messaging.Sample.WinPhone.Resources;
 
-namespace Lotz.Xam.Messaging.WinPhone.Sample
+namespace Plugin.Messaging.Sample.WinPhone
 {
     public partial class App : Application
     {

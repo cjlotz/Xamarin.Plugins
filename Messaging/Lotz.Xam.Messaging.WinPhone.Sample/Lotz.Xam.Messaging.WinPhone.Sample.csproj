@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lotz.Xam.Messaging.WinPhone.Sample</RootNamespace>
-    <AssemblyName>Lotz.Xam.Messaging.WinPhone.Sample</AssemblyName>
+    <RootNamespace>Plugin.Messaging.Sample.WinPhone</RootNamespace>
+    <AssemblyName>Lotz.Xam.Messaging.Sample.WinPhone</AssemblyName>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -21,7 +21,7 @@
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>Lotz.Xam.Messaging.WinPhone.Sample_$(Configuration)_$(Platform).xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>Lotz.Xam.Messaging.WinPhone.Sample.App</SilverlightAppEntry>
+    <SilverlightAppEntry>Plugin.Messaging.Sample.WinPhone.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
@@ -110,12 +110,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Lotz.Xam.Messaging, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.2.1\lib\wp8\Lotz.Xam.Messaging.dll</HintPath>
+    <Reference Include="Lotz.Xam.Messaging, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\wp8\Lotz.Xam.Messaging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.2.1\lib\wp8\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\wp8\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

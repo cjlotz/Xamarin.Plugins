@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Text;
 using Windows.System;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal class EmailTask : IEmailTask
     {

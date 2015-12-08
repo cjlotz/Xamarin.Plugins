@@ -14,6 +14,14 @@ You can install the Messaging plugin from [NuGet](https://www.nuget.org/packages
 
 ### Release Notes
 
+v3.0.0
+- Add UWP Support
+- **Breaking Change**: Change namespace to Plugin.Messaging for improves API discovery
+
+v2.3.0
+- Allow specifying empty/null text and subject for Sms, Email
+- Fix for finding correct UIVIewController on iOS
+
 v2.2.1
 - Allow specifying multiple email attachments for Android
 - Resolved issued with CanSendEmail not working on Android 5.0 and later

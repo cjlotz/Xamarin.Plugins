@@ -23,6 +23,11 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignProvision />
+    <CodesignEntitlements />
+    <CodesignResourceRules />
+    <CodesignExtraArgs />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -113,12 +118,12 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Lotz.Xam.Messaging, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.2.1\lib\Xamarin.iOS10\Lotz.Xam.Messaging.dll</HintPath>
+    <Reference Include="Lotz.Xam.Messaging, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\Xamarin.iOS10\Lotz.Xam.Messaging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.2.1\lib\Xamarin.iOS10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\Xamarin.iOS10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

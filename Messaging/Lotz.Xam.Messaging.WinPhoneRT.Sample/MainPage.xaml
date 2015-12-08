@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="Lotz.Xam.Messaging.WinPhoneRT.Sample.MainPage"
+    x:Class="Plugin.Messaging.Sample.WinPhoneRT.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Lotz.Xam.Messaging.WinPhoneRT.Sample"
+    xmlns:local="using:Plugin.Messaging.Sample.WinPhoneRT"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"

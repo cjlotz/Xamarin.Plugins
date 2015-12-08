@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Lotz.Xam.Messaging.Android.Sample.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Plugin.Messaging.Sample.Android.Resource", IsApplication=true)]
 
-namespace Lotz.Xam.Messaging.Android.Sample
+namespace Plugin.Messaging.Sample.Android
 {
 	
 	
@@ -26,8 +26,6 @@ namespace Lotz.Xam.Messaging.Android.Sample
 		
 		public static void UpdateIdValues()
 		{
-			global::Lotz.Xam.Messaging.Resource.String.ApplicationName = global::Lotz.Xam.Messaging.Android.Sample.Resource.String.ApplicationName;
-			global::Lotz.Xam.Messaging.Resource.String.Hello = global::Lotz.Xam.Messaging.Android.Sample.Resource.String.Hello;
 		}
 		
 		public partial class Attribute

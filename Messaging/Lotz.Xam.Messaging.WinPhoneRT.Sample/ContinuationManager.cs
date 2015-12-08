@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
+namespace Plugin.Messaging.Sample.WinPhoneRT
 {
     public class ContinuationManager
     {
-        private IContinuationActivatedEventArgs _args = null;
-        private bool _handled = false;
-        private Guid _id = Guid.Empty;
+        private IContinuationActivatedEventArgs _args;
+        private bool _handled;
 
         #region Properties
 
@@ -37,10 +32,7 @@ namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
         ///     retrieve the continuation data via <see cref="GetContinuationArgs" /> and need
         ///     to perform their own replay check
         /// </summary>
-        public Guid Id
-        {
-            get { return _id; }
-        }
+        public Guid Id { get; private set; } = Guid.Empty;
 
         #endregion
 
@@ -86,7 +78,7 @@ namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
 
             _args = args;
             _handled = false;
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
 
             if (rootFrame == null)
                 return;

@@ -1,4 +1,4 @@
-﻿namespace Lotz.Xam.Messaging.Sample
+﻿namespace Plugin.Messaging.Sample
 {
     public static class SamplesExtensions
     {

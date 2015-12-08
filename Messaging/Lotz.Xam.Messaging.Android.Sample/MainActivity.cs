@@ -3,10 +3,10 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
-using Lotz.Xam.Messaging.Sample;
 using Xamarin.Media;
+using Plugin.Messaging;
 
-namespace Lotz.Xam.Messaging.Android.Sample
+namespace Plugin.Messaging.Sample.Android
 {
     [Activity(Label = "Xam Messaging Demo", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity

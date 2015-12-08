@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     /// <summary>
     ///     Builder pattern for constructing a <see cref="EmailMessage" />

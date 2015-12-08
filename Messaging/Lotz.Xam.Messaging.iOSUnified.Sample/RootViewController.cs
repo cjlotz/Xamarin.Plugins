@@ -1,9 +1,9 @@
 ﻿using System;
-using Lotz.Xam.Messaging.Sample;
+using Plugin.Messaging.Sample;
 using UIKit;
 using Xamarin.Media;
 
-namespace Lotz.Xam.Messaging.iOSUnified.Sample
+namespace Plugin.Messaging.Sample.iOSUnified
 {
     // NOTE: No sample provided on iOS Classic as the API usage is precisely the same
 

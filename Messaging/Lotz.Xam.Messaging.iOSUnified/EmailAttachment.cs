@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     public class EmailAttachment : IEmailAttachment
     {

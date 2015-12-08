@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     /// <summary>
     ///     Email used for sending e-mails.

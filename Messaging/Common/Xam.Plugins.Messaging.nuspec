@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>2.4.0</version>
+       <version>3.0.0</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
@@ -17,11 +17,12 @@
            Xamarin and Windows plugin to make a phone call, send a sms or send an e-mail using the default messaging applications on the different Xamarin and Windows mobile platforms.
        </description>
        <releaseNotes>
-v2.4.0
--Add UWP Support
+v3.0.0
+- Add UWP Support
+- Breaking Change: Change namespace to Plugin.Messaging
 v2.3.0
--Allow specifying empty/null text and subject for Sms, Email
--Fix for finding correct UIVIewController on iOS
+- Allow specifying empty/null text and subject for Sms, Email
+- Fix for finding correct UIVIewController on iOS
 v2.2.1
 - Allow specifying multiple email attachments for Android
 - Resolved issued with CanSendEmail not working on Android 5.0 and later
@@ -100,9 +101,8 @@ v1.2
      <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.xml" target="lib\Xamarin.iOS10\Lotz.Xam.Messaging.Abstractions.xml" />
      <file src="..\Lotz.Xam.Messaging.iOSUnified\bin\iPhone\Release\Lotz.Xam.Messaging.dll" target="lib\Xamarin.iOS10\Lotz.Xam.Messaging.dll" />
      <file src="..\Lotz.Xam.Messaging.iOSUnified\bin\iPhone\Release\Lotz.Xam.Messaging.xml" target="lib\Xamarin.iOS10\Lotz.Xam.Messaging.xml" />
-
    
- <!--Win Phone-->
+     <!--UWP-->
      <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.dll" target="lib\UAP10\Lotz.Xam.Messaging.Abstractions.dll" />
      <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.xml" target="lib\UAP10\Lotz.Xam.Messaging.Abstractions.xml" />
      <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.pdb" target="lib\UAP10\Lotz.Xam.Messaging.Abstractions.pdb" />

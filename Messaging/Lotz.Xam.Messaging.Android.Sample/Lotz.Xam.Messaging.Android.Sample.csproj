@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lotz.Xam.Messaging.Android.Sample</RootNamespace>
-    <AssemblyName>Lotz.Xam.Messaging.Android.Sample</AssemblyName>
+    <RootNamespace>Plugin.Messaging.Sample.Android</RootNamespace>
+    <AssemblyName>Lotz.Xam.Messaging.Sample.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
@@ -55,12 +55,12 @@
     <DevInstrumentationEnabled>False</DevInstrumentationEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Lotz.Xam.Messaging, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.2.1\lib\MonoAndroid10\Lotz.Xam.Messaging.dll</HintPath>
+    <Reference Include="Lotz.Xam.Messaging, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\MonoAndroid10\Lotz.Xam.Messaging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.2.1\lib\MonoAndroid10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\MonoAndroid10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Mono.Android" />

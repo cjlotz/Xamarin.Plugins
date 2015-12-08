@@ -9,7 +9,7 @@
     <ProjectGuid>{97194A4F-4123-41DF-94D6-45C0B64C687B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lotz.Xam.Messaging</RootNamespace>
+    <RootNamespace>Plugin.Messaging</RootNamespace>
     <AssemblyName>Lotz.Xam.Messaging</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>

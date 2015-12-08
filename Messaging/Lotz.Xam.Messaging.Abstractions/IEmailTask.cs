@@ -1,4 +1,4 @@
-﻿namespace Lotz.Xam.Messaging
+﻿namespace Plugin.Messaging
 {
     /// <summary>
     ///     Abstraction for sending cross-platform email messages using

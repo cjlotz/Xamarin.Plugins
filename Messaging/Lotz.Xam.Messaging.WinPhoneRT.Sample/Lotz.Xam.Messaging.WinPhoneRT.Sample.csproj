@@ -7,8 +7,8 @@
     <ProjectGuid>{38ABD5F2-88E9-4A09-99AC-E50CECA55609}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lotz.Xam.Messaging.WinPhoneRT.Sample</RootNamespace>
-    <AssemblyName>Lotz.Xam.Messaging.WinPhoneRT.Sample</AssemblyName>
+    <RootNamespace>Plugin.Messaging.Sample.WinPhoneRT</RootNamespace>
+    <AssemblyName>Lotz.Xam.Messaging.Sample.WinPhoneRT</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
@@ -71,19 +71,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Lotz.Xam.Messaging, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.2.1\lib\wpa81\Lotz.Xam.Messaging.dll</HintPath>
+    <Reference Include="Lotz.Xam.Messaging, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\wpa81\Lotz.Xam.Messaging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.2.1\lib\wpa81\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\wpa81\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

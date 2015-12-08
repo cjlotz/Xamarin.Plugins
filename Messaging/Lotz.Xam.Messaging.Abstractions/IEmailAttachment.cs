@@ -1,4 +1,4 @@
-﻿namespace Lotz.Xam.Messaging
+﻿namespace Plugin.Messaging
 {
     public interface IEmailAttachment
     {

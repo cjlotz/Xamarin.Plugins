@@ -1,8 +1,7 @@
 ﻿using System.Windows;
-using Lotz.Xam.Messaging.Sample;
 using Microsoft.Phone.Controls;
 
-namespace Lotz.Xam.Messaging.WinPhone.Sample
+namespace Plugin.Messaging.Sample.WinPhone
 {
     public partial class MainPage : PhoneApplicationPage
     {

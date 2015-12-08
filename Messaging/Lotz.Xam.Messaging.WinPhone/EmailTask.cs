@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Phone.Tasks;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal class EmailTask : IEmailTask
     {

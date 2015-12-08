@@ -5,9 +5,8 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Lotz.Xam.Messaging.Sample;
 
-namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
+namespace Plugin.Messaging.Sample.WinPhoneRT
 {
     /// <summary>
     ///     An empty page that can be used on its own or navigated to within a Frame.

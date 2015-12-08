@@ -1,7 +1,7 @@
 using System;
 using Android.Content;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal static class MessagingExtensions
     {

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using UIKit;
 
-namespace Lotz.Xam.Messaging.iOSUnified.Sample
+namespace Plugin.Messaging.Sample.iOSUnified
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
@@ -13,12 +9,21 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
     [Register("AppDelegate")]
     public partial class AppDelegate : UIApplicationDelegate
     {
+        #region Properties
+
         // class-level declarations
 
-        public override UIWindow Window
+        public override UIWindow Window { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        // This method should be used to release shared resources and it should store the application state.
+        // If your application supports background exection this method is called instead of WillTerminate
+        // when the user quits.
+        public override void DidEnterBackground(UIApplication application)
         {
-            get;
-            set;
         }
 
         //
@@ -27,13 +32,6 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
         // OpenGL applications should use this method to pause.
         //
         public override void OnResignActivation(UIApplication application)
-        {
-        }
-
-        // This method should be used to release shared resources and it should store the application state.
-        // If your application supports background exection this method is called instead of WillTerminate
-        // when the user quits.
-        public override void DidEnterBackground(UIApplication application)
         {
         }
 
@@ -46,5 +44,7 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
         public override void WillTerminate(UIApplication application)
         {
         }
+
+        #endregion
     }
 }

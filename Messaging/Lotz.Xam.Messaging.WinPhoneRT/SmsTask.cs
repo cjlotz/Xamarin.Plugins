@@ -1,7 +1,7 @@
 using System;
 using Windows.ApplicationModel.Chat;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal class SmsTask : ISmsTask
     {

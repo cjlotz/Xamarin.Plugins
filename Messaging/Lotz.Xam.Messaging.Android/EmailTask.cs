@@ -4,7 +4,7 @@ using Android.Content;
 using Android.OS;
 using Android.Text;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal class EmailTask : IEmailTask
     {

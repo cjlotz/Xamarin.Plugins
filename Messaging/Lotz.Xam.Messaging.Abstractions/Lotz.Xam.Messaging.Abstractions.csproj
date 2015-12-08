@@ -8,7 +8,7 @@
     <ProjectGuid>{B4292775-3BB9-4FF2-8D20-B3D483BF1701}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lotz.Xam.Messaging</RootNamespace>
+    <RootNamespace>Plugin.Messaging</RootNamespace>
     <AssemblyName>Lotz.Xam.Messaging.Abstractions</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>

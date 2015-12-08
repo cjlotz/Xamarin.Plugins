@@ -9,7 +9,7 @@ using Foundation;
 using UIKit;
 using System.CodeDom.Compiler;
 
-namespace Lotz.Xam.Messaging.iOSUnified.Sample
+namespace Plugin.Messaging.Sample.iOSUnified
 {
 	[Register ("RootViewController")]
 	partial class RootViewController

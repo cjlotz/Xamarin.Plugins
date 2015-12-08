@@ -1,6 +1,6 @@
-﻿using Lotz.Xam.Messaging.WinPhone.Sample.Resources;
+﻿using Plugin.Messaging.Sample.WinPhone.Resources;
 
-namespace Lotz.Xam.Messaging.WinPhone.Sample
+namespace Plugin.Messaging.Sample.WinPhone
 {
     /// <summary>
     /// Provides access to string resources.

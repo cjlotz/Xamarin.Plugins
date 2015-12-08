@@ -5,7 +5,7 @@ using UIKit;
 using MonoTouch.UIKit;
 #endif
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal static class MessagingExtensions
     {

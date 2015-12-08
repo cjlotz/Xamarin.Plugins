@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     /// <summary>
     ///     Container API for accessing the various Messaging plugin task API's

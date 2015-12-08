@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Windows.ApplicationModel.Email;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal class EmailTask : IEmailTask
     {

@@ -1,7 +1,7 @@
 using System;
 using Windows.ApplicationModel.Calls;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal class PhoneCallTask : IPhoneCallTask
     {

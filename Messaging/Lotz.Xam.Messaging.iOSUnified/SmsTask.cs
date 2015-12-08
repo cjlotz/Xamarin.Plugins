@@ -7,7 +7,7 @@ using MonoTouch.MessageUI;
 using MonoTouch.UIKit;
 #endif
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal class SmsTask : ISmsTask
     {

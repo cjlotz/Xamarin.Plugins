@@ -2,7 +2,7 @@ using System;
 using Android.Content;
 using Uri = Android.Net.Uri;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     // NOTE: http://developer.xamarin.com/recipes/android/networking/sms/send_an_sms/
 

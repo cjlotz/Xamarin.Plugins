@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
-namespace Lotz.Xam.Messaging.WinPhoneRT.Sample
+namespace Plugin.Messaging.Sample.WinPhoneRT
 {
     /// <summary>
     ///     Provides application-specific behavior to supplement the default Application class.

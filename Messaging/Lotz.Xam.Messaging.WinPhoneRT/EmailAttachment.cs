@@ -2,7 +2,7 @@ using System;
 using Windows.Storage;
 using Windows.Storage.Streams;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     public class EmailAttachment : IEmailAttachment
     {

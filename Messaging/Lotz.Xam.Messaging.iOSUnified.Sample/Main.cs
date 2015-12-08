@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using UIKit;
 
-using Foundation;
-using UIKit;
-
-namespace Lotz.Xam.Messaging.iOSUnified.Sample
+namespace Plugin.Messaging.Sample.iOSUnified
 {
     public class Application
     {
+        #region Methods
+
         // This is the main entry point of the application.
         static void Main(string[] args)
         {
@@ -16,5 +13,7 @@ namespace Lotz.Xam.Messaging.iOSUnified.Sample
             // you can specify it here.
             UIApplication.Main(args, null, "AppDelegate");
         }
+
+        #endregion
     }
 }

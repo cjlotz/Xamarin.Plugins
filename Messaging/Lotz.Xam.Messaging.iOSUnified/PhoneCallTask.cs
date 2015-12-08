@@ -7,7 +7,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 #endif
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal class PhoneCallTask : IPhoneCallTask
     {

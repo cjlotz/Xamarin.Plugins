@@ -3,7 +3,7 @@ using Android.Content;
 using Android.Telephony;
 using Uri = Android.Net.Uri;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
     internal class PhoneCallTask : IPhoneCallTask
     {
