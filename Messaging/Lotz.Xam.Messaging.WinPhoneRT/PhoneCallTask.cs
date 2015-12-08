@@ -13,7 +13,14 @@ namespace Lotz.Xam.Messaging
 
         public bool CanMakePhoneCall
         {
-            get { return true; }
+            get
+            {
+#if WINDOWS_UWP
+                return Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.Calls.PhoneCallManager");
+#else
+                return true;
+#endif
+            }
         }
 
         public void MakePhoneCall(string number, string name = null)
@@ -25,6 +32,6 @@ namespace Lotz.Xam.Messaging
                 PhoneCallManager.ShowPhoneCallUI(number, name ?? "");
         }
 
-        #endregion
+#endregion
     }
 }
