@@ -29,10 +29,15 @@ namespace Plugin.Messaging
 
             if (CanMakePhoneCall)
             {
-                var nsurl = new NSUrl("tel://" + number);
+                var nsurl = CreateNSUrl(number);
                 UIApplication.SharedApplication.OpenUrl(nsurl);                
             }
-        }        
+        }
+
+        private NSUrl CreateNSUrl(string number)
+        {
+            return new NSUrl(new Uri($"tel:{number}").AbsoluteUri);
+        }
 
         #endregion
     }
