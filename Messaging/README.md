@@ -24,7 +24,7 @@ The Messaging plugin makes it possible to make a phone call, send a sms or send 
 Full details on the API [are available here](Details.md)
 
 ### Release Notes
-[3.2.0]
+[3.2.1]
 - Add ```EmailMessageBuilder.WithAttachment``` overload to add attachments directly from within PCL code (Android/iOS only)
 - Add additional ```IEmailTask.CanSendEmailAttachments```, ```IEMailTask.CanSendEmailBodyAsHtml```
 - Add ```CrossMessaging``` singleton as alternative to ```MessagingPlugin``` to access API features

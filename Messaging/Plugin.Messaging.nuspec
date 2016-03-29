@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>3.2.0</version>
+       <version>3.2.1</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
        <licenseUrl>https://github.com/cjlotz/Xamarin.Plugins/blob/master/LICENSE.md</licenseUrl>
        <projectUrl>https://github.com/cjlotz/Xamarin.Plugins</projectUrl>
-       <iconUrl>https://raw.githubusercontent.com/cjlotz/Xamarin.Plugins/master/Messaging/Common/MessagingSmall.png</iconUrl>
+       <iconUrl>https://raw.githubusercontent.com/cjlotz/Xamarin.Plugins/master/Messaging/Plugin.Messaging.png</iconUrl>
        <requireLicenseAcceptance>false</requireLicenseAcceptance>
        <summary>
           Xamarin and Windows plugin to make phone call, send sms or send an e-mail.
@@ -17,7 +17,7 @@
           Messaging plugin for Xamarin and Windows to make a phone call, send a sms or send an e-mail using the default messaging applications on the different mobile platforms.
        </description>
        <releaseNotes>
-[3.1.0]
+[3.2.1]
 - Add EmailMessageBuilder.WithAttachment overload to add attachments directly from within PCL code (Android/iOS only)
 - Add additional IEmailTask.CanSendEmailAttachments, IEMailTask.CanSendEmailBodyAsHtml
 - Add CrossMessaging singleton as alternative to MessagingPlugin to access API features
