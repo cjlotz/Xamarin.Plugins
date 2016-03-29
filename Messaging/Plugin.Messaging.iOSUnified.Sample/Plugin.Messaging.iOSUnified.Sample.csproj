@@ -118,12 +118,12 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Plugin.Messaging, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.3.1.0-Beta\lib\Xamarin.iOS10\Plugin.Messaging.dll</HintPath>
+    <Reference Include="Plugin.Messaging, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.2.0-Beta\lib\Xamarin.iOS10\Plugin.Messaging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Plugin.Messaging.Abstractions, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.3.1.0-Beta\lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.dll</HintPath>
+    <Reference Include="Plugin.Messaging.Abstractions, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.2.0-Beta\lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

@@ -43,17 +43,17 @@ namespace Plugin.Messaging.Sample.iOSUnified
 
         private void ButtonMakePhoneCall_TouchUpInside(object o, EventArgs eventArgs)
         {
-            MessagingPlugin.PhoneDialer.MakeSamplePhoneCall();
+            CrossMessaging.Current.PhoneDialer.MakeSamplePhoneCall();
         }
 
         private void ButtonSendEmail_TouchUpInside(object o, EventArgs eventArgs)
         {
-            MessagingPlugin.EmailMessenger.SendSampleEmail();
+            CrossMessaging.Current.EmailMessenger.SendSampleEmail(false);
         }
 
         private void ButtonSendHtmlEmail_TouchUpInside(object o, EventArgs eventArgs)
         {
-            MessagingPlugin.EmailMessenger.SendSampleEmail(true);
+            CrossMessaging.Current.EmailMessenger.SendSampleEmail(true);
         }
 
         private async void ButtonSendAttachmentsEmail_TouchUpInside(object o, EventArgs eventArgs)
@@ -70,13 +70,13 @@ namespace Plugin.Messaging.Sample.iOSUnified
                     .WithAttachment(fileName, file.GetStream(), "image/jpeg")
                     .Build();
 
-                MessagingPlugin.EmailMessenger.SendSampleEmail(email);
+                CrossMessaging.Current.EmailMessenger.SendSampleEmail(email);
             }
         }
 
         private void ButtonSendSms_TouchUpInside(object o, EventArgs eventArgs)
         {
-            MessagingPlugin.SmsMessenger.SendSampleSms();
+            CrossMessaging.Current.SmsMessenger.SendSampleSms();
         }
 
         #endregion

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>3.1.0</version>
+       <version>3.2.0</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>

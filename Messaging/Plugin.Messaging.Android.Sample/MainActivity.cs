@@ -42,17 +42,17 @@ namespace Plugin.Messaging.Sample.Android
 
         private void ButtonPhoneCall_Click(object sender, EventArgs eventArgs)
         {
-            MessagingPlugin.PhoneDialer.MakeSamplePhoneCall();
+            CrossMessaging.Current.PhoneDialer.MakeSamplePhoneCall();
         }
 
         private void ButtonSendEmail_Click(object sender, EventArgs eventArgs)
         {
-            MessagingPlugin.EmailMessenger.SendSampleEmail();
+            CrossMessaging.Current.EmailMessenger.SendSampleEmail(false);
         }
 
         private void ButtonSendHtmlEmail_Click(object sender, EventArgs eventArgs)
         {
-            MessagingPlugin.EmailMessenger.SendSampleEmail(true);
+            CrossMessaging.Current.EmailMessenger.SendSampleEmail(true);
         }
 
         private void ButtonSendAttachmentEmail_Click(object sender, EventArgs eventArgs)
@@ -63,7 +63,7 @@ namespace Plugin.Messaging.Sample.Android
             StartActivityForResult(intent, SelectPhoto);
         }
 
-        protected async override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        protected override async void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             if (resultCode == Result.Canceled || requestCode != SelectPhoto)
                 return;
@@ -73,14 +73,14 @@ namespace Plugin.Messaging.Sample.Android
                 .WithAttachment(file.Path)
                 .Build();
 
-            MessagingPlugin.EmailMessenger.SendSampleEmail(email);
+            CrossMessaging.Current.EmailMessenger.SendSampleEmail(email);
         }
 
         private void ButtonSendSms_Click(object sender, EventArgs eventArgs)
         {
             // NOTE: requires android.permission.SEND_SMS permission in the Android manifest.
 
-            MessagingPlugin.SmsMessenger.SendSampleSms();
+            CrossMessaging.Current.SmsMessenger.SendSampleSms();
         }
 
         #endregion

@@ -39,7 +39,7 @@
             }
         }
 
-        public static void SendSampleEmail(this IEmailTask emailTask, bool sendAsHtml = false)
+        public static void SendSampleEmail(this IEmailTask emailTask, bool sendAsHtml)
         {
             var email = BuildSampleEmail(sendAsHtml).Build();
             emailTask.SendSampleEmail(email);
