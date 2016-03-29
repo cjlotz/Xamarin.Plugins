@@ -26,7 +26,7 @@ namespace Plugin.Messaging
         public void MakePhoneCall(string number, string name = null)
         {
             if (string.IsNullOrWhiteSpace(number))
-                throw new ArgumentNullException("number");
+                throw new ArgumentNullException(nameof(number));
 
             if (CanMakePhoneCall)
                 PhoneCallManager.ShowPhoneCallUI(number, name ?? "");

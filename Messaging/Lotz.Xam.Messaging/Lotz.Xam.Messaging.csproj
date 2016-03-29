@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Plugin.Messaging</RootNamespace>
-    <AssemblyName>Lotz.Xam.Messaging</AssemblyName>
+    <AssemblyName>Plugin.Messaging</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -33,7 +33,7 @@
     <DefineConstants>TRACE;PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Lotz.Xam.Messaging.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\Plugin.Messaging.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
@@ -47,6 +47,7 @@
     <Compile Include="..\Common\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="EmailAttachment.cs" />
     <Compile Include="EmailMessageBuilder.cs" />
     <Compile Include="EmailMessage.cs" />
     <Compile Include="MessagingPlugin.cs" />

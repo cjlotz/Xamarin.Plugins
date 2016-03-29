@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Phone.Tasks;
 
 namespace Plugin.Messaging

@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="Plugin.Messaging.UWP.Sample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Plugin.Messaging.UWP.Sample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="XAM MESSAGING PLUGIN" Style="{StaticResource SubheaderTextBlockStyle}" Margin="12,0"/>
+            <TextBlock Text="Demo Page" Margin="9,-7,0,0" Style="{StaticResource HeaderTextBlockStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel>
+                <Button x:Name="ButtonPhoneCall" Click="ButtonPhoneCall_OnClick">Make Phone Call</Button>
+                <Button x:Name="ButtonSendSms" Click="ButtonSendSms_OnClick">Send SMS</Button>
+                <Button x:Name="ButtonSendEmail" Click="ButtonSendEmail_OnClick">Send Email</Button>
+                <Button x:Name="ButtonSendAttachmentsEmail" Click="ButtonSendAttachmentsEmail_OnClick">Send Attachments Email</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

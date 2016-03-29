@@ -3,7 +3,7 @@
   <Identity Name="e1214ef1-9125-4d94-b0f0-3d0b88933b1a" Publisher="CN=carell" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="e1214ef1-9125-4d94-b0f0-3d0b88933b1a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Lotz.Xam.Messaging.WinPhoneRT.Sample</DisplayName>
+    <DisplayName>Plugin.Messaging.WinPhoneRT.Sample</DisplayName>
     <PublisherDisplayName>carell</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -15,8 +15,8 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Lotz.Xam.Messaging.Sample.WinPhoneRT.App">
-      <m3:VisualElements DisplayName="Lotz.Xam.Messaging.Sample.WinPhoneRT" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Lotz.Xam.Messaging.Sample.WinPhoneRT" ForegroundText="light" BackgroundColor="transparent">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Plugin.Messaging.Sample.WinPhoneRT.App">
+      <m3:VisualElements DisplayName="Plugin.Messaging.Sample.WinPhoneRT" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Plugin.Messaging.Sample.WinPhoneRT" ForegroundText="light" BackgroundColor="transparent">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />

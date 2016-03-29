@@ -12,6 +12,16 @@
         bool CanSendEmail { get; }
 
         /// <summary>
+        ///     Gets a value indicating whether the device can send e-mail attachments
+        /// </summary>
+        bool CanSendEmailAttachments { get; }
+
+        /// <summary>
+        ///     Gets a value indicating whether the device can send the email body as html content
+        /// </summary>
+        bool CanSendEmailBodyAsHtml { get; }
+
+        /// <summary>
         ///     Send the <paramref name="email" /> using the default email application
         ///     on the device
         /// </summary>

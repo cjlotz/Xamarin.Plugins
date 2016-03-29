@@ -1,6 +1,10 @@
 using System;
+using System.IO;
 using System.Linq;
 using Windows.ApplicationModel.Email;
+using Windows.Networking.Sockets;
+using Windows.Storage;
+using Windows.Storage.Streams;
 
 namespace Plugin.Messaging
 {
@@ -12,15 +16,14 @@ namespace Plugin.Messaging
 
         #region IEmailTask Members
 
-        public bool CanSendEmail
-        {
-            get { return true; }
-        }
+        public bool CanSendEmail { get { return true; } }
+        public bool CanSendEmailAttachments { get { return true; } }
+        public bool CanSendEmailBodyAsHtml {  get { return false; } }
 
         public void SendEmail(IEmailMessage email)
         {
             if (email == null)
-                throw new ArgumentNullException("email");
+                throw new ArgumentNullException(nameof(email));
 
             if (CanSendEmail)
             {
@@ -45,11 +48,13 @@ namespace Plugin.Messaging
 
                 foreach (var attachment in email.Attachments.Cast<EmailAttachment>())
                 {
-                    mail.Attachments.Add(new Windows.ApplicationModel.Email.EmailAttachment(
-                        attachment.FileName, attachment.Content));
+                    RandomAccessStreamReference streamRef = RandomAccessStreamReference.CreateFromFile(attachment.File);
+                    mail.Attachments.Add(new Windows.ApplicationModel.Email.EmailAttachment(attachment.FileName, streamRef));
                 }
 
+#pragma warning disable 4014
                 EmailManager.ShowComposeNewEmailAsync(mail);
+#pragma warning restore 4014
             }
         }
 

@@ -13,11 +13,13 @@ namespace Plugin.Messaging
         #region IEmailTask Members
 
         public bool CanSendEmail { get { return true; } }
+        public bool CanSendEmailAttachments { get { return false; } }
+        public bool CanSendEmailBodyAsHtml { get { return false; } }
 
         public void SendEmail(IEmailMessage email)
         {
             if (email == null)
-                throw new ArgumentNullException("email");
+                throw new ArgumentNullException(nameof(email));
 
             if (CanSendEmail)
             {

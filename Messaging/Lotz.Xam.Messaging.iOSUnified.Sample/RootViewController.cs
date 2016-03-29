@@ -1,5 +1,4 @@
 ﻿using System;
-using Plugin.Messaging.Sample;
 using UIKit;
 using Xamarin.Media;
 

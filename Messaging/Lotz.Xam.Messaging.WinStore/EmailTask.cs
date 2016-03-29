@@ -20,10 +20,26 @@ namespace Plugin.Messaging
             get { return true; }
         }
 
+        public bool CanSendEmailAttachments
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public bool CanSendEmailBodyAsHtml
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public void SendEmail(IEmailMessage email)
         {
             if (email == null)
-                throw new ArgumentNullException("email");
+                throw new ArgumentNullException(nameof(email));
 
             if (CanSendEmail)
             {
@@ -44,7 +60,9 @@ namespace Plugin.Messaging
 
                 var escaped = Uri.EscapeUriString(sb.ToString());
 
+#pragma warning disable 4014
                 Launcher.LaunchUriAsync(new Uri(escaped, UriKind.Absolute));
+#pragma warning restore 4014
             }
         }
 

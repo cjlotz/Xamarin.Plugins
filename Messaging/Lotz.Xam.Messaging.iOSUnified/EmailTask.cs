@@ -27,10 +27,13 @@ namespace Plugin.Messaging
             get { return MFMailComposeViewController.CanSendMail; }
         }
 
+        public bool CanSendEmailAttachments { get { return true; } }
+        public bool CanSendEmailBodyAsHtml { get { return true; } }
+
         public void SendEmail(IEmailMessage email)
         {
             if (email == null)
-                throw new ArgumentNullException("email");
+                throw new ArgumentNullException(nameof(email));
 
             if (CanSendEmail)
             {
@@ -47,8 +50,10 @@ namespace Plugin.Messaging
 
                 foreach (var attachment in email.Attachments.Cast<EmailAttachment>())
                 {
-                    _mailController.AddAttachmentData(NSData.FromStream(attachment.Content),
-                        attachment.ContentType, attachment.FileName);
+                    if (attachment.Content == null)
+                        _mailController.AddAttachmentData(NSData.FromFile(attachment.FilePath), attachment.ContentType, attachment.FileName);
+                    else
+                        _mailController.AddAttachmentData(NSData.FromStream(attachment.Content), attachment.ContentType, attachment.FileName);
                 }
 
                 EventHandler<MFComposeResultEventArgs> handler = null;

@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Plugin.Messaging</RootNamespace>
-    <AssemblyName>Lotz.Xam.Messaging</AssemblyName>
+    <AssemblyName>Plugin.Messaging</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
@@ -34,7 +34,7 @@
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Lotz.Xam.Messaging.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\Plugin.Messaging.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
@@ -92,6 +92,9 @@
     <Compile Include="..\Common\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Lotz.Xam.Messaging\EmailAttachment.cs">
+      <Link>EmailAttachment.cs</Link>
+    </Compile>
     <Compile Include="..\Lotz.Xam.Messaging\EmailMessage.cs">
       <Link>EmailMessage.cs</Link>
     </Compile>
@@ -101,7 +104,6 @@
     <Compile Include="..\Lotz.Xam.Messaging\MessagingPlugin.cs">
       <Link>MessagingPlugin.cs</Link>
     </Compile>
-    <Compile Include="EmailAttachment.cs" />
     <Compile Include="EmailTask.cs" />
     <Compile Include="PhoneCallTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

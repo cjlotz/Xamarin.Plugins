@@ -14,7 +14,7 @@ namespace Plugin.Messaging
         public static void PresentUsingRootViewController(this UIViewController controller)
         {
             if (controller == null)
-                throw new ArgumentNullException("controller");
+                throw new ArgumentNullException(nameof(controller));
 
             var visibleViewController = GetVisibleViewController(null);
             if (visibleViewController == null)

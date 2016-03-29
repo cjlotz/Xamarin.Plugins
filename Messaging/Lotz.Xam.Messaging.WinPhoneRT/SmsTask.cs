@@ -1,4 +1,3 @@
-using System;
 using Windows.ApplicationModel.Chat;
 
 namespace Plugin.Messaging
@@ -23,7 +22,9 @@ namespace Plugin.Messaging
                 if (!string.IsNullOrWhiteSpace(recipient))
                     msg.Recipients.Add(recipient);
 
+#pragma warning disable 4014
                 ChatMessageManager.ShowComposeSmsMessageAsync(msg);
+#pragma warning restore 4014
             }
         }
 

@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Plugin.Messaging</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Lotz.Xam.Messaging</AssemblyName>
+    <AssemblyName>Plugin.Messaging</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,12 +33,15 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <DocumentationFile>bin\iPhone\Release\Lotz.Xam.Messaging.XML</DocumentationFile>
+    <DocumentationFile>bin\iPhone\Release\Plugin.Messaging.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Common\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Lotz.Xam.Messaging\EmailAttachment.cs">
+      <Link>EmailAttachment.cs</Link>
     </Compile>
     <Compile Include="..\Lotz.Xam.Messaging\EmailMessage.cs">
       <Link>EmailMessage.cs</Link>
@@ -49,7 +52,6 @@
     <Compile Include="..\Lotz.Xam.Messaging\MessagingPlugin.cs">
       <Link>MessagingPlugin.cs</Link>
     </Compile>
-    <Compile Include="EmailAttachment.cs" />
     <Compile Include="EmailTask.cs" />
     <Compile Include="MessagingExtensions.cs" />
     <Compile Include="PhoneCallTask.cs" />

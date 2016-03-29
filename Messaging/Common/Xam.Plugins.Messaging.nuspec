@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>3.0.0</version>
+       <version>3.1.0</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
@@ -14,9 +14,12 @@
           Cross platform Messaging (phone, sms and email) for Xamarin and Windows.
        </summary>
        <description>
-           Xamarin and Windows plugin to make a phone call, send a sms or send an e-mail using the default messaging applications on the different Xamarin and Windows mobile platforms.
+          Messaging plugin for Xamarin and Windows to make a phone call, send a sms or send an e-mail using the default messaging applications on the different mobile platforms.
        </description>
        <releaseNotes>
+v3.1.0
+- Add ability to add attachments directly from within PCL code (Android/iOS only)
+- Add additional IEmailTask.CanSendEmailAttachments, IEMailTask.CanSendEmailBodyAsHtml
 v3.0.0
 - Add UWP Support
 - Breaking Change: Change namespace to Plugin.Messaging
@@ -51,64 +54,64 @@ v1.2
    </metadata>
    <files>
      <!--Core-->
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Lotz.Xam.Messaging.Abstractions.dll" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.xml" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Lotz.Xam.Messaging.Abstractions.xml" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.pdb" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Lotz.Xam.Messaging.Abstractions.pdb" />
-     <file src="..\Lotz.Xam.Messaging\bin\Release\Lotz.Xam.Messaging.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Lotz.Xam.Messaging.dll" />
-     <file src="..\Lotz.Xam.Messaging\bin\Release\Lotz.Xam.Messaging.xml" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Lotz.Xam.Messaging.xml" />
-     <file src="..\Lotz.Xam.Messaging\bin\Release\Lotz.Xam.Messaging.pdb" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Lotz.Xam.Messaging.pdb" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.Abstractions.dll" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.Abstractions.xml" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.Abstractions.pdb" />
+     <file src="..\Lotz.Xam.Messaging\bin\Release\Plugin.Messaging.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.dll" />
+     <file src="..\Lotz.Xam.Messaging\bin\Release\Plugin.Messaging.xml" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.xml" />
+     <file src="..\Lotz.Xam.Messaging\bin\Release\Plugin.Messaging.pdb" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.pdb" />
 
      <!--Win Store -->
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.dll" target="lib\win8\Lotz.Xam.Messaging.Abstractions.dll" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.xml" target="lib\win8\Lotz.Xam.Messaging.Abstractions.xml" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.pdb" target="lib\win8\Lotz.Xam.Messaging.Abstractions.pdb" />
-     <file src="..\Lotz.Xam.Messaging.WinStore\bin\Release\Lotz.Xam.Messaging.dll" target="lib\win8\Lotz.Xam.Messaging.dll" />
-     <file src="..\Lotz.Xam.Messaging.WinStore\bin\Release\Lotz.Xam.Messaging.xml" target="lib\win8\Lotz.Xam.Messaging.xml" />
-     <file src="..\Lotz.Xam.Messaging.WinStore\bin\Release\Lotz.Xam.Messaging.pdb" target="lib\win8\Lotz.Xam.Messaging.pdb" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\win8\Plugin.Messaging.Abstractions.dll" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\win8\Plugin.Messaging.Abstractions.xml" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\win8\Plugin.Messaging.Abstractions.pdb" />
+     <file src="..\Lotz.Xam.Messaging.WinStore\bin\Release\Plugin.Messaging.dll" target="lib\win8\Plugin.Messaging.dll" />
+     <file src="..\Lotz.Xam.Messaging.WinStore\bin\Release\Plugin.Messaging.xml" target="lib\win8\Plugin.Messaging.xml" />
+     <file src="..\Lotz.Xam.Messaging.WinStore\bin\Release\Plugin.Messaging.pdb" target="lib\win8\Plugin.Messaging.pdb" />
 
      <!--Win Phone RT-->
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.dll" target="lib\wpa81\Lotz.Xam.Messaging.Abstractions.dll" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.xml" target="lib\wpa81\Lotz.Xam.Messaging.Abstractions.xml" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.pdb" target="lib\wpa81\Lotz.Xam.Messaging.Abstractions.pdb" />
-     <file src="..\Lotz.Xam.Messaging.WinPhoneRT\bin\Release\Lotz.Xam.Messaging.dll" target="lib\wpa81\Lotz.Xam.Messaging.dll" />
-     <file src="..\Lotz.Xam.Messaging.WinPhoneRT\bin\Release\Lotz.Xam.Messaging.xml" target="lib\wpa81\Lotz.Xam.Messaging.xml" />
-     <file src="..\Lotz.Xam.Messaging.WinPhoneRT\bin\Release\Lotz.Xam.Messaging.pdb" target="lib\wpa81\Lotz.Xam.Messaging.pdb" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\wpa81\Plugin.Messaging.Abstractions.dll" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\wpa81\Plugin.Messaging.Abstractions.xml" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\wpa81\Plugin.Messaging.Abstractions.pdb" />
+     <file src="..\Lotz.Xam.Messaging.WinPhoneRT\bin\Release\Plugin.Messaging.dll" target="lib\wpa81\Plugin.Messaging.dll" />
+     <file src="..\Lotz.Xam.Messaging.WinPhoneRT\bin\Release\Plugin.Messaging.xml" target="lib\wpa81\Plugin.Messaging.xml" />
+     <file src="..\Lotz.Xam.Messaging.WinPhoneRT\bin\Release\Plugin.Messaging.pdb" target="lib\wpa81\Plugin.Messaging.pdb" />
 
      <!--Win Phone-->
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.dll" target="lib\wp8\Lotz.Xam.Messaging.Abstractions.dll" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.xml" target="lib\wp8\Lotz.Xam.Messaging.Abstractions.xml" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.pdb" target="lib\wp8\Lotz.Xam.Messaging.Abstractions.pdb" />
-     <file src="..\Lotz.Xam.Messaging.WinPhone\bin\Release\Lotz.Xam.Messaging.dll" target="lib\wp8\Lotz.Xam.Messaging.dll" />
-     <file src="..\Lotz.Xam.Messaging.WinPhone\bin\Release\Lotz.Xam.Messaging.xml" target="lib\wp8\Lotz.Xam.Messaging.xml" />
-     <file src="..\Lotz.Xam.Messaging.WinPhone\bin\Release\Lotz.Xam.Messaging.pdb" target="lib\wp8\Lotz.Xam.Messaging.pdb" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\wp8\Plugin.Messaging.Abstractions.dll" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\wp8\Plugin.Messaging.Abstractions.xml" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\wp8\Plugin.Messaging.Abstractions.pdb" />
+     <file src="..\Lotz.Xam.Messaging.WinPhone\bin\Release\Plugin.Messaging.dll" target="lib\wp8\Plugin.Messaging.dll" />
+     <file src="..\Lotz.Xam.Messaging.WinPhone\bin\Release\Plugin.Messaging.xml" target="lib\wp8\Plugin.Messaging.xml" />
+     <file src="..\Lotz.Xam.Messaging.WinPhone\bin\Release\Plugin.Messaging.pdb" target="lib\wp8\Plugin.Messaging.pdb" />
      
      <!--Xamarin.Android-->
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.dll" target="lib\MonoAndroid10\Lotz.Xam.Messaging.Abstractions.dll" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.xml" target="lib\MonoAndroid10\Lotz.Xam.Messaging.Abstractions.xml" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.pdb" target="lib\MonoAndroid10\Lotz.Xam.Messaging.Abstractions.pdb" />
-     <file src="..\Lotz.Xam.Messaging.Android\bin\Release\Lotz.Xam.Messaging.dll" target="lib\MonoAndroid10\Lotz.Xam.Messaging.dll" />
-     <file src="..\Lotz.Xam.Messaging.Android\bin\Release\Lotz.Xam.Messaging.xml" target="lib\MonoAndroid10\Lotz.Xam.Messaging.xml" />
-     <file src="..\Lotz.Xam.Messaging.Android\bin\Release\Lotz.Xam.Messaging.pdb" target="lib\MonoAndroid10\Lotz.Xam.Messaging.pdb" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\MonoAndroid10\Plugin.Messaging.Abstractions.dll" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\MonoAndroid10\Plugin.Messaging.Abstractions.xml" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\MonoAndroid10\Plugin.Messaging.Abstractions.pdb" />
+     <file src="..\Lotz.Xam.Messaging.Android\bin\Release\Plugin.Messaging.dll" target="lib\MonoAndroid10\Plugin.Messaging.dll" />
+     <file src="..\Lotz.Xam.Messaging.Android\bin\Release\Plugin.Messaging.xml" target="lib\MonoAndroid10\Plugin.Messaging.xml" />
+     <file src="..\Lotz.Xam.Messaging.Android\bin\Release\Plugin.Messaging.pdb" target="lib\MonoAndroid10\Plugin.Messaging.pdb" />
 
      <!--Xamarin.iOS-->
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.dll" target="lib\MonoTouch10\Lotz.Xam.Messaging.Abstractions.dll" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.xml" target="lib\MonoTouch10\Lotz.Xam.Messaging.Abstractions.xml" />
-     <file src="..\Lotz.Xam.Messaging.iOS\bin\iPhone\Release\Lotz.Xam.Messaging.dll" target="lib\MonoTouch10\Lotz.Xam.Messaging.dll" />
-     <file src="..\Lotz.Xam.Messaging.iOS\bin\iPhone\Release\Lotz.Xam.Messaging.xml" target="lib\MonoTouch10\Lotz.Xam.Messaging.xml" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\MonoTouch10\Plugin.Messaging.Abstractions.dll" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\MonoTouch10\Plugin.Messaging.Abstractions.xml" />
+     <file src="..\Lotz.Xam.Messaging.iOS\bin\iPhone\Release\Plugin.Messaging.dll" target="lib\MonoTouch10\Plugin.Messaging.dll" />
+     <file src="..\Lotz.Xam.Messaging.iOS\bin\iPhone\Release\Plugin.Messaging.xml" target="lib\MonoTouch10\Plugin.Messaging.xml" />
  
      <!--Xamarin.iOS Unified-->
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.dll" target="lib\Xamarin.iOS10\Lotz.Xam.Messaging.Abstractions.dll" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.xml" target="lib\Xamarin.iOS10\Lotz.Xam.Messaging.Abstractions.xml" />
-     <file src="..\Lotz.Xam.Messaging.iOSUnified\bin\iPhone\Release\Lotz.Xam.Messaging.dll" target="lib\Xamarin.iOS10\Lotz.Xam.Messaging.dll" />
-     <file src="..\Lotz.Xam.Messaging.iOSUnified\bin\iPhone\Release\Lotz.Xam.Messaging.xml" target="lib\Xamarin.iOS10\Lotz.Xam.Messaging.xml" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.dll" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.xml" />
+     <file src="..\Lotz.Xam.Messaging.iOSUnified\bin\iPhone\Release\Plugin.Messaging.dll" target="lib\Xamarin.iOS10\Plugin.Messaging.dll" />
+     <file src="..\Lotz.Xam.Messaging.iOSUnified\bin\iPhone\Release\Plugin.Messaging.xml" target="lib\Xamarin.iOS10\Plugin.Messaging.xml" />
    
      <!--UWP-->
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.dll" target="lib\UAP10\Lotz.Xam.Messaging.Abstractions.dll" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.xml" target="lib\UAP10\Lotz.Xam.Messaging.Abstractions.xml" />
-     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Lotz.Xam.Messaging.Abstractions.pdb" target="lib\UAP10\Lotz.Xam.Messaging.Abstractions.pdb" />
-     <file src="..\Lotz.Xam.Messaging.UWP\bin\Release\Lotz.Xam.Messaging.dll" target="lib\UAP10\Lotz.Xam.Messaging.dll" />
-     <file src="..\Lotz.Xam.Messaging.UWP\bin\Release\Lotz.Xam.Messaging.xml" target="lib\UAP10\Lotz.Xam.Messaging.xml" />
-     <file src="..\Lotz.Xam.Messaging.UWP\bin\Release\Lotz.Xam.Messaging.pdb" target="lib\UAP10\Lotz.Xam.Messaging.pdb" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\UAP10\Plugin.Messaging.Abstractions.dll" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\UAP10\Plugin.Messaging.Abstractions.xml" />
+     <file src="..\Lotz.Xam.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\UAP10\Plugin.Messaging.Abstractions.pdb" />
+     <file src="..\Lotz.Xam.Messaging.UWP\bin\Release\Plugin.Messaging.dll" target="lib\UAP10\Plugin.Messaging.dll" />
+     <file src="..\Lotz.Xam.Messaging.UWP\bin\Release\Plugin.Messaging.xml" target="lib\UAP10\Plugin.Messaging.xml" />
+     <file src="..\Lotz.Xam.Messaging.UWP\bin\Release\Plugin.Messaging.pdb" target="lib\UAP10\Plugin.Messaging.pdb" />
      
    </files>
 </package>

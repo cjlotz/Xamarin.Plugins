@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Android.Content;
 using Android.OS;
 using Android.Text;
+using System.Linq;
 
 namespace Plugin.Messaging
 {
@@ -26,12 +27,15 @@ namespace Plugin.Messaging
             }
         }
 
+        public bool CanSendEmailAttachments { get { return true; } }
+        public bool CanSendEmailBodyAsHtml { get { return true; } }
+
         public void SendEmail(IEmailMessage email)
         {
             // NOTE: http://developer.xamarin.com/recipes/android/networking/email/send_an_email/
 
             if (email == null)
-                throw new ArgumentNullException("email");
+                throw new ArgumentNullException(nameof(email));
 
             if (CanSendEmail)
             {
@@ -65,9 +69,9 @@ namespace Plugin.Messaging
                 if (email.Attachments.Count > 0)
                 {
                     var uris = new List<IParcelable>();
-                    foreach (var attachment in email.Attachments)
+                    foreach (var attachment in email.Attachments.Cast<EmailAttachment>())
                     {
-                        var uri = Android.Net.Uri.Parse("file://" + ((EmailAttachment)attachment).FilePath);
+                        var uri = Android.Net.Uri.Parse("file://" + attachment.FilePath);
                         uris.Add(uri);
                     }
 

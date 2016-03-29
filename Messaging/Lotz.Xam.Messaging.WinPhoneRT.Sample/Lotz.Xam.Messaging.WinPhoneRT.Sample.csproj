@@ -71,12 +71,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Lotz.Xam.Messaging, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\wpa81\Lotz.Xam.Messaging.dll</HintPath>
+    <Reference Include="Plugin.Messaging, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.1.0-Beta\lib\wpa81\Plugin.Messaging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lotz.Xam.Messaging.Abstractions, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\wpa81\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+    <Reference Include="Plugin.Messaging.Abstractions, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Messaging.3.1.0-Beta\lib\wpa81\Plugin.Messaging.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

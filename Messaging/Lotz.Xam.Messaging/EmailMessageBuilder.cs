@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Plugin.Messaging
 {
@@ -38,8 +39,6 @@ namespace Plugin.Messaging
             return this;
         }
 
-#if __ANDROID__ || __IOS__
-
         public EmailMessageBuilder BodyAsHtml(string htmlBody)
         {
             if (!string.IsNullOrEmpty(htmlBody))
@@ -51,7 +50,15 @@ namespace Plugin.Messaging
             return this;
         }
 
+        public EmailMessageBuilder WithAttachment(string filePath, string contentType)
+        {
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
+            throw new PlatformNotSupportedException("API not supported on platform. Use WithAttachment(Windows.Storage.IStorageFile file) overload instead");
+#else
+            _email.Attachments.Add(new EmailAttachment(filePath, contentType));
+            return this;
 #endif
+        }
 
 #if __ANDROID__
 
@@ -79,7 +86,7 @@ namespace Plugin.Messaging
             return this;
         }
 
-#elif WINDOWS_PHONE_APP
+#elif WINDOWS_PHONE_APP || WINDOWS_UWP
 
         public EmailMessageBuilder WithAttachment(Windows.Storage.IStorageFile file)
         {

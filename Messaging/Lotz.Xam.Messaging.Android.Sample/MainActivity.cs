@@ -4,7 +4,6 @@ using Android.Content;
 using Android.OS;
 using Android.Widget;
 using Xamarin.Media;
-using Plugin.Messaging;
 
 namespace Plugin.Messaging.Sample.Android
 {
@@ -70,7 +69,6 @@ namespace Plugin.Messaging.Sample.Android
                 return;
 
             MediaFile file = await data.GetMediaFileExtraAsync(this);
-
             var email = SamplesExtensions.BuildSampleEmail()
                 .WithAttachment(file.Path)
                 .Build();

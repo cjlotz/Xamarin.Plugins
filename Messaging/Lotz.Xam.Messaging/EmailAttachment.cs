@@ -1,59 +1,84 @@
 ﻿using System;
 using System.IO;
 
-namespace Lotz.Xam.Messaging
+namespace Plugin.Messaging
 {
-    public class EmailAttachment
+    public class EmailAttachment : IEmailAttachment
     {
-        /// <summary>
-        ///     Create a new attachment. Use on Android platform or WinPhoneRT as we
-        ///     only require the file.
-        /// </summary>
-        /// <param name="fileName">File location</param>
-        public EmailAttachment(string fileName)
-        {
-            if (string.IsNullOrWhiteSpace(fileName))
-                throw new ArgumentNullException("fileName");
 
-            FileName = fileName;
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
+
+        public EmailAttachment(Windows.Storage.IStorageFile file)
+        {
+            if (file == null)
+                throw new ArgumentNullException(nameof(file));
+
+            File = file;
+            FilePath = file.Path;
+            FileName = file.Name;
+            ContentType = file.ContentType;
         }
 
-        /// <summary>
-        ///     Create a new attachment.  Use on iOS platform as we require all
-        ///     parameter info
-        /// </summary>
-        /// <param name="fileName">File location</param>
-        /// <param name="content">File contents</param>
-        /// <param name="contentType">File content type</param>
-        public EmailAttachment(string fileName, Stream content, string contentType)
-            : this(fileName)
-        {
-            if (content == null)
-                throw new ArgumentNullException("content");
-            
-            if (string.IsNullOrWhiteSpace(contentType))
-                throw new ArgumentNullException("contentType");
+        public Windows.Storage.IStorageFile File { get; }
 
+#elif __ANDROID__
+
+        public EmailAttachment(string filePath)
+        {
+            if (string.IsNullOrWhiteSpace(filePath))
+                throw new ArgumentNullException(nameof(filePath));
+
+            string extension = Android.Webkit.MimeTypeMap.GetFileExtensionFromUrl(filePath);
+            string contentType = Android.Webkit.MimeTypeMap.Singleton.GetMimeTypeFromExtension(extension);
+
+            FilePath = filePath;
+            FileName = Path.GetFileName(filePath);
+            ContentType = contentType;
+        }
+
+#elif __IOS__
+
+        public EmailAttachment(string fileName, Stream content, string contentType)
+        {
+            if (string.IsNullOrWhiteSpace(fileName))
+                throw new ArgumentNullException(nameof(fileName));
+
+            if (content == null)
+                throw new ArgumentNullException(nameof(content));
+
+            if (string.IsNullOrWhiteSpace(contentType))
+                throw new ArgumentNullException(nameof(contentType));
+
+            FileName = fileName;
             Content = content;
             ContentType = contentType;
         }
 
-        #region Properties
+        public Stream Content { get; }
+#endif
 
-        /// <summary>
-        ///     Gets or sets the file content. Required on iOS.
-        /// </summary>
-        public Stream Content { get; private set; }
+#if !WINDOWS_PHONE_APP || !WINDOWS_UWP
 
-        /// <summary>
-        ///     Gets the file content type. Required on iOS.
-        /// </summary>
-        public string ContentType { get; private set; }
+        public EmailAttachment(string filePath, string contentType) 
+        {
+            if (string.IsNullOrWhiteSpace(filePath))
+                throw new ArgumentNullException(nameof(filePath));
 
-        /// <summary>
-        ///     Gets the file location.
-        /// </summary>
-        public string FileName { get; private set; }
+            if (string.IsNullOrWhiteSpace(contentType))
+                throw new ArgumentNullException(nameof(contentType));
+
+            FilePath = filePath;
+            FileName = Path.GetFileName(filePath);
+            ContentType = contentType;
+        }
+
+#endif
+
+        #region IEmailAttachment Members
+
+        public string ContentType { get; }
+        public string FileName { get; }
+        public string FilePath { get; }
 
         #endregion
     }

@@ -1,6 +1,7 @@
 ﻿// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,8 +27,9 @@ namespace Plugin.Messaging.Sample.WinPhoneRT
         {
             if (args.Files.Count > 0)
             {
+                IStorageFile file = args.Files[0];
                 var email = SamplesExtensions.BuildSampleEmail()
-                    .WithAttachment(args.Files[0])
+                    .WithAttachment(file)
                     .Build();
 
                 MessagingPlugin.EmailMessenger.SendSampleEmail(email);

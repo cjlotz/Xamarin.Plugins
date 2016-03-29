@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Lotz.Xam.Messaging.Android.Sample")]
+[assembly: AssemblyTitle("Plugin.Messaging.Android.Sample")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Lotz.Xam.Messaging.Android.Sample")]
+[assembly: AssemblyProduct("Plugin.Messaging.Android.Sample")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

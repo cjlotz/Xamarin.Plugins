@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Plugin.Messaging</RootNamespace>
-    <AssemblyName>Lotz.Xam.Messaging</AssemblyName>
+    <AssemblyName>Plugin.Messaging</AssemblyName>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -40,7 +40,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>Bin\Release\Lotz.Xam.Messaging.XML</DocumentationFile>
+    <DocumentationFile>Bin\Release\Plugin.Messaging.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -88,6 +88,9 @@
   <ItemGroup>
     <Compile Include="..\Common\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Lotz.Xam.Messaging\EmailAttachment.cs">
+      <Link>EmailAttachment.cs</Link>
     </Compile>
     <Compile Include="..\Lotz.Xam.Messaging\EmailMessage.cs">
       <Link>EmailMessage.cs</Link>

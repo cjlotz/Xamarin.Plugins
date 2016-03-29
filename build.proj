@@ -13,7 +13,7 @@
   
   <PropertyGroup>
     <MajorVersion Condition="'$(MajorVersion)' == ''">3</MajorVersion>
-    <MinorVersion Condition="'$(MinorVersion)' == ''">0</MinorVersion>
+    <MinorVersion Condition="'$(MinorVersion)' == ''">1</MinorVersion>
     <Build Condition="'$(Build)' == ''">0</Build>
     <Revision Condition="'$(Revision)' == ''">0</Revision>
     

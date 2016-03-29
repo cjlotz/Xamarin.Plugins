@@ -23,7 +23,7 @@ namespace Plugin.Messaging
             {
                 // UIApplication.SharedApplication.CanOpenUrl does not validate the URL, it merely checks whether a handler for
                 // the URL has been installed on the system. Therefore string.Empty can be used as phone number.
-                var nsurl = CreateNSUrl(string.Empty);
+                var nsurl = CreateNsUrl(string.Empty);
                 return UIApplication.SharedApplication.CanOpenUrl(nsurl);
             }
         }
@@ -31,16 +31,16 @@ namespace Plugin.Messaging
         public void MakePhoneCall(string number, string name = null)
         {
             if (string.IsNullOrWhiteSpace(number))
-                throw new ArgumentNullException("number");
+                throw new ArgumentNullException(nameof(number));
 
             if (CanMakePhoneCall)
             {
-                var nsurl = CreateNSUrl(number);
+                var nsurl = CreateNsUrl(number);
                 UIApplication.SharedApplication.OpenUrl(nsurl);                
             }
         }
 
-        private NSUrl CreateNSUrl(string number)
+        private NSUrl CreateNsUrl(string number)
         {
             return new NSUrl(new Uri($"tel:{number}").AbsoluteUri);
         }
