@@ -1,0 +1,30 @@
+id: Xam.Plugins.Messaging
+name: Messaging Plugin for Xamarin and Windows
+publisher: Carel Lotz
+publisher-url: http://www.twitter.com/cjlotz
+summary: Xamarin and Windows plugin to make phone call, send sms or send an e-mail.
+version: 3.1.0.0
+src-url: https://github.com/cjlotz/Xamarin.Plugins
+
+details: ../Details.md
+license: ../LICENSE.md
+getting-started: ../Details.md
+
+is_shell: true
+no_build: true
+packages:
+  winphone-8.0: Xam.Plugins.Messaging, Version=3.1.0.0
+  winphone-8.1: Xam.Plugins.Messaging, Version=3.1.0.0
+  android: Xam.Plugins.Messaging, Version=3.1.0.0
+  ios: Xam.Plugins.Messaging, Version=3.1.0.0
+  ios-unified: Xam.Plugins.Messaging, Version=3.1.0.0
+  mobile: Xam.Plugins.Messaging, Version=3.1.0.0
+local-nuget-repo: ../Output/
+
+icons: 
+  - Messaging_128x128.png
+  - Messaging_256x256.png
+  
+samples: 
+  - name: Messaging Samples (iOS, Android and Windows)
+    path: ../Plugin.Messaging.Samples.sln

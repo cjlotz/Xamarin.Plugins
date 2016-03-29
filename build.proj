@@ -16,33 +16,38 @@
     <MinorVersion Condition="'$(MinorVersion)' == ''">1</MinorVersion>
     <Build Condition="'$(Build)' == ''">0</Build>
     <Revision Condition="'$(Revision)' == ''">0</Revision>
-    
-    <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(Build).$(Revision)</AssemblyVersion>
-    <AssemblyFileVersion>$(MajorVersion).$(MinorVersion).$(Build).$(Revision)</AssemblyFileVersion>
-    <AssemblyInformationalVersion Condition="'$(Prerelease)' == ''">$(MajorVersion).$(MinorVersion).$(Build)</AssemblyInformationalVersion>
-    <AssemblyInformationalVersion Condition="'$(Prerelease)' != ''">$(MajorVersion).$(MinorVersion).$(Build)-$(Prerelease)</AssemblyInformationalVersion>
-    <PackageVersion Condition="'$(Prerelease)' == ''">$(MajorVersion).$(MinorVersion).$(Build)</PackageVersion>
-    <PackageVersion Condition="'$(Prerelease)' != ''">$(MajorVersion).$(MinorVersion).$(Build)-$(Prerelease)</PackageVersion>
+
+    <GlobalAssemblyInfoPath>$(XamarinPluginPath)\Plugin.$(XamarinPluginName).Shared\GlobalAssemblyInfo.cs</GlobalAssemblyInfoPath>
+    <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(Revision).$(Build)</AssemblyVersion>
+    <AssemblyFileVersion>$(MajorVersion).$(MinorVersion).$(Revision).$(Build)</AssemblyFileVersion>
+    <AssemblyInformationalVersion Condition="'$(Prerelease)' == ''">$(MajorVersion).$(MinorVersion).$(Revision)</AssemblyInformationalVersion>
+    <AssemblyInformationalVersion Condition="'$(Prerelease)' != ''">$(MajorVersion).$(MinorVersion).$(Revision)-$(Prerelease)</AssemblyInformationalVersion>
+    <PackageVersion Condition="'$(Prerelease)' == ''">$(MajorVersion).$(MinorVersion).$(Revision)</PackageVersion>
+    <PackageVersion Condition="'$(Prerelease)' != ''">$(MajorVersion).$(MinorVersion).$(Revision)-$(Prerelease)</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <RegexTransform Include="$(XamarinPluginPath)\Common\GlobalAssemblyInfo.cs">
+    <RegexTransform Include="$(GlobalAssemblyInfoPath)">
       <Find>AssemblyVersion\("\d+\.\d+\.\d+\.\d+"\)</Find>
       <ReplaceWith>AssemblyVersion("$(AssemblyVersion)")</ReplaceWith>
     </RegexTransform>
-    <RegexTransform Include="$(XamarinPluginPath)\Common\GlobalAssemblyInfo.cs">
+    <RegexTransform Include="$(GlobalAssemblyInfoPath)">
       <Find>AssemblyFileVersion\("\d+\.\d+\.\d+\.\d+"\)</Find>
       <ReplaceWith>AssemblyFileVersion("$(AssemblyFileVersion)")</ReplaceWith>
     </RegexTransform>
-    <RegexTransform Include="$(XamarinPluginPath)\Common\GlobalAssemblyInfo.cs">
+    <RegexTransform Include="$(GlobalAssemblyInfoPath)">
       <Find>AssemblyInformationalVersion\("\d+\.\d+\.\d+(?:-\w+)*"\)</Find>
       <ReplaceWith>AssemblyInformationalVersion("$(AssemblyInformationalVersion)")</ReplaceWith>
     </RegexTransform>
-    <RegexTransform Include="$(XamarinPluginPath)\Common\component.yaml">
+    <RegexTransform Include="$(XamarinPluginPath)\Plugin.$(XamarinPluginName).nuspec">
+      <Find>&lt;version&gt;\d+\.\d+\.\d+</Find>
+      <ReplaceWith>&lt;version&gt;$(MajorVersion).$(MinorVersion).$(Revision)</ReplaceWith>
+    </RegexTransform>    
+    <RegexTransform Include="$(XamarinPluginPath)\Component\component.yaml">
       <Find>version: \d+\.\d+\.\d+\.\d+</Find>
       <ReplaceWith>version: $(AssemblyFileVersion)</ReplaceWith>
     </RegexTransform>
-    <RegexTransform Include="$(XamarinPluginPath)\Common\component.yaml">
+    <RegexTransform Include="$(XamarinPluginPath)\Component\component.yaml">
       <Find>Xam.Plugins.$(XamarinPluginName), Version=\d+\.\d+\.\d+\.\d+</Find>
       <ReplaceWith>Xam.Plugins.$(XamarinPluginName), Version=$(AssemblyFileVersion)</ReplaceWith>
     </RegexTransform>
@@ -50,7 +55,7 @@
 
   <PropertyGroup>
     <BuildDependsOn>RestorePackages;UpdateVersion</BuildDependsOn>
-    <SolutionName Condition="'$(SolutionName)' == ''">$(XamarinPluginPath)\Lotz.Xam.$(XamarinPluginName).sln</SolutionName>
+    <SolutionName Condition="'$(SolutionName)' == ''">$(XamarinPluginPath)\Plugin.$(XamarinPluginName).sln</SolutionName>
   </PropertyGroup>
 
   <Target Name="Build" DependsOnTargets="$(BuildDependsOn)">
@@ -78,13 +83,13 @@
 
   <Target Name="BuildPackage" DependsOnTargets="Build">
     <MakeDir Directories="$(XamarinPluginPath)\Output" Condition="!Exists('$(XamarinPluginPath)\Output')" />
-    <Exec Command="&quot;$(NuGetExe)&quot; pack $(XamarinPluginPath)\Common\Xam.Plugins.$(XamarinPluginName).nuspec -NoPackageAnalysis -o &quot;$(XamarinPluginPath)\Output&quot; -Version $(PackageVersion)" />
+    <Exec Command="&quot;$(NuGetExe)&quot; pack $(XamarinPluginPath)\Plugin.$(XamarinPluginName).nuspec -NoPackageAnalysis -o &quot;$(XamarinPluginPath)\Output&quot; -Version $(PackageVersion)" />
   </Target>
 
   <Target Name="BuildComponent" DependsOnTargets="BuildPackage">
     <MakeDir Directories="$(XamarinPluginPath)\Output" Condition="!Exists('$(XamarinPluginPath)\Output')" />
-    <Exec Command="&quot;$(XamarinComponentExe)&quot; package $(XamarinPluginPath)\Common\ " />
-    <Move SourceFiles="$(XamarinPluginPath)\Common\Xam.Plugins.$(XamarinPluginName)-$(AssemblyFileVersion).xam" DestinationFolder="$(XamarinPluginPath)\Output" />
+    <Exec Command="&quot;$(XamarinComponentExe)&quot; package $(XamarinPluginPath)\Component\ " />
+    <Move SourceFiles="$(XamarinPluginPath)\Component\Xam.Plugins.$(XamarinPluginName)-$(AssemblyFileVersion).xam" DestinationFolder="$(XamarinPluginPath)\Output" />
   </Target>
   
 </Project>
