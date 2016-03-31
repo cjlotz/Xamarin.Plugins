@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "Xam.Plugins.Messaging": "3.2.1"
+    "Xam.Plugins.Messaging": "3.2.0-Beta"
   },
   "frameworks": {
     "uap10.0": {}

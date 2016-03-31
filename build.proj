@@ -13,9 +13,9 @@
   
   <PropertyGroup>
     <MajorVersion Condition="'$(MajorVersion)' == ''">3</MajorVersion>
-    <MinorVersion Condition="'$(MinorVersion)' == ''">2</MinorVersion>
-    <Revision Condition="'$(Revision)' == ''">0</Revision>
+    <MinorVersion Condition="'$(MinorVersion)' == ''">1</MinorVersion>
     <Build Condition="'$(Build)' == ''">0</Build>
+    <Revision Condition="'$(Revision)' == ''">0</Revision>
 
     <GlobalAssemblyInfoPath>$(XamarinPluginPath)\Plugin.$(XamarinPluginName).Shared\GlobalAssemblyInfo.cs</GlobalAssemblyInfoPath>
     <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(Revision).$(Build)</AssemblyVersion>
