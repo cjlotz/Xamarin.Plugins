@@ -5,6 +5,7 @@ namespace Plugin.Messaging
     /// <summary>
     ///     Container API for accessing the various Messaging plugin task API's
     /// </summary>
+    [Obsolete("Use CrossMessaging instead")]
     public static class MessagingPlugin
     {
         #region Properties

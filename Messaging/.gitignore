@@ -20,6 +20,7 @@ bld/
 *.csproj.bak
 # Roslyn cache directories
 *.ide/
+*.xam
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
