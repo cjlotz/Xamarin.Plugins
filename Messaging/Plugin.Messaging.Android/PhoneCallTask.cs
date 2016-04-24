@@ -15,7 +15,13 @@ namespace Plugin.Messaging
 
         public bool CanMakePhoneCall
         {
-            get { return true; }
+            get
+            {
+                var packageManager = Android.App.Application.Context.PackageManager;
+                var dialIntent = new Intent(Intent.ActionDial);
+
+                return null != dialIntent.ResolveActivity(packageManager);
+            }
         }
 
         public void MakePhoneCall(string number, string name = null)
