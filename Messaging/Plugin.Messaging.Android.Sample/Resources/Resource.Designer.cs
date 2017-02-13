@@ -60,20 +60,20 @@ namespace Plugin.Messaging.Sample.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int ButtonMakePhoneCall = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int ButtonMakePhoneCall = 2131099648;
 			
-			// aapt resource value: 0x7f050003
-			public const int ButtonSendAttachmentEmail = 2131034115;
+			// aapt resource value: 0x7f060003
+			public const int ButtonSendAttachmentEmail = 2131099651;
 			
-			// aapt resource value: 0x7f050001
-			public const int ButtonSendEmail = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int ButtonSendEmail = 2131099649;
 			
-			// aapt resource value: 0x7f050002
-			public const int ButtonSendHtmlEmail = 2131034114;
+			// aapt resource value: 0x7f060002
+			public const int ButtonSendHtmlEmail = 2131099650;
 			
-			// aapt resource value: 0x7f050004
-			public const int ButtonSendSms = 2131034116;
+			// aapt resource value: 0x7f060004
+			public const int ButtonSendSms = 2131099652;
 			
 			static Id()
 			{
@@ -104,11 +104,11 @@ namespace Plugin.Messaging.Sample.Android
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
 			
 			static String()
 			{
@@ -116,6 +116,22 @@ namespace Plugin.Messaging.Sample.Android
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Xml
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int file_paths = 2130968576;
+			
+			static Xml()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Xml()
 			{
 			}
 		}

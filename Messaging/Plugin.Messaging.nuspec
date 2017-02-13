@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>3.5.0</version>
+       <version>4.0.0</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
@@ -22,6 +22,10 @@
           </group>       
        </dependencies>
        <releaseNotes>
+[4.0.0]
+- Android: Add support for using FileProvider to add attachments using content Uri's on Android Nougat and later
+- Breaking Change: Remove iOS Classic support
+- Breaking Change: Remove Windows Phone 8.0 and 8.1 support
 [3.2.1]
 - Add EmailMessageBuilder.WithAttachment overload to add attachments directly from within PCL code (Android/iOS only)
 - Add additional IEmailTask.CanSendEmailAttachments, IEMailTask.CanSendEmailBodyAsHtml
@@ -55,7 +59,7 @@
 - Added IEmailTask.SendEmail overload to make it easier to send simple email request
 - Added Windows Store assembly. Does not support making phone calls or sending sms and only partial e-mail support via mailto protocol.
        </releaseNotes>
-       <tags>xamarin, xamarin.forms, android, ios, windows phone, winrt, email, sms, phonedialer</tags>
+       <tags>xamarin, xamarin.forms, android, ios, winrt, email, sms, phonedialer</tags>
    </metadata>
    <files>
      <!--Core-->
@@ -73,22 +77,6 @@
      <file src="Plugin.Messaging.WinStore\bin\Release\Plugin.Messaging.dll" target="lib\win8\Plugin.Messaging.dll" />
      <file src="Plugin.Messaging.WinStore\bin\Release\Plugin.Messaging.xml" target="lib\win8\Plugin.Messaging.xml" />
      <file src="Plugin.Messaging.WinStore\bin\Release\Plugin.Messaging.pdb" target="lib\win8\Plugin.Messaging.pdb" />
-
-     <!--Win Phone RT-->
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\wpa81\Plugin.Messaging.Abstractions.dll" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\wpa81\Plugin.Messaging.Abstractions.xml" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\wpa81\Plugin.Messaging.Abstractions.pdb" />
-     <file src="Plugin.Messaging.WinPhoneRT\bin\Release\Plugin.Messaging.dll" target="lib\wpa81\Plugin.Messaging.dll" />
-     <file src="Plugin.Messaging.WinPhoneRT\bin\Release\Plugin.Messaging.xml" target="lib\wpa81\Plugin.Messaging.xml" />
-     <file src="Plugin.Messaging.WinPhoneRT\bin\Release\Plugin.Messaging.pdb" target="lib\wpa81\Plugin.Messaging.pdb" />
-     
-     <!--Win Phone-->
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\wp8\Plugin.Messaging.Abstractions.dll" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\wp8\Plugin.Messaging.Abstractions.xml" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\wp8\Plugin.Messaging.Abstractions.pdb" />
-     <file src="Plugin.Messaging.WinPhone\bin\Release\Plugin.Messaging.dll" target="lib\wp8\Plugin.Messaging.dll" />
-     <file src="Plugin.Messaging.WinPhone\bin\Release\Plugin.Messaging.xml" target="lib\wp8\Plugin.Messaging.xml" />
-     <file src="Plugin.Messaging.WinPhone\bin\Release\Plugin.Messaging.pdb" target="lib\wp8\Plugin.Messaging.pdb" />
      
      <!--Xamarin.Android-->
      <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\MonoAndroid10\Plugin.Messaging.Abstractions.dll" />

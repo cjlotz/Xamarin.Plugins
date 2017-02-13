@@ -76,36 +76,29 @@ namespace Plugin.Messaging
 
                     var attachments = email.Attachments.Cast<EmailAttachment>().ToList();
 
-                    if (targetSdk < 24)
+                    var uris = new List<IParcelable>();
+                    foreach (var attachment in attachments)
                     {
-                        var uris = new List<IParcelable>();
-                        foreach (var attachment in attachments)
+                        if (targetSdk < 24)
                         {
                             var uri = Uri.Parse("file://" + attachment.FilePath);
                             uris.Add(uri);
                         }
-
-                        if (uris.Count > 1)
-                            emailIntent.PutParcelableArrayListExtra(Intent.ExtraStream, uris);
                         else
-                            emailIntent.PutExtra(Intent.ExtraStream, uris[0]);
-                    }
-                    else
-                    {
-                        ClipData clipData = null;
-                        foreach (var attachment in attachments)
                         {
-                            var uri = FileProvider.GetUriForFile(Application.Context, Application.Context.PackageName + ".fileprovider", new Java.IO.File(attachment.FilePath));
-
-                            string label = attachment.FileName;
-                            if (clipData == null)
-                                clipData = ClipData.NewRawUri(label, uri);
-                            else
-                                clipData.AddItem(new ClipData.Item(uri));
+                            var uri = FileProvider.GetUriForFile(Application.Context,
+                                Application.Context.PackageName + ".fileprovider",
+                                new Java.IO.File(attachment.FilePath));
+                            uris.Add(uri);
                         }
-
-                        emailIntent.SetFlags(ActivityFlags.GrantReadUriPermission);
                     }
+
+                    if (uris.Count > 1)
+                        emailIntent.PutParcelableArrayListExtra(Intent.ExtraStream, uris);
+                    else
+                        emailIntent.PutExtra(Intent.ExtraStream, uris[0]);
+
+                    emailIntent.AddFlags(ActivityFlags.GrantReadUriPermission);
                 }
 
                 emailIntent.StartNewActivity();
