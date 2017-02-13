@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Messaging.Abstractions", "Plugin.Messaging.Abstractions\Plugin.Messaging.Abstractions.csproj", "{B4292775-3BB9-4FF2-8D20-B3D483BF1701}"
 EndProject
@@ -14,8 +14,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Messaging.WinPhone",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Messaging.iOSUnified", "Plugin.Messaging.iOSUnified\Plugin.Messaging.iOSUnified.csproj", "{805582FD-96E6-47B9-88AD-AEB97E2226C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Messaging.iOS", "Plugin.Messaging.iOS\Plugin.Messaging.iOS.csproj", "{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Messaging.WinStore", "Plugin.Messaging.WinStore\Plugin.Messaging.WinStore.csproj", "{ABC36F16-6973-4EDF-8691-B368495491E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Messaging.UWP", "Plugin.Messaging.UWP\Plugin.Messaging.UWP.csproj", "{4CDDCB48-AD3F-4C62-AD13-C004260DF40B}"
@@ -24,16 +22,15 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Plugin.Messaging.Shared", "
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{d7cbc241-00c2-43b5-bc9d-5bf5c66ef1b9}*SharedItemsImports = 4
-		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{97194a4f-4123-41df-94d6-45c0b64c687b}*SharedItemsImports = 4
-		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{805582fd-96e6-47b9-88ad-aeb97e2226c8}*SharedItemsImports = 4
-		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{f419ad4f-942a-4fe7-8e90-6e15bd85c1d0}*SharedItemsImports = 4
-		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{4cddcb48-ad3f-4c62-ad13-c004260df40b}*SharedItemsImports = 4
-		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{b4292775-3bb9-4ff2-8d20-b3d483bf1701}*SharedItemsImports = 4
 		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{1b90d67a-34ef-4e81-bac6-72c117c3643f}*SharedItemsImports = 4
-		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{f6af2061-8eae-4a8f-ba87-174045993f2c}*SharedItemsImports = 4
+		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{4cddcb48-ad3f-4c62-ad13-c004260df40b}*SharedItemsImports = 4
+		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{805582fd-96e6-47b9-88ad-aeb97e2226c8}*SharedItemsImports = 4
+		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{97194a4f-4123-41df-94d6-45c0b64c687b}*SharedItemsImports = 4
 		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{abc36f16-6973-4edf-8691-b368495491e2}*SharedItemsImports = 4
 		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{aca97c41-09fc-409d-848e-dd3acdc7a57b}*SharedItemsImports = 13
+		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{b4292775-3bb9-4ff2-8d20-b3d483bf1701}*SharedItemsImports = 4
+		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{f419ad4f-942a-4fe7-8e90-6e15bd85c1d0}*SharedItemsImports = 4
+		Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems*{f6af2061-8eae-4a8f-ba87-174045993f2c}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,22 +139,6 @@ Global
 		{805582FD-96E6-47B9-88AD-AEB97E2226C8}.Release|x64.Build.0 = Release|Any CPU
 		{805582FD-96E6-47B9-88AD-AEB97E2226C8}.Release|x86.ActiveCfg = Release|Any CPU
 		{805582FD-96E6-47B9-88AD-AEB97E2226C8}.Release|x86.Build.0 = Release|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|ARM.Build.0 = Debug|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|x64.Build.0 = Debug|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Debug|x86.Build.0 = Debug|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|ARM.ActiveCfg = Release|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|ARM.Build.0 = Release|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|x64.ActiveCfg = Release|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|x64.Build.0 = Release|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|x86.ActiveCfg = Release|Any CPU
-		{D7CBC241-00C2-43B5-BC9D-5BF5C66EF1B9}.Release|x86.Build.0 = Release|Any CPU
 		{ABC36F16-6973-4EDF-8691-B368495491E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABC36F16-6973-4EDF-8691-B368495491E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABC36F16-6973-4EDF-8691-B368495491E2}.Debug|ARM.ActiveCfg = Debug|ARM

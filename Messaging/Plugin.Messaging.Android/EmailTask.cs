@@ -4,6 +4,10 @@ using Android.Content;
 using Android.OS;
 using Android.Text;
 using System.Linq;
+using Android.App;
+using Android.Support.V4.Content;
+using Exception = System.Exception;
+using Uri = Android.Net.Uri;
 
 namespace Plugin.Messaging
 {
@@ -68,17 +72,40 @@ namespace Plugin.Messaging
 
                 if (email.Attachments.Count > 0)
                 {
-                    var uris = new List<IParcelable>();
-                    foreach (var attachment in email.Attachments.Cast<EmailAttachment>())
-                    {
-                        var uri = Android.Net.Uri.Parse("file://" + attachment.FilePath);
-                        uris.Add(uri);
-                    }
+                    int targetSdk = ResolvePackageTargetSdkVersion();
 
-                    if (uris.Count > 1)
-                        emailIntent.PutParcelableArrayListExtra(Intent.ExtraStream, uris);
+                    var attachments = email.Attachments.Cast<EmailAttachment>().ToList();
+
+                    if (targetSdk < 24)
+                    {
+                        var uris = new List<IParcelable>();
+                        foreach (var attachment in attachments)
+                        {
+                            var uri = Uri.Parse("file://" + attachment.FilePath);
+                            uris.Add(uri);
+                        }
+
+                        if (uris.Count > 1)
+                            emailIntent.PutParcelableArrayListExtra(Intent.ExtraStream, uris);
+                        else
+                            emailIntent.PutExtra(Intent.ExtraStream, uris[0]);
+                    }
                     else
-                        emailIntent.PutExtra(Intent.ExtraStream, uris[0]);
+                    {
+                        ClipData clipData = null;
+                        foreach (var attachment in attachments)
+                        {
+                            var uri = FileProvider.GetUriForFile(Application.Context, Application.Context.PackageName + ".fileprovider", new Java.IO.File(attachment.FilePath));
+
+                            string label = attachment.FileName;
+                            if (clipData == null)
+                                clipData = ClipData.NewRawUri(label, uri);
+                            else
+                                clipData.AddItem(new ClipData.Item(uri));
+                        }
+
+                        emailIntent.SetFlags(ActivityFlags.GrantReadUriPermission);
+                    }
                 }
 
                 emailIntent.StartNewActivity();
@@ -88,6 +115,22 @@ namespace Plugin.Messaging
         public void SendEmail(string to, string subject, string message)
         {
             SendEmail(new EmailMessage(to, subject, message));
+        }
+
+        private int ResolvePackageTargetSdkVersion()
+        {
+            int sdkVersion;
+			try
+			{
+			    sdkVersion = (int) Application.Context.ApplicationInfo.TargetSdkVersion;
+			}
+			catch(Exception)
+			{
+				var appInfo = Application.Context.PackageManager.GetApplicationInfo(Application.Context.PackageName, 0);
+				sdkVersion = (int)appInfo.TargetSdkVersion;
+			}
+
+            return sdkVersion;
         }
 
         #endregion
