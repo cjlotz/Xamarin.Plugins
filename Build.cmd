@@ -1,1 +1,0 @@
-msbuild build.proj /p:MajorVersion=4;MinorVersion=0;Revision=0;Build=0;Prerelease=alpha /v:minimal

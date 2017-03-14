@@ -11,59 +11,45 @@ The Messaging plugin makes it possible to make a phone call, send a sms or send 
 
 |Platform|Supported|Version|
 | ------------------- | :-----------: | :------------------: |
-|Xamarin.iOS|Yes|iOS 7+|
+|Xamarin.iOS|No||
 |Xamarin.iOS Unified|Yes|iOS 7+|
-|Xamarin.Android|Yes|API 9+|
-|Windows Phone Silverlight|Yes|8.0+|
-|Windows Phone RT|Yes|8.1+|
+|Xamarin.Android|Yes|API 14+|
+|Windows Phone Silverlight|No||
+|Windows Phone RT|No||
 |Windows Store RT|Yes|8.1+|
 |Windows 10 UWP|Yes|10+|
 |Xamarin.Mac|No||
 
+### Release Notes
+Change log history [available here](ChangeLog.md)
+
 ### API Usage
 Full details on the API [are available here](Details.md)
 
-### Release Notes
-[3.2.1]
-- Add ```EmailMessageBuilder.WithAttachment``` overload to add attachments directly from within PCL code (Android/iOS only)
-- Add additional ```IEmailTask.CanSendEmailAttachments```, ```IEMailTask.CanSendEmailBodyAsHtml```
-- Add ```CrossMessaging``` singleton as alternative to ```MessagingPlugin``` to access API features
-- Rename assemblies to ```Plugin.Messaging```
+#### Android Nougat
 
-[3.0.0]
-- Add UWP Support
-- **Breaking Change**: Change namespace to ```Plugin.Messaging```
+If your application targets Android N (API 24) or newer, you must use version 4.0.0+ that has support for using a [File Provider](https://developer.android.com/reference/android/support/v4/content/FileProvider.html) for adding atttachments due to the file system permission changes introduced with Android N.
 
-[2.3.0]
-- Allow specifying empty/null text and subject for Sms, Email
-- Fix for finding correct ```UIVIewController``` on iOS
+You also need to add a few additional configuration files to adhere to the new strict mode:
 
-[2.2.1]
-- Allow specifying multiple email attachments for Android
-- Resolved issued with ```CanSendEmail``` not working on Android 5.0 and later
+1.  Add the following to your `AndroidManifest.xml` inside the `<application>` tags:
+```
+<provider android:name="android.support.v4.content.FileProvider" 
+          android:authorities="YOUR_APP_PACKAGE_NAME.fileprovider" 
+          android:exported="false" 
+          android:grantUriPermissions="true">
+   <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
+</provider>
+```  
+**YOUR_APP_PACKAGE_NAME** must be set to your app package name!
 
-[2.1.0]
-- Allow specifying empty/null recipient for Sms, Email
-
-[2.0.1]
-- Resolved issued with Bcc being added to Cc recipients
-
-[2.0]
-- Added support for attachments via ```IEmailAttachment``` abstraction (supported on Android, iOS and WinPhone RT only)
-- Added ```IEmailMessage``` abstraction
-- **Breaking change**: Deprecated ```EmailMessageRequest```. Construct ```IEmailMessage``` using ```EmailMessageBuilder``` instead.
-- **Breaking change**: Changed ```IEmailTask.SendMail``` overload to use ```IEmailMessage```.
-
-[1.4]
-- Added HTML support (**Android/iOS only**)
-
-[1.3]
-- Added new ```EmailMessageBuilder```
-
-[1.2]
-- Added new ```IPhoneCallTask.CanMakePhoneCall```
-- Added ```IEmailTask.SendEmail`` overload to make it easier to send simple email request
-- Added Windows Store assembly. Does not support making phone calls or sending sms and only partial e-mail support via ```mailto``` protocol.
+1. Add a new folder called `xml` into your *Resources* folder and add a new XML file called `file_paths.xml`.  Add the following code:
+```
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+	<external-path name="external_files" path="." />
+</paths>
+```
 
 ### Contributors
 * [cjlotz](https://github.com/cjlotz)

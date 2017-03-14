@@ -23,7 +23,7 @@ namespace Plugin.Messaging
         {
             get
             {
-                var mgr = Android.App.Application.Context.PackageManager;
+                var mgr = Application.Context.PackageManager;
                 var emailIntent = new Intent(Intent.ActionSend);
                 emailIntent.SetType("message/rfc822");
 
