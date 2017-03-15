@@ -32,7 +32,7 @@ If your application targets Android N (API 24) or newer, you must use version 4.
 
 You also need to add a few additional configuration files to adhere to the new strict mode:
 
-1.  Add the following to your `AndroidManifest.xml` inside the `<application>` tags:
+*  Add the following to your `AndroidManifest.xml` inside the `<application>` tags (**YOUR_APP_PACKAGE_NAME** must be set to your app package name):
 ```
 <provider android:name="android.support.v4.content.FileProvider" 
           android:authorities="YOUR_APP_PACKAGE_NAME.fileprovider" 
@@ -41,9 +41,7 @@ You also need to add a few additional configuration files to adhere to the new s
    <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 </provider>
 ```  
-**YOUR_APP_PACKAGE_NAME** must be set to your app package name!
-
-1. Add a new folder called `xml` into your *Resources* folder and add a new XML file called `file_paths.xml`.  Add the following code:
+* Add a new folder called `xml` into your *Resources* folder and add a new XML file called `file_paths.xml`.  Add the following code:
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
