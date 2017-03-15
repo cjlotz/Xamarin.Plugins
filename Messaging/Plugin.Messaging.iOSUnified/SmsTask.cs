@@ -33,7 +33,11 @@ namespace Plugin.Messaging
                 _smsController = new MFMessageComposeViewController();
 
                 if (!string.IsNullOrWhiteSpace(recipient))
-                    _smsController.Recipients = new[] { recipient };
+                { 
+                    string[] recipients = recipient.Split(';'); 
+                    if (recipients != null && recipients.Length > 0)  
+                        _smsController.Recipients = recipients;
+                }
                 
                 _smsController.Body = message;
 
