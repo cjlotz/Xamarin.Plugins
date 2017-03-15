@@ -22,18 +22,12 @@ namespace Plugin.Messaging
 
         public bool CanSendEmailAttachments
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public bool CanSendEmailBodyAsHtml
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public void SendEmail(IEmailMessage email)
@@ -51,7 +45,7 @@ namespace Plugin.Messaging
                 var sb = new StringBuilder();
 
                 sb.AppendFormat(CultureInfo.InvariantCulture, "mailto:{0}?", ToDelimitedAddress(email.Recipients));
-                
+
                 if (email.RecipientsCc.Count > 0)
                     sb.AppendFormat(CultureInfo.InvariantCulture, "cc={0}&", ToDelimitedAddress(email.RecipientsCc));
 
@@ -81,6 +75,5 @@ namespace Plugin.Messaging
         }
 
         #endregion
-
     }
 }

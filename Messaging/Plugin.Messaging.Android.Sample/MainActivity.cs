@@ -28,12 +28,14 @@ namespace Plugin.Messaging.Sample.Android
             Button buttonSendHtmlEmail = FindViewById<Button>(Resource.Id.ButtonSendHtmlEmail);
             Button buttonSendAttachmentEmail = FindViewById<Button>(Resource.Id.ButtonSendAttachmentEmail);
             Button buttonSendSms = FindViewById<Button>(Resource.Id.ButtonSendSms);
+            Button buttonSendMultipleSms = FindViewById<Button>(Resource.Id.ButtonSendMultipleSms);
 
             buttonPhoneCall.Click += ButtonPhoneCall_Click;
             buttonSendEmail.Click += ButtonSendEmail_Click;
             buttonSendHtmlEmail.Click += ButtonSendHtmlEmail_Click;
             buttonSendAttachmentEmail.Click += ButtonSendAttachmentEmail_Click;
             buttonSendSms.Click += ButtonSendSms_Click;
+            buttonSendMultipleSms.Click += ButtonSendMultipleSms_Click;
         }
 
         #endregion
@@ -81,6 +83,13 @@ namespace Plugin.Messaging.Sample.Android
             // NOTE: requires android.permission.SEND_SMS permission in the Android manifest.
 
             CrossMessaging.Current.SmsMessenger.SendSampleSms();
+        }
+
+        private void ButtonSendMultipleSms_Click(object sender, EventArgs eventArgs)
+        {
+            // NOTE: requires android.permission.SEND_SMS permission in the Android manifest.
+
+            CrossMessaging.Current.SmsMessenger.SendSampleMultipleSms();
         }
 
         #endregion

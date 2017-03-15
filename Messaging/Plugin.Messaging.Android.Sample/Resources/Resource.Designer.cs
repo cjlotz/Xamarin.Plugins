@@ -72,6 +72,9 @@ namespace Plugin.Messaging.Sample.Android
 			// aapt resource value: 0x7f060002
 			public const int ButtonSendHtmlEmail = 2131099650;
 			
+			// aapt resource value: 0x7f060005
+			public const int ButtonSendMultipleSms = 2131099653;
+			
 			// aapt resource value: 0x7f060004
 			public const int ButtonSendSms = 2131099652;
 			

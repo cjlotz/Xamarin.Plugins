@@ -24,6 +24,7 @@ namespace Plugin.Messaging.Sample.iOSUnified
             ButtonSendHtmlEmail.TouchUpInside += ButtonSendHtmlEmail_TouchUpInside;
             ButtonSendAttachmentsEmail.TouchUpInside += ButtonSendAttachmentsEmail_TouchUpInside;
             ButtonSendSms.TouchUpInside += ButtonSendSms_TouchUpInside;
+            ButtonSendMultipleSMS.TouchUpInside += ButtonSendMultipleSms_TouchUpInside;
         }
 
         public override void ViewDidDisappear(bool animated)
@@ -35,6 +36,7 @@ namespace Plugin.Messaging.Sample.iOSUnified
             ButtonSendHtmlEmail.TouchUpInside -= ButtonSendHtmlEmail_TouchUpInside;
             ButtonSendAttachmentsEmail.TouchUpInside -= ButtonSendAttachmentsEmail_TouchUpInside;
             ButtonSendSms.TouchUpInside -= ButtonSendSms_TouchUpInside;
+            ButtonSendMultipleSMS.TouchUpInside -= ButtonSendMultipleSms_TouchUpInside;
         }
 
         #endregion
@@ -77,6 +79,11 @@ namespace Plugin.Messaging.Sample.iOSUnified
         private void ButtonSendSms_TouchUpInside(object o, EventArgs eventArgs)
         {
             CrossMessaging.Current.SmsMessenger.SendSampleSms();
+        }
+
+        private void ButtonSendMultipleSms_TouchUpInside(object o, EventArgs eventArgs)
+        {
+            CrossMessaging.Current.SmsMessenger.SendSampleMultipleSms();
         }
 
         #endregion

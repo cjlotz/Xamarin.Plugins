@@ -53,6 +53,14 @@
             }
         }
 
+        public static void SendSampleMultipleSms(this ISmsTask smsTask)
+        {
+            if (smsTask.CanSendSms)
+            {
+                smsTask.SendSms("+27213894892;+27213894493", "Well hello there from Xam.Messaging.Plugin");
+            }
+        }
+
         #endregion
     }
 }

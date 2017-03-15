@@ -67,6 +67,14 @@ namespace Plugin.Messaging.UWP.Sample
             CrossMessaging.Current.SmsMessenger.SendSampleSms();
         }
 
+        private void ButtonSendMultipleSms_OnClick(object sender, RoutedEventArgs e)
+        {
+            // NOTE: On Windows Phone Emulator, the SMS message always appears to be sent successfully, but the message is not actually sent. 
+            // The emulator uses Fake GSM and always has a false Subscriber Identity Module (SIM) card.
+
+            CrossMessaging.Current.SmsMessenger.SendSampleMultipleSms();
+        }
+
         #endregion
     }
 }

@@ -28,4 +28,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Send SMS" />
+    <Button
+      android:id="@+id/ButtonSendMultipleSms"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="Send SMS to multiple" />
 </LinearLayout>

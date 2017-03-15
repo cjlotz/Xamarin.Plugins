@@ -58,9 +58,31 @@ Task("Build")
             .WithProperty("Platform", platform));
 });
 
+Task("BuildSamples")
+    .IsDependentOn("RestoreNuGetPackages")
+    .Does(() =>
+{
+    Information($"Configuration: {configuration}");
+    Information($"Platform: {platform}");
+    
+    DotNetBuild($"./{projectName}.Samples.sln", settings =>
+        settings.SetConfiguration(configuration)
+			.SetVerbosity(Verbosity.Minimal)
+            .WithTarget("Build")
+            .WithProperty("TreatWarningsAsErrors", "false")
+            .WithProperty("Platform", platform));
+});
+
 Task("Rebuild")
 	.IsDependentOn("Clean")
 	.IsDependentOn("Build")
+    .Does(() =>
+{
+});
+
+Task("RebuildSamples")
+	.IsDependentOn("Clean")
+	.IsDependentOn("BuildSamples")
     .Does(() =>
 {
 });
