@@ -55,19 +55,33 @@ namespace Plugin.Messaging
 #endif
         }
 
+        /// <summary>
+        ///     Add the file located at <paramref name="filePath"/> as an attachment
+        /// </summary>
+        /// <param name="filePath">Full path to the file to attach</param>
+        /// <param name="contentType">File content type (image/jpeg etc.)</param>
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
+        /// <remarks>On Windows, apps cannot access files by <paramref name="filePath"/> unless they reside in <see cref="Windows.Storage.ApplicationData"/>. To attach any other file, use
+        /// <see cref="WithAttachment(Windows.Storage.IStorageFile)"/> overload.
+        /// </remarks>            
+#endif
         public EmailMessageBuilder WithAttachment(string filePath, string contentType)
         {
 #if WINDOWS_PHONE_APP || WINDOWS_UWP
-            try
+            var file = Task.Run(async () =>
             {
-                var file = Task.Run(async () => await Windows.Storage.StorageFile.GetFileFromPathAsync(filePath).AsTask().ConfigureAwait(false)).Result;
-                _email.Attachments.Add(new EmailAttachment(file));
-                return this;
-            }
-            catch(UnauthorizedAccessException ex)
-            {
-                throw new PlatformNotSupportedException("Windows apps cannot access files by filePath unless they reside in ApplicationData. Use the platform-specific WithAttachment(IStorageFile) overload instead.");
-            }
+                try
+                {
+                    var f = await Windows.Storage.StorageFile.GetFileFromPathAsync(filePath).AsTask().ConfigureAwait(false);
+                    return f;
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    throw new PlatformNotSupportedException("Windows apps cannot access files by filePath unless they reside in ApplicationData. Use the platform-specific WithAttachment(IStorageFile) overload instead.");
+                }
+            }).Result;
+            _email.Attachments.Add(new EmailAttachment(file));
+            return this;
 
 #elif __ANDROID__ || __IOS__
             _email.Attachments.Add(new EmailAttachment(filePath, contentType));
@@ -154,6 +168,6 @@ namespace Plugin.Messaging
             return this;
         }
 
-        #endregion
+#endregion
     }
 }

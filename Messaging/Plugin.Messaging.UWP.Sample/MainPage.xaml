@@ -24,9 +24,10 @@
             <StackPanel>
                 <Button x:Name="ButtonPhoneCall" Click="ButtonPhoneCall_OnClick">Make Phone Call</Button>
                 <Button x:Name="ButtonSendSms" Click="ButtonSendSms_OnClick">Send SMS</Button>
-                <Button x:Name="ButtonSendEmail" Click="ButtonSendEmail_OnClick">Send Email</Button>
-                <Button x:Name="ButtonSendAttachmentsEmail" Click="ButtonSendAttachmentsEmail_OnClick">Send Attachments Email</Button>
                 <Button x:Name="ButtonSendMultipleSms" Click="ButtonSendMultipleSms_OnClick">Send Multiple SMS</Button>
+                <Button x:Name="ButtonSendEmail" Click="ButtonSendEmail_OnClick">Send Email</Button>
+                <Button x:Name="ButtonSendAttachmentsEmail" Click="ButtonSendAttachmentsEmail_OnClick">Send Attachments Email (Platform API)</Button>
+                <Button x:Name="ButtonSendAttachmentsEmailPCL" Click="ButtonSendAttachmentsEmailPCL_OnClick">Send Attachments Email (PCL Api)</Button>
             </StackPanel>
         </Grid>
     </Grid>

@@ -8,7 +8,7 @@
         {
             if (phoneCall.CanMakePhoneCall)
             {
-                phoneCall.MakePhoneCall("+272193343499", "Xamarin Demo User");
+                phoneCall.MakePhoneCall("+27219330000", "Xamarin Demo User");
             }
         }
 
@@ -49,7 +49,7 @@
         {
             if (smsTask.CanSendSms)
             {
-                smsTask.SendSms("+27213894839493", "Well hello there from Xam.Messaging.Plugin");
+                smsTask.SendSms("+27219330000", "Well hello there from Xam.Messaging.Plugin");
             }
         }
 
@@ -57,7 +57,7 @@
         {
             if (smsTask.CanSendSms)
             {
-                smsTask.SendSms("+27213894892;+27213894493", "Well hello there from Xam.Messaging.Plugin");
+                smsTask.SendSms("+27219330000;+27219330001", "Well hello there from Xam.Messaging.Plugin");
             }
         }
 
