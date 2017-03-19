@@ -33,13 +33,13 @@ public interface IPhoneCallTask
 ```
 
 ### Using the API 
-The messaging API's can be accessed on the different mobile platforms using the `CrossMessaging` singleton or ```MessagingPlugin``` static class.  Here are some snippets to illustrate how to access the API from within an `Activity`, `UIViewController` or Windows `Page`.  
+The messaging API's can be accessed on the different mobile platforms using the `CrossMessaging` singleton or `MessagingPlugin` static class.  Have a look at the `Plugin.Messaging.Samples.sln` for samples that illustrate using the API on the different platforms. Here are some snippets from the samples that illustrate how to access the API from within an `Activity`, `UIViewController` or Windows `Page`.  
 
 ```csharp
 // Make Phone Call
 var phoneDialer = CrossMessaging.Current.PhoneDialer;
 if (phoneDialer.CanMakePhoneCall) 
-	phoneDialer.MakePhoneCall("+272193343499");
+	phoneDialer.MakePhoneCall("+27219333000");
 
 // Send Sms
 var smsMessenger = CrossMessaging.Current.SmsMessenger;
@@ -80,14 +80,14 @@ var email = new EmailMessageBuilder()
   .Build();
 ```
 
-To add attachments, use the ```EmailMessageBuilder.WithAttachment``` overloads (**iOS, Android, WinPhone RT**).  
+To add attachments, use the ```EmailMessageBuilder.WithAttachment``` overloads.  There are platform specific overloads that will allow you to attach a `Windows.Storage.IStorageFile` (**UWP**), `Java.IO.File` (**Android**) and `Foundation.NSUrl` (**iOS**).  Alternatively use the `WithAttachment(string, string)` overload to attach a file from within a PCL project. **Please note that on the Windows platform, attaching from the PCL only works for files contained within the ApplicationData due to the security restrictions of the platform**.  
 
 ```csharp
-// Construct email with attachment on Android (single file only)
+// Construct email with attachment from a PCL
 var email = new EmailMessageBuilder()
   .To("to.plugins@xamarin.com")
   .Subject("Xamarin Messaging Plugin")
   .Body("Well hello there from Xam.Messaging.Plugin")
-  .WithAttachment("/storage/emulated/0/Android/data/MyApp/files/Pictures/temp/IMG_20141224_114954.jpg");
+  .WithAttachment("/storage/emulated/0/Android/data/MyApp/files/Pictures/temp/IMG_20141224_114954.jpg", "image/jpeg");
   .Build();
 ```

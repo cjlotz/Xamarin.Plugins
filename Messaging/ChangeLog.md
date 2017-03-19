@@ -1,9 +1,11 @@
 ## Change Log ##
 
 ### [4.0.0] ###
+- Add support for sending SMS to multiple recipients
 - Android: Add support for using `FileProvider` to add attachments using content Uri's on Android Nougat and later
 - **Breaking Change**: Remove iOS Classic support
 - **Breaking Change**: Remove Windows Phone 8.0 and 8.1 support
+- **Breaking Change**: Reworked `EmailMessageBuilder.WithAttachment` platform API to provide consistent API
 
 ### [3.2.1] ###
 - Add `EmailMessageBuilder.WithAttachment` overload to add attachments directly from within PCL code (Android/iOS only)
