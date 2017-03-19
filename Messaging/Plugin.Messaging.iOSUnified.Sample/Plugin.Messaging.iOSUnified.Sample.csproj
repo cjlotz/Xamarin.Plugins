@@ -62,8 +62,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchArch>Default, ARMv7</MtouchArch>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <MtouchArch>ARMv7</MtouchArch>
+    <CodesignKey>iPhone Developer: carel.lotz@pragmaworld.net (MLKTPPRYK9)</CodesignKey>
     <MtouchDebug>True</MtouchDebug>
     <MtouchSdkVersion />
     <MtouchLink>SdkOnly</MtouchLink>

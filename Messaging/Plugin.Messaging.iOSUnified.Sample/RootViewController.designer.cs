@@ -1,4 +1,4 @@
-﻿// WARNING
+// WARNING
 //
 // This file has been generated automatically by Xamarin Studio from the outlets and
 // actions declared in your storyboard file.
@@ -21,6 +21,10 @@ namespace Plugin.Messaging.Sample.iOSUnified
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton ButtonSendAttachmentsEmail { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton ButtonSendAttachmentsEmailPcl { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -48,6 +52,11 @@ namespace Plugin.Messaging.Sample.iOSUnified
             if (ButtonSendAttachmentsEmail != null) {
                 ButtonSendAttachmentsEmail.Dispose ();
                 ButtonSendAttachmentsEmail = null;
+            }
+
+            if (ButtonSendAttachmentsEmailPcl != null) {
+                ButtonSendAttachmentsEmailPcl.Dispose ();
+                ButtonSendAttachmentsEmailPcl = null;
             }
 
             if (ButtonSendEmail != null) {
