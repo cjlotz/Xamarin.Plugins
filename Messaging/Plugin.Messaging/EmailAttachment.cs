@@ -23,41 +23,38 @@ namespace Plugin.Messaging
 
 #elif __ANDROID__
 
-        public EmailAttachment(string filePath)
+        public EmailAttachment(Java.IO.File file)
         {
-            if (string.IsNullOrWhiteSpace(filePath))
-                throw new ArgumentNullException(nameof(filePath));
+            if (file == null)
+                throw new ArgumentNullException(nameof(file));
 
-            string extension = Android.Webkit.MimeTypeMap.GetFileExtensionFromUrl(filePath);
+            string extension = Android.Webkit.MimeTypeMap.GetFileExtensionFromUrl(file.Path);
             string contentType = Android.Webkit.MimeTypeMap.Singleton.GetMimeTypeFromExtension(extension);
 
-            FilePath = filePath;
-            FileName = Path.GetFileName(filePath);
+            File = file;
+            FilePath = file.Path;
+            FileName = file.Name;
             ContentType = contentType;
         }
+
+        public Java.IO.File File { get; }
 
 #elif __IOS__
 
-        public EmailAttachment(string fileName, Stream content, string contentType)
+        public EmailAttachment(Foundation.NSUrl file)
         {
-            if (string.IsNullOrWhiteSpace(fileName))
-                throw new ArgumentNullException(nameof(fileName));
+            if (file == null)
+                throw new ArgumentNullException(nameof(file));
 
-            if (content == null)
-                throw new ArgumentNullException(nameof(content));
-
-            if (string.IsNullOrWhiteSpace(contentType))
-                throw new ArgumentNullException(nameof(contentType));
-
-            FileName = fileName;
-            Content = content;
-            ContentType = contentType;
+            File = file;
+            FilePath = file.Path;
+            FileName = Foundation.NSFileManager.DefaultManager.DisplayName(file.Path);
+            string id = MobileCoreServices.UTType.CreatePreferredIdentifier(MobileCoreServices.UTType.TagClassFilenameExtension, file.PathExtension, null);
+            ContentType = MobileCoreServices.UTType.CopyAllTags(id, MobileCoreServices.UTType.TagClassMIMEType)[0];
         }
 
-        public Stream Content { get; }
+        public Foundation.NSUrl File { get; }
 #endif
-
-#if !WINDOWS_PHONE_APP || !WINDOWS_UWP
 
         public EmailAttachment(string filePath, string contentType) 
         {
@@ -71,8 +68,6 @@ namespace Plugin.Messaging
             FileName = Path.GetFileName(filePath);
             ContentType = contentType;
         }
-
-#endif
 
         #region IEmailAttachment Members
 

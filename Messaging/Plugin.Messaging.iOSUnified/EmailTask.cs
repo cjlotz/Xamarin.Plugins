@@ -50,10 +50,10 @@ namespace Plugin.Messaging
 
                 foreach (var attachment in email.Attachments.Cast<EmailAttachment>())
                 {
-                    if (attachment.Content == null)
+                    if (attachment.File == null)
                         _mailController.AddAttachmentData(NSData.FromFile(attachment.FilePath), attachment.ContentType, attachment.FileName);
                     else
-                        _mailController.AddAttachmentData(NSData.FromStream(attachment.Content), attachment.ContentType, attachment.FileName);
+                        _mailController.AddAttachmentData(NSData.FromUrl(attachment.File), attachment.ContentType, attachment.FileName);
                 }
 
                 EventHandler<MFComposeResultEventArgs> handler = null;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Plugin.Messaging
 {
@@ -68,7 +67,8 @@ namespace Plugin.Messaging
         public EmailMessageBuilder WithAttachment(string filePath, string contentType)
         {
 #if WINDOWS_PHONE_APP || WINDOWS_UWP
-            var file = Task.Run(async () =>
+
+            var file = System.Threading.Tasks.Task.Run(async () =>
             {
                 try
                 {
@@ -80,45 +80,45 @@ namespace Plugin.Messaging
                     throw new PlatformNotSupportedException("Windows apps cannot access files by filePath unless they reside in ApplicationData. Use the platform-specific WithAttachment(IStorageFile) overload instead.");
                 }
             }).Result;
+
             _email.Attachments.Add(new EmailAttachment(file));
             return this;
-
-#elif __ANDROID__ || __IOS__
+#else
             _email.Attachments.Add(new EmailAttachment(filePath, contentType));
             return this;
-#else
-            throw new PlatformNotSupportedException("API not supported on platform. Use IEmailTask.CanSendEmailAttachments to check availability");
 #endif
         }
 
 #if __ANDROID__
 
         /// <summary>
-        ///     Add the file located at <paramref name="filePath"/> as an attachment
+        ///     Add the <paramref name="file"/> as an attachment
         /// </summary>
-        /// <param name="filePath">Full path to the file to attach</param>
-        public EmailMessageBuilder WithAttachment(string filePath)
+        /// <param name="file">File to attach</param>
+        public EmailMessageBuilder WithAttachment(Java.IO.File file)
         {
-            _email.Attachments.Add(new EmailAttachment(filePath));
+            _email.Attachments.Add(new EmailAttachment(file));
             return this;
         }
 
 #elif __IOS__
 
         /// <summary>
-        ///     Add the <paramref name="content"/> as an attachment to the email.
+        ///     Add the <paramref name="file"/> as an attachment
         /// </summary>
-        /// <param name="fileName">File name</param>
-        /// <param name="content">File content</param>
-        /// <param name="contentType">File content type (image/jpeg etc.)</param>
-        public EmailMessageBuilder WithAttachment(string fileName, System.IO.Stream content, string contentType)
+        /// <param name="file">File to attach</param>
+        public EmailMessageBuilder WithAttachment(Foundation.NSUrl file)
         {
-            _email.Attachments.Add(new EmailAttachment(fileName, content, contentType));
+            _email.Attachments.Add(new EmailAttachment(file));
             return this;
         }
 
 #elif WINDOWS_PHONE_APP || WINDOWS_UWP
 
+        /// <summary>
+        ///     Add the <paramref name="file"/> as an attachment
+        /// </summary>
+        /// <param name="file">File to attach</param>
         public EmailMessageBuilder WithAttachment(Windows.Storage.IStorageFile file)
         {
             _email.Attachments.Add(new EmailAttachment(file));
@@ -168,6 +168,6 @@ namespace Plugin.Messaging
             return this;
         }
 
-#endregion
+        #endregion
     }
 }

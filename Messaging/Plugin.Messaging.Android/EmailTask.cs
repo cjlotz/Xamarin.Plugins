@@ -79,17 +79,35 @@ namespace Plugin.Messaging
                     var uris = new List<IParcelable>();
                     foreach (var attachment in attachments)
                     {
-                        if (targetSdk < 24)
+                        if (attachment.File == null)
                         {
-                            var uri = Uri.Parse("file://" + attachment.FilePath);
-                            uris.Add(uri);
+                            if (targetSdk < 24)
+                            {
+                                var uri = Uri.Parse("file://" + attachment.FilePath);
+                                uris.Add(uri);
+                            }
+                            else
+                            {
+                                var uri = FileProvider.GetUriForFile(Application.Context,
+                                    Application.Context.PackageName + ".fileprovider",
+                                    new Java.IO.File(attachment.FilePath));
+                                uris.Add(uri);
+                            }
                         }
                         else
                         {
-                            var uri = FileProvider.GetUriForFile(Application.Context,
-                                Application.Context.PackageName + ".fileprovider",
-                                new Java.IO.File(attachment.FilePath));
-                            uris.Add(uri);
+                            if (targetSdk < 24)
+                            {
+                                var uri = Uri.FromFile(attachment.File);
+                                uris.Add(uri);
+                            }
+                            else
+                            {
+                                var uri = FileProvider.GetUriForFile(Application.Context,
+                                    Application.Context.PackageName + ".fileprovider",
+                                    attachment.File);
+                                uris.Add(uri);
+                            }
                         }
                     }
 

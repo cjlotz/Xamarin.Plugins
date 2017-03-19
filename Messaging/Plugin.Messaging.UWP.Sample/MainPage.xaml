@@ -27,7 +27,6 @@
                 <Button x:Name="ButtonSendMultipleSms" Click="ButtonSendMultipleSms_OnClick">Send Multiple SMS</Button>
                 <Button x:Name="ButtonSendEmail" Click="ButtonSendEmail_OnClick">Send Email</Button>
                 <Button x:Name="ButtonSendAttachmentsEmail" Click="ButtonSendAttachmentsEmail_OnClick">Send Attachments Email (Platform API)</Button>
-                <Button x:Name="ButtonSendAttachmentsEmailPCL" Click="ButtonSendAttachmentsEmailPCL_OnClick">Send Attachments Email (PCL Api)</Button>
             </StackPanel>
         </Grid>
     </Grid>

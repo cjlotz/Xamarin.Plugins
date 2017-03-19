@@ -24,10 +24,6 @@ namespace Plugin.Messaging.UWP.Sample
 
         private static async Task SendAttachmentEmail(bool usePlatformApi = true)
         {
-            // NOTE: The calling app will be suspended and re-activated once the user has selected
-            // a photo. To handle the selection of the photo, implement the IFileOpenPickerContinuable
-            // on the Page that launched the SelectPicture call 
-
             var openPicker = new FileOpenPicker();
 
             openPicker.ViewMode = PickerViewMode.Thumbnail;
@@ -45,32 +41,17 @@ namespace Plugin.Messaging.UWP.Sample
                     email = SamplesExtensions.BuildSampleEmail()
                         .WithAttachment(file)
                         .Build();
+
+                    CrossMessaging.Current.EmailMessenger.SendSampleEmail(email);
                 }
                 else
                 {
-                    email = SamplesExtensions.BuildSampleEmail()
-                        .WithAttachment(file.Path, file.ContentType)
-                        .Build();
+                    // On Windows, apps cannot access files by unless they reside in ApplicationData so the following won't work.
+                    //email = SamplesExtensions.BuildSampleEmail()
+                    //    .WithAttachment(file.Path, file.ContentType)
+                    //    .Build();
                 }
-                CrossMessaging.Current.EmailMessenger.SendSampleEmail(email);
             }
-        }
-
-        private static IStorageFile WithAttachment(string filePath)
-        {
-            var file = Task.Run(async () =>
-            {
-                try
-                {
-                    var f = await StorageFile.GetFileFromPathAsync(filePath).AsTask().ConfigureAwait(false);
-                    return f;
-                }
-                catch (UnauthorizedAccessException ex)
-                {
-                    throw new PlatformNotSupportedException("Windows apps cannot access files by filePath unless they reside in ApplicationData. Use the platform-specific WithAttachment(IStorageFile) overload instead.");
-                }
-            }).Result;
-            return file;
         }
 
         #endregion
@@ -85,11 +66,6 @@ namespace Plugin.Messaging.UWP.Sample
         private async void ButtonSendAttachmentsEmail_OnClick(object sender, RoutedEventArgs e)
         {
             await SendAttachmentEmail();
-        }
-
-        private async void ButtonSendAttachmentsEmailPCL_OnClick(object sender, RoutedEventArgs e)
-        {
-            await SendAttachmentEmail(false);
         }
 
         private void ButtonSendEmail_OnClick(object sender, RoutedEventArgs e)

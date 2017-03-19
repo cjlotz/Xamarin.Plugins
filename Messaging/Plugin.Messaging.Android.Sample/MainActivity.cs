@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using Java.IO;
 using Xamarin.Media;
 
 namespace Plugin.Messaging.Sample.Android
@@ -81,23 +82,28 @@ namespace Plugin.Messaging.Sample.Android
             if (resultCode == Result.Canceled || (!(requestCode == SelectPhotoPlatform || requestCode == SelectPhotoPcl)))
                 return;
 
-            MediaFile file = await data.GetMediaFileExtraAsync(this);
-            IEmailMessage email;
-            if (requestCode == SelectPhotoPlatform)
-            {
-                email = SamplesExtensions.BuildSampleEmail()
-                    .WithAttachment(file.Path)
-                    .Build();
-            }
-            else
-            {
-                // Hard coded mimetype. Should really use Media Qeury to resolve at run-time
-                email = SamplesExtensions.BuildSampleEmail()
-                    .WithAttachment(file.Path, @"image/jpeg")
-                    .Build();
-            }
+            MediaFile mediaFile = await data.GetMediaFileExtraAsync(this);
 
-            CrossMessaging.Current.EmailMessenger.SendSampleEmail(email);
+            if (mediaFile != null)
+            {
+                IEmailMessage email;
+                if (requestCode == SelectPhotoPlatform)
+                {
+                    File file = new File(mediaFile.Path);
+                    email = SamplesExtensions.BuildSampleEmail()
+                        .WithAttachment(file)
+                        .Build();
+                }
+                else
+                {
+                    // Hard coded mimetype for sample. Should really use Media Query to resolve at run-time
+                    email = SamplesExtensions.BuildSampleEmail()
+                        .WithAttachment(mediaFile.Path, @"image/jpeg")
+                        .Build();
+                }
+
+                CrossMessaging.Current.EmailMessenger.SendSampleEmail(email);
+            }
         }
 
         private void ButtonSendSms_Click(object sender, EventArgs eventArgs)

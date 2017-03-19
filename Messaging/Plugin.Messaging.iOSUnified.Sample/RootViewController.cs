@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Foundation;
 using UIKit;
 using Xamarin.Media;
 
@@ -84,24 +85,23 @@ namespace Plugin.Messaging.Sample.iOSUnified
         private async Task SendAttachmentsEmail(bool usePlatformApi = true)
         {
             var mediaPicker = new MediaPicker();
-            MediaFile file = await mediaPicker.PickPhotoAsync();
+            MediaFile mediaFile = await mediaPicker.PickPhotoAsync();
 
-            if (file != null)
+            if (mediaFile != null)
             {
-                var fileName = System.IO.Path.GetFileName(file.Path);
-
-                // Assume image content is default jpeg
                 IEmailMessage email;
                 if (usePlatformApi)
                 {
+                    NSUrl url = new NSUrl(mediaFile.Path, false);
                     email = SamplesExtensions.BuildSampleEmail()
-                        .WithAttachment(fileName, file.GetStream(), "image/jpeg")
+                        .WithAttachment(url)
                         .Build();
                 }
                 else
                 {
+                    // Hard coded mimetype for sample. Should query file to determine at run-time
                     email = SamplesExtensions.BuildSampleEmail()
-                        .WithAttachment(file.Path, "image/jpeg")
+                        .WithAttachment(mediaFile.Path, @"image/jpeg")
                         .Build();
                 }
 
