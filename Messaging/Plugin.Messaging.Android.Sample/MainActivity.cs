@@ -10,7 +10,8 @@ namespace Plugin.Messaging.Sample.Android
     [Activity(Label = "Xam Messaging Demo", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        private const int SelectPhoto = 1;
+        private const int SelectPhotoPlatform = 1;
+        private const int SelectPhotoPcl = 2;
 
         #region Methods
 
@@ -27,6 +28,7 @@ namespace Plugin.Messaging.Sample.Android
             Button buttonSendEmail = FindViewById<Button>(Resource.Id.ButtonSendEmail);
             Button buttonSendHtmlEmail = FindViewById<Button>(Resource.Id.ButtonSendHtmlEmail);
             Button buttonSendAttachmentEmail = FindViewById<Button>(Resource.Id.ButtonSendAttachmentEmail);
+            Button buttonSendAttachmentEmailPcl = FindViewById<Button>(Resource.Id.ButtonSendAttachmentEmailPCL);
             Button buttonSendSms = FindViewById<Button>(Resource.Id.ButtonSendSms);
             Button buttonSendMultipleSms = FindViewById<Button>(Resource.Id.ButtonSendMultipleSms);
 
@@ -34,6 +36,7 @@ namespace Plugin.Messaging.Sample.Android
             buttonSendEmail.Click += ButtonSendEmail_Click;
             buttonSendHtmlEmail.Click += ButtonSendHtmlEmail_Click;
             buttonSendAttachmentEmail.Click += ButtonSendAttachmentEmail_Click;
+            buttonSendAttachmentEmailPcl.Click += ButtonSendAttachmentEmailPcl_Click;
             buttonSendSms.Click += ButtonSendSms_Click;
             buttonSendMultipleSms.Click += ButtonSendMultipleSms_Click;
         }
@@ -62,18 +65,37 @@ namespace Plugin.Messaging.Sample.Android
             var picker = new MediaPicker(Application.Context);
             var intent = picker.GetPickPhotoUI();
 
-            StartActivityForResult(intent, SelectPhoto);
+            StartActivityForResult(intent, SelectPhotoPlatform);
+        }
+
+        private void ButtonSendAttachmentEmailPcl_Click(object sender, EventArgs eventArgs)
+        {
+            var picker = new MediaPicker(Application.Context);
+            var intent = picker.GetPickPhotoUI();
+
+            StartActivityForResult(intent, SelectPhotoPcl);
         }
 
         protected override async void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            if (resultCode == Result.Canceled || requestCode != SelectPhoto)
+            if (resultCode == Result.Canceled || (!(requestCode == SelectPhotoPlatform || requestCode == SelectPhotoPcl)))
                 return;
 
             MediaFile file = await data.GetMediaFileExtraAsync(this);
-            var email = SamplesExtensions.BuildSampleEmail()
-                .WithAttachment(file.Path)
-                .Build();
+            IEmailMessage email;
+            if (requestCode == SelectPhotoPlatform)
+            {
+                email = SamplesExtensions.BuildSampleEmail()
+                    .WithAttachment(file.Path)
+                    .Build();
+            }
+            else
+            {
+                // Hard coded mimetype. Should really use Media Qeury to resolve at run-time
+                email = SamplesExtensions.BuildSampleEmail()
+                    .WithAttachment(file.Path, @"image/jpeg")
+                    .Build();
+            }
 
             CrossMessaging.Current.EmailMessenger.SendSampleEmail(email);
         }
