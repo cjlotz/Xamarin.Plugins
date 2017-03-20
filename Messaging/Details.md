@@ -27,7 +27,7 @@ public interface ISmsTask
 ```csharp
 public interface IPhoneCallTask
 {
-	bool CanMakePhoneCall { get; }
+    bool CanMakePhoneCall { get; }
     void MakePhoneCall(string number, string name = null);
 }
 ```
@@ -49,10 +49,10 @@ if (smsMessenger.CanSendSms)
 var emailMessenger = CrossMessaging.Current.EmailMessenger;
 if (emailMessenger.CanSendEmail)
 {
-	// Send simple e-mail to single receiver without attachments, bcc, cc etc.
-	emailMessenger.SendEmail("to.plugins@xamarin.com", "Xamarin Messaging Plugin", "Well hello there from Xam.Messaging.Plugin");
+    // Send simple e-mail to single receiver without attachments, bcc, cc etc.
+    emailMessenger.SendEmail("to.plugins@xamarin.com", "Xamarin Messaging Plugin", "Well hello there from Xam.Messaging.Plugin");
 
-	// Alternatively use EmailBuilder fluent interface to construct more complex e-mail with multiple recipients, bcc, attachments etc. 
+    // Alternatively use EmailBuilder fluent interface to construct more complex e-mail with multiple recipients, bcc, attachments etc. 
     var email = new EmailMessageBuilder()
       .To("to.plugins@xamarin.com")
       .Cc("cc.plugins@xamarin.com")
@@ -69,6 +69,8 @@ if (emailMessenger.CanSendEmail)
 
 Sending HTML e-mail and adding e-mail attachments are only supported on some platforms.  Use the ```IEmailTask.CanSendEmailAttachments``` and ```IEmailTask.CanSendEmailBodyAsHtml``` API's to test whether the feature is available for the platform in your PCL code.  
 
+#### HTML Content ###
+
 To add HTML body content use ```EmailMessageBuilder.BodyAsHtml``` (**iOS, Android**).  
 
 ```csharp
@@ -80,14 +82,36 @@ var email = new EmailMessageBuilder()
   .Build();
 ```
 
-To add attachments, use the ```EmailMessageBuilder.WithAttachment``` overloads.  There are platform specific overloads that will allow you to attach a `Windows.Storage.IStorageFile` (**UWP**), `Java.IO.File` (**Android**) and `Foundation.NSUrl` (**iOS**).  Alternatively use the `WithAttachment(string, string)` overload to attach a file from within a PCL project. **Please note that on the Windows platform, attaching from the PCL only works for files contained within the ApplicationData due to the security restrictions of the platform**.  
+#### Attachments ####
+
+To add attachments, use the ```EmailMessageBuilder.WithAttachment``` overloads.  There are platform specific overloads that will allow you to attach a `Windows.Storage.IStorageFile` (**UWP**), `Java.IO.File` (**Android**) and `Foundation.NSUrl` (**iOS**).  Alternatively use the `WithAttachment(string, string)` overload to attach a file from within a PCL project. 
+
+**Please note that on the Windows platform, attaching from the PCL only works for files contained within the ApplicationData due to the security restrictions of the platform**.  
 
 ```csharp
-// Construct email with attachment from a PCL
+// Android
+File file = new File("<path_to_file>");
 var email = new EmailMessageBuilder()
   .To("to.plugins@xamarin.com")
   .Subject("Xamarin Messaging Plugin")
   .Body("Well hello there from Xam.Messaging.Plugin")
-  .WithAttachment("/storage/emulated/0/Android/data/MyApp/files/Pictures/temp/IMG_20141224_114954.jpg", "image/jpeg");
+  .WithAttachment(file);
+  .Build();
+
+// iOS
+NSUrl file = new NSUrl("<path_to_file>", false);
+var email = new EmailMessageBuilder()
+  .To("to.plugins@xamarin.com")
+  .Subject("Xamarin Messaging Plugin")
+  .Body("Well hello there from Xam.Messaging.Plugin")
+  .WithAttachment(file);
+  .Build();
+
+// PCL
+var email = new EmailMessageBuilder()
+  .To("to.plugins@xamarin.com")
+  .Subject("Xamarin Messaging Plugin")
+  .Body("Well hello there from Xam.Messaging.Plugin")
+  .WithAttachment("<path_to_picture>", "image/jpeg");
   .Build();
 ```
