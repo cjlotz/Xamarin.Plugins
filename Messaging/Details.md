@@ -69,9 +69,9 @@ if (emailMessenger.CanSendEmail)
 
 Sending HTML e-mail and adding e-mail attachments are only supported on some platforms.  Use the ```IEmailTask.CanSendEmailAttachments``` and ```IEmailTask.CanSendEmailBodyAsHtml``` API's to test whether the feature is available for the platform in your PCL code.  
 
-#### HTML Content ###
+#### HTML Content (iOS, Android) ###
 
-To add HTML body content use ```EmailMessageBuilder.BodyAsHtml``` (**iOS, Android**).  
+To add HTML body content use ```EmailMessageBuilder.BodyAsHtml```.  
 
 ```csharp
 // Construct HTML email (iOS and Android only)
@@ -82,7 +82,7 @@ var email = new EmailMessageBuilder()
   .Build();
 ```
 
-#### Attachments ####
+#### Attachments (iOS, Android, UWP) ####
 
 To add attachments, use the ```EmailMessageBuilder.WithAttachment``` overloads.  There are platform specific overloads that will allow you to attach a `Windows.Storage.IStorageFile` (**UWP**), `Java.IO.File` (**Android**) and `Foundation.NSUrl` (**iOS**).  Alternatively use the `WithAttachment(string, string)` overload to attach a file from within a PCL project. 
 
@@ -115,3 +115,20 @@ var email = new EmailMessageBuilder()
   .WithAttachment("<path_to_picture>", "image/jpeg");
   .Build();
 ```
+
+#### Strict Mode (Android) ####
+
+By default when sending an email using the `IEmailTask`, the plugin presents a list of all apps capable of handling the `Send` intent. This presents all kinds of apps that are not pure email apps.  If you wish to filter the list to only include email apps, use the `EmailMessageBuilder.UseStrictMode` method.  
+
+**Unfortunately StrictMode does not seems to play nicely with adding attachments, so sending attachments using StrictMode is currently not supported**
+
+```csharp
+// Android only
+var email = new EmailMessageBuilder()
+  .To("to.plugins@xamarin.com")
+  .Subject("Xamarin Messaging Plugin")
+  .Body("Well hello there from Xam.Messaging.Plugin")
+  .UseStrictMode()
+  .Build();
+```
+
