@@ -18,7 +18,7 @@ namespace Plugin.Messaging
             get
             {
                 var packageManager = Android.App.Application.Context.PackageManager;
-                var dialIntent = new Intent(Intent.ActionDial);
+                var dialIntent = new Intent(Intent.ActionDial, Uri.Parse("tel:0000000000"));
 
                 return null != dialIntent.ResolveActivity(packageManager);
             }

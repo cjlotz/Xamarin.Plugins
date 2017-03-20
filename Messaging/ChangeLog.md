@@ -3,6 +3,7 @@
 ### [4.0.0] ###
 - Add support for sending SMS to multiple recipients
 - Android: Add support for using `FileProvider` to add attachments using content Uri's on Android Nougat and later
+- Android: Add new `EmailMessageBuilder.UseStrictMode` to filter list of apps to only email apps and not other text messaging or social apps. **Unfortunately adding attachments when using StrictMode does not seem to work, and is therefore currently not supported.**
 - **Breaking Change**: Remove iOS Classic support
 - **Breaking Change**: Remove Windows Phone 8.0 and 8.1 support
 - **Breaking Change**: Reworked `EmailMessageBuilder.WithAttachment` platform API to provide consistent API

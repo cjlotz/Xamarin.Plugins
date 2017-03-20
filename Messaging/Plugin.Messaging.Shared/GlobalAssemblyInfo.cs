@@ -8,7 +8,7 @@ using System.Reflection;
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Plugin.Messaging")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.0.3")]
+[assembly: AssemblyFileVersion("4.0.0.4")]
 [assembly: AssemblyInformationalVersion("4.0.0-alpha1")]
 [assembly: AssemblyCopyright("Copyright (c) 2017")]
 [assembly: AssemblyTrademark("")]

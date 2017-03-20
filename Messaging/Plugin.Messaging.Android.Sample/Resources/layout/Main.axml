@@ -25,6 +25,11 @@
     android:layout_height="wrap_content"
     android:text="Send Email" />
   <Button
+    android:id="@+id/ButtonSendEmailStrictMode"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Send Email (Strict Mode On)" />
+  <Button
     android:id="@+id/ButtonSendHtmlEmail"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"

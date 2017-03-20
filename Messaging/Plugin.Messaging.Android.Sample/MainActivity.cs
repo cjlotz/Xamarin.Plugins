@@ -27,6 +27,7 @@ namespace Plugin.Messaging.Sample.Android
             // and attach an event to it
             Button buttonPhoneCall = FindViewById<Button>(Resource.Id.ButtonMakePhoneCall);
             Button buttonSendEmail = FindViewById<Button>(Resource.Id.ButtonSendEmail);
+            Button buttonSendEmailStrictMode = FindViewById<Button>(Resource.Id.ButtonSendEmailStrictMode);
             Button buttonSendHtmlEmail = FindViewById<Button>(Resource.Id.ButtonSendHtmlEmail);
             Button buttonSendAttachmentEmail = FindViewById<Button>(Resource.Id.ButtonSendAttachmentEmail);
             Button buttonSendAttachmentEmailPcl = FindViewById<Button>(Resource.Id.ButtonSendAttachmentEmailPCL);
@@ -35,6 +36,7 @@ namespace Plugin.Messaging.Sample.Android
 
             buttonPhoneCall.Click += ButtonPhoneCall_Click;
             buttonSendEmail.Click += ButtonSendEmail_Click;
+            buttonSendEmailStrictMode.Click += ButtonSendEmailStrictMode_Click;
             buttonSendHtmlEmail.Click += ButtonSendHtmlEmail_Click;
             buttonSendAttachmentEmail.Click += ButtonSendAttachmentEmail_Click;
             buttonSendAttachmentEmailPcl.Click += ButtonSendAttachmentEmailPcl_Click;
@@ -54,6 +56,11 @@ namespace Plugin.Messaging.Sample.Android
         private void ButtonSendEmail_Click(object sender, EventArgs eventArgs)
         {
             CrossMessaging.Current.EmailMessenger.SendSampleEmail(false);
+        }
+
+        private void ButtonSendEmailStrictMode_Click(object sender, EventArgs eventArgs)
+        {
+            CrossMessaging.Current.EmailMessenger.SendSampleEmail(false, true);
         }
 
         private void ButtonSendHtmlEmail_Click(object sender, EventArgs eventArgs)

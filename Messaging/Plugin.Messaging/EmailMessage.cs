@@ -102,6 +102,11 @@ namespace Plugin.Messaging
         /// </summary>
         public string Subject { get; set; }
 
+        /// <summary>
+        ///     Flag to restrict that the email is only handled by email apps, and not any other text messaging or social apps
+        /// </summary>
+        internal bool StrictMode { get; set; }
+
         #endregion
     }
 }

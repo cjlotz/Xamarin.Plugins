@@ -12,7 +12,7 @@
             }
         }
 
-        public static EmailMessageBuilder BuildSampleEmail(bool sendAsHtml = false)
+        public static EmailMessageBuilder BuildSampleEmail(bool sendAsHtml = false, bool strictMode = false)
         {
             var builder = new EmailMessageBuilder()
                 .To("to.plugins@xamarin.com")
@@ -28,6 +28,11 @@
             if (!sendAsHtml)
                 builder.Body("Well hello there from Xam.Messaging.Plugin");
 
+#if __ANDROID__
+
+            if (strictMode)
+                builder.UseStrictMode();
+#endif
             return builder;
         }
 
@@ -39,9 +44,9 @@
             }
         }
 
-        public static void SendSampleEmail(this IEmailTask emailTask, bool sendAsHtml)
+        public static void SendSampleEmail(this IEmailTask emailTask, bool sendAsHtml, bool strictMode = false)
         {
-            var email = BuildSampleEmail(sendAsHtml).Build();
+            var email = BuildSampleEmail(sendAsHtml, strictMode).Build();
             emailTask.SendSampleEmail(email);
         }
 
