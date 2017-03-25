@@ -26,6 +26,7 @@ namespace Plugin.Messaging.Sample.Android
             // Get our button from the layout resource,
             // and attach an event to it
             Button buttonPhoneCall = FindViewById<Button>(Resource.Id.ButtonMakePhoneCall);
+            Button buttonPhoneCallAutoDial = FindViewById<Button>(Resource.Id.ButtonMakePhoneCallAutoDial);
             Button buttonSendEmail = FindViewById<Button>(Resource.Id.ButtonSendEmail);
             Button buttonSendEmailStrictMode = FindViewById<Button>(Resource.Id.ButtonSendEmailStrictMode);
             Button buttonSendHtmlEmail = FindViewById<Button>(Resource.Id.ButtonSendHtmlEmail);
@@ -35,6 +36,7 @@ namespace Plugin.Messaging.Sample.Android
             Button buttonSendMultipleSms = FindViewById<Button>(Resource.Id.ButtonSendMultipleSms);
 
             buttonPhoneCall.Click += ButtonPhoneCall_Click;
+            buttonPhoneCallAutoDial.Click += ButtonPhoneCallAutoDial_Click;
             buttonSendEmail.Click += ButtonSendEmail_Click;
             buttonSendEmailStrictMode.Click += ButtonSendEmailStrictMode_Click;
             buttonSendHtmlEmail.Click += ButtonSendHtmlEmail_Click;
@@ -53,6 +55,13 @@ namespace Plugin.Messaging.Sample.Android
             CrossMessaging.Current.PhoneDialer.MakeSamplePhoneCall();
         }
 
+        private void ButtonPhoneCallAutoDial_Click(object sender, EventArgs eventArgs)
+        {
+            CrossMessaging.Current.Settings().Phone.AutoDial = true;
+            CrossMessaging.Current.PhoneDialer.MakeSamplePhoneCall();
+            CrossMessaging.Current.Settings().Phone.AutoDial = false;
+        }
+
         private void ButtonSendEmail_Click(object sender, EventArgs eventArgs)
         {
             CrossMessaging.Current.EmailMessenger.SendSampleEmail(false);
@@ -60,7 +69,9 @@ namespace Plugin.Messaging.Sample.Android
 
         private void ButtonSendEmailStrictMode_Click(object sender, EventArgs eventArgs)
         {
-            CrossMessaging.Current.EmailMessenger.SendSampleEmail(false, true);
+            CrossMessaging.Current.Settings().Email.UseStrictMode = true;
+            CrossMessaging.Current.EmailMessenger.SendSampleEmail(false);
+            CrossMessaging.Current.Settings().Email.UseStrictMode = false;
         }
 
         private void ButtonSendHtmlEmail_Click(object sender, EventArgs eventArgs)

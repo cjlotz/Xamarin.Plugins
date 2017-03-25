@@ -13,8 +13,9 @@ namespace Plugin.Messaging
 {
     internal class EmailTask : IEmailTask
     {
-        public EmailTask()
+        public EmailTask(EmailSettings settings)
         {
+            Settings = settings;
         }
 
         #region IEmailTask Members
@@ -46,10 +47,8 @@ namespace Plugin.Messaging
             if (email == null)
                 throw new ArgumentNullException(nameof(email));
 
-            EmailMessage emailMessage = (EmailMessage) email;
-
             // NOTE: http://stackoverflow.com/questions/15946297/sending-email-with-attachment-using-sendto-on-some-devices-doesnt-work
-            if (emailMessage.StrictMode && email.Attachments.Count > 0)
+            if (Settings.UseStrictMode && email.Attachments.Count > 0)
                 throw new NotSupportedException("Cannot use StrictMode when sending attachments");
 
             var emailIntent = ResolveSendIntent(email);
@@ -134,6 +133,12 @@ namespace Plugin.Messaging
 
         #endregion
 
+        #region Properties
+
+        private EmailSettings Settings { get; }
+
+        #endregion
+
         #region Methods
 
         private bool CanSend(Intent emailIntent)
@@ -162,7 +167,7 @@ namespace Plugin.Messaging
         {
             Intent emailIntent;
 
-            if (((EmailMessage) email).StrictMode)
+            if (Settings.UseStrictMode)
             {
                 var intentAction = Intent.ActionSendto;
                 emailIntent = new Intent(intentAction);

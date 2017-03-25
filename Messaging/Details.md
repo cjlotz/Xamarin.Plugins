@@ -118,17 +118,22 @@ var email = new EmailMessageBuilder()
 
 #### Strict Mode (Android) ####
 
-By default when sending an email using the `IEmailTask`, the plugin presents a list of all apps capable of handling the `Send` intent. This presents all kinds of apps that are not pure email apps.  If you wish to filter the list to only include email apps, use the `EmailMessageBuilder.UseStrictMode` method.  
+By default when sending an email using the `IEmailTask`, the plugin presents a list of all apps capable of handling the `Send` intent. This presents all kinds of apps that are not pure email apps.  If you wish to filter the list to only include email apps, you can change the plugin behavior by:
+
+```csharp
+// Available in Android project
+CrossMessaging.Current.Settings().Email.UseStrictMode = true;
+```
 
 **Unfortunately StrictMode does not seems to play nicely with adding attachments, so sending attachments using StrictMode is currently not supported**
 
+#### AutoDial (Android) ####
+
+By default phoning a number using the `IPhoneCallTask`, the plugin only shows a phone dialer with the number populated. If you want the plugin to automatically dial the number, you can change the plugin behavior by:
+
 ```csharp
-// Android only
-var email = new EmailMessageBuilder()
-  .To("to.plugins@xamarin.com")
-  .Subject("Xamarin Messaging Plugin")
-  .Body("Well hello there from Xam.Messaging.Plugin")
-  .UseStrictMode()
-  .Build();
+// Available in Android project
+CrossMessaging.Current.Settings().Phone.AutoDial = true;
 ```
 
+**Please note using this settings requires the `android.permission.CALL_PHONE` added to the manifest file.**

@@ -1,4 +1,5 @@
 using System;
+using Android.App;
 using Android.Content;
 using Android.Telephony;
 using Uri = Android.Net.Uri;
@@ -7,8 +8,9 @@ namespace Plugin.Messaging
 {
     internal class PhoneCallTask : IPhoneCallTask
     {
-        public PhoneCallTask()
+        public PhoneCallTask(PhoneSettings settings)
         {
+            Settings = settings;
         }
 
         #region IPhoneCallTask Members
@@ -17,8 +19,8 @@ namespace Plugin.Messaging
         {
             get
             {
-                var packageManager = Android.App.Application.Context.PackageManager;
-                var dialIntent = new Intent(Intent.ActionDial, Uri.Parse("tel:0000000000"));
+                var packageManager = Application.Context.PackageManager;
+                var dialIntent = ResolveDialIntent("0000000000");
 
                 return null != dialIntent.ResolveActivity(packageManager);
             }
@@ -33,11 +35,27 @@ namespace Plugin.Messaging
             {
                 var phoneNumber = PhoneNumberUtils.FormatNumber(number);
 
-                Uri telUri = Uri.Parse("tel:" + phoneNumber);
-                var dialIntent = new Intent(Intent.ActionDial, telUri);
-
+                var dialIntent = ResolveDialIntent(phoneNumber);
                 dialIntent.StartNewActivity();
             }
+        }
+
+        #endregion
+
+        #region Properties
+
+        private PhoneSettings Settings { get; }
+
+        #endregion
+
+        #region Methods
+
+        private Intent ResolveDialIntent(string phoneNumber)
+        {
+            string dialIntent = Settings.AutoDial ? Intent.ActionCall : Intent.ActionDial;
+
+            Uri telUri = Uri.Parse("tel:" + phoneNumber);
+            return new Intent(dialIntent, telUri);
         }
 
         #endregion

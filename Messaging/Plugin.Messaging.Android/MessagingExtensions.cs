@@ -20,4 +20,12 @@ namespace Plugin.Messaging
 
         #endregion
     }
+
+    public static class SettingsExtensions
+    {
+        public static Settings Settings(this IMessaging messaging)
+        {
+            return ((MessagingImplementation)CrossMessaging.Current).Settings;
+        }
+    }
 }

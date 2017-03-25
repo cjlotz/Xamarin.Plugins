@@ -101,19 +101,6 @@ namespace Plugin.Messaging
             return this;
         }
 
-        /// <summary>
-        ///     Turn on strict mode, to ensure that the email can only be handled by email apps, 
-        ///     and not also by any other text messaging or social apps
-        /// </summary>
-        /// <remarks>
-        ///     Please note that sending attachments with strict mode is not supported
-        /// </remarks>
-        public EmailMessageBuilder UseStrictMode()
-        {
-            _email.StrictMode = true;
-            return this;
-        }
-
 #elif __IOS__
 
         /// <summary>

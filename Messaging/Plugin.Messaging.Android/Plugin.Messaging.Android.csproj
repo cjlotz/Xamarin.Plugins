@@ -63,6 +63,7 @@
     <Compile Include="..\Plugin.Messaging\MessagingPlugin.cs">
       <Link>MessagingPlugin.cs</Link>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="EmailTask.cs" />
     <Compile Include="MessagingExtensions.cs" />
     <Compile Include="PhoneCallTask.cs" />

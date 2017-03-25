@@ -10,6 +10,11 @@
     android:layout_height="wrap_content"
     android:text="Make Phone Call" />
   <Button
+    android:id="@+id/ButtonMakePhoneCallAutoDial"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Make Phone Call (Auto Dial)" />
+  <Button
     android:id="@+id/ButtonSendSms"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
