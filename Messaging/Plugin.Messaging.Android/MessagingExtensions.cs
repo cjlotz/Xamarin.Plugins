@@ -10,7 +10,7 @@ namespace Plugin.Messaging
         public static void StartNewActivity(this Intent intent)
         {
             if (intent == null)
-                throw new ArgumentNullException("intent");
+                throw new ArgumentNullException(nameof(intent));
 
             intent.SetFlags(ActivityFlags.ClearTop);
             intent.SetFlags(ActivityFlags.NewTask);

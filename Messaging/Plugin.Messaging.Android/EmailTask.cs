@@ -30,15 +30,9 @@ namespace Plugin.Messaging
             }
         }
 
-        public bool CanSendEmailAttachments
-        {
-            get { return true; }
-        }
+        public bool CanSendEmailAttachments => true;
 
-        public bool CanSendEmailBodyAsHtml
-        {
-            get { return true; }
-        }
+        public bool CanSendEmailBodyAsHtml => true;
 
         public void SendEmail(IEmailMessage email)
         {

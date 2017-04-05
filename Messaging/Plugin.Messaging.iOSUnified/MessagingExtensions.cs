@@ -36,7 +36,7 @@ namespace Plugin.Messaging
                 return controller.NavigationController.VisibleViewController;
             }
 
-            if (controller.IsViewLoaded && controller?.View?.Window != null)
+            if (controller.IsViewLoaded && controller.View?.Window != null)
             {
                 return controller;
             }

@@ -1,4 +1,3 @@
-using System;
 using Android.Content;
 using Uri = Android.Net.Uri;
 
@@ -14,7 +13,7 @@ namespace Plugin.Messaging
 
         #region ISmsTask Members
 
-        public bool CanSendSms { get { return true; } }
+        public bool CanSendSms => true;
 
         public void SendSms(string recipient = null, string message = null)
         {

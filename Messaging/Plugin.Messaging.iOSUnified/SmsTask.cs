@@ -19,10 +19,7 @@ namespace Plugin.Messaging
 
         #region ISmsTask Members
 
-        public bool CanSendSms
-        {
-            get { return MFMessageComposeViewController.CanSendText; }
-        }
+        public bool CanSendSms => MFMessageComposeViewController.CanSendText;
 
         public void SendSms(string recipient = null, string message = null)
         {
@@ -35,7 +32,7 @@ namespace Plugin.Messaging
                 if (!string.IsNullOrWhiteSpace(recipient))
                 { 
                     string[] recipients = recipient.Split(';'); 
-                    if (recipients != null && recipients.Length > 0)  
+                    if (recipients.Length > 0)  
                         _smsController.Recipients = recipients;
                 }
                 

@@ -13,26 +13,17 @@ namespace Plugin.Messaging
         /// <summary>
         ///     Gets an instance of the platform implementation for the <see cref="IEmailTask" />
         /// </summary>
-        public static IEmailTask EmailMessenger
-        {
-            get { return CrossMessaging.Current.EmailMessenger; }
-        }
+        public static IEmailTask EmailMessenger => CrossMessaging.Current.EmailMessenger;
 
         /// <summary>
         ///     Gets an instance of the platform implementation for the <see cref="IPhoneCallTask" />
         /// </summary>
-        public static IPhoneCallTask PhoneDialer
-        {
-            get { return CrossMessaging.Current.PhoneDialer; }
-        }
+        public static IPhoneCallTask PhoneDialer => CrossMessaging.Current.PhoneDialer;
 
         /// <summary>
         ///     Gets an instance of the platform implementation for the <see cref="ISmsTask" />
         /// </summary>
-        public static ISmsTask SmsMessenger
-        {
-            get { return CrossMessaging.Current.SmsMessenger; }
-        }
+        public static ISmsTask SmsMessenger => CrossMessaging.Current.SmsMessenger;
 
         #endregion
 

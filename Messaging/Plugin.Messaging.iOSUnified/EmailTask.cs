@@ -22,13 +22,9 @@ namespace Plugin.Messaging
 
         #region IEmailTask Members
 
-        public bool CanSendEmail
-        {
-            get { return MFMailComposeViewController.CanSendMail; }
-        }
-
-        public bool CanSendEmailAttachments { get { return true; } }
-        public bool CanSendEmailBodyAsHtml { get { return true; } }
+        public bool CanSendEmail => MFMailComposeViewController.CanSendMail;
+        public bool CanSendEmailAttachments => true;
+        public bool CanSendEmailBodyAsHtml => true;
 
         public void SendEmail(IEmailMessage email)
         {

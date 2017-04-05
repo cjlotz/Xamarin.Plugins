@@ -10,10 +10,7 @@ namespace Plugin.Messaging
 
         #region IPhoneCallTask Members
 
-        public bool CanMakePhoneCall
-        {
-            get { return false; }
-        }
+        public bool CanMakePhoneCall => false;
 
         public void MakePhoneCall(string number, string name = null)
         {
