@@ -2,6 +2,7 @@
 
 ### [4.0.0] ###
 - Add support for sending SMS to multiple recipients
+- Android+UWP: Add support for sending SMS without user interaction via the `ISmsTask.CanSendSmsInBackground` and `ISmsTask.SendSmsInBackground`
 - Android: Add support for using `FileProvider` to add attachments using content Uri's on Android Nougat and later
 - Android: Add new `Settings` class to configure Android specific behavior when sending emails/making phone calls (see next bullets).  Access from Android project using `CrossMessaging.Current.Settings()` extension method.
 - Android: Add new `EmailSettings.UseStrictMode` flag (default value `false`) to filter list of apps to only email apps and not other text messaging or social apps. **Unfortunately adding attachments when using StrictMode does not seem to work, and is therefore currently not supported.**

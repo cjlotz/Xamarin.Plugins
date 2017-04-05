@@ -1,4 +1,6 @@
+using System;
 using Windows.ApplicationModel.Chat;
+using Windows.Devices.Sms;
 
 namespace Plugin.Messaging
 {
@@ -11,6 +13,7 @@ namespace Plugin.Messaging
         #region ISmsTask Members
 
         public bool CanSendSms => true;
+        public bool CanSendSmsInBackground => true;
 
         public void SendSms(string recipient = null, string message = null)
         {
@@ -25,6 +28,25 @@ namespace Plugin.Messaging
 #pragma warning disable 4014
                 ChatMessageManager.ShowComposeSmsMessageAsync(msg);
 #pragma warning restore 4014
+            }
+        }
+
+        public void SendSmsInBackground(string recipient, string message = null)
+        {
+            if (string.IsNullOrEmpty(recipient))
+                throw new ArgumentException(nameof(recipient));
+
+            message = message ?? string.Empty;
+
+            if (CanSendSmsInBackground)
+            {
+                var sendingMessage = new SmsTextMessage2
+                                     {
+                                         Body = message,
+                                         To = recipient
+                                     };
+
+                SmsDevice2.GetDefault().SendMessageAndGetResultAsync(sendingMessage).AsTask().Wait();
             }
         }
 

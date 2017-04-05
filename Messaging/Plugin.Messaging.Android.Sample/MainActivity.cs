@@ -34,6 +34,7 @@ namespace Plugin.Messaging.Sample.Android
             Button buttonSendAttachmentEmailPcl = FindViewById<Button>(Resource.Id.ButtonSendAttachmentEmailPCL);
             Button buttonSendSms = FindViewById<Button>(Resource.Id.ButtonSendSms);
             Button buttonSendMultipleSms = FindViewById<Button>(Resource.Id.ButtonSendMultipleSms);
+            Button buttonSendBackgroundSms = FindViewById<Button>(Resource.Id.ButtonSendBackgroundSms);
 
             buttonPhoneCall.Click += ButtonPhoneCall_Click;
             buttonPhoneCallAutoDial.Click += ButtonPhoneCallAutoDial_Click;
@@ -44,6 +45,7 @@ namespace Plugin.Messaging.Sample.Android
             buttonSendAttachmentEmailPcl.Click += ButtonSendAttachmentEmailPcl_Click;
             buttonSendSms.Click += ButtonSendSms_Click;
             buttonSendMultipleSms.Click += ButtonSendMultipleSms_Click;
+            buttonSendBackgroundSms.Click += ButtonSendBackgroundSms_Click;
         }
 
         #endregion
@@ -136,6 +138,13 @@ namespace Plugin.Messaging.Sample.Android
             // NOTE: requires android.permission.SEND_SMS permission in the Android manifest.
 
             CrossMessaging.Current.SmsMessenger.SendSampleMultipleSms();
+        }
+
+        private void ButtonSendBackgroundSms_Click(object sender, EventArgs eventArgs)
+        {
+            // NOTE: requires android.permission.SEND_SMS permission in the Android manifest.
+
+            CrossMessaging.Current.SmsMessenger.SendSampleBackgroundSms();
         }
 
         #endregion

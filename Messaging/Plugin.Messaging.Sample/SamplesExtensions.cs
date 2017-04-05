@@ -53,6 +53,14 @@
             }
         }
 
+        public static void SendSampleBackgroundSms(this ISmsTask smsTask)
+        {
+            if (smsTask.CanSendSmsInBackground)
+            {
+                smsTask.SendSmsInBackground("+27219330000", "Well hello there from Xam.Messaging.Plugin");
+            }
+        }
+
         public static void SendSampleMultipleSms(this ISmsTask smsTask)
         {
             if (smsTask.CanSendSms)

@@ -66,20 +66,23 @@ namespace Plugin.Messaging.Sample.Android
 			// aapt resource value: 0x7f060001
 			public const int ButtonMakePhoneCallAutoDial = 2131099649;
 			
-			// aapt resource value: 0x7f060007
-			public const int ButtonSendAttachmentEmail = 2131099655;
-			
 			// aapt resource value: 0x7f060008
-			public const int ButtonSendAttachmentEmailPCL = 2131099656;
+			public const int ButtonSendAttachmentEmail = 2131099656;
+			
+			// aapt resource value: 0x7f060009
+			public const int ButtonSendAttachmentEmailPCL = 2131099657;
 			
 			// aapt resource value: 0x7f060004
-			public const int ButtonSendEmail = 2131099652;
+			public const int ButtonSendBackgroundSms = 2131099652;
 			
 			// aapt resource value: 0x7f060005
-			public const int ButtonSendEmailStrictMode = 2131099653;
+			public const int ButtonSendEmail = 2131099653;
 			
 			// aapt resource value: 0x7f060006
-			public const int ButtonSendHtmlEmail = 2131099654;
+			public const int ButtonSendEmailStrictMode = 2131099654;
+			
+			// aapt resource value: 0x7f060007
+			public const int ButtonSendHtmlEmail = 2131099655;
 			
 			// aapt resource value: 0x7f060003
 			public const int ButtonSendMultipleSms = 2131099651;

@@ -121,11 +121,11 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Messaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.4.0.0-alpha2\lib\Xamarin.iOS10\Plugin.Messaging.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.4.0.0-beta\lib\Xamarin.iOS10\Plugin.Messaging.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Plugin.Messaging.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.4.0.0-alpha2\lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugins.Messaging.4.0.0-beta\lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

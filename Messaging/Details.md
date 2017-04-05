@@ -20,7 +20,9 @@ public interface IEmailTask
 public interface ISmsTask
 {
     bool CanSendSms { get; }
+    bool CanSendSmsInBackground { get; }
     void SendSms(string recipient, string message);
+    void SendSmsInBackground(string recipient, string message);
 }
 ```
 
@@ -137,3 +139,15 @@ CrossMessaging.Current.Settings().Phone.AutoDial = true;
 ```
 
 **Please note using this settings requires the `android.permission.CALL_PHONE` added to the manifest file.**
+
+#### Send Background SMS (Android,UWP) ####
+
+By default, when sending a SMS using the `ISmsTask.SendSms`, the plugin shows the default messaging user interface. Using the `ISmsTask.CanSendSmsInBackground` and `ISmsTask.SendSmsInBackground`, you can now send a sms silently in the background without showing the messaging user interface.
+
+```csharp
+var smsMessenger = CrossMessaging.Current.SmsMessenger;
+if (smsMessenger.CanSendSmsInBackground)
+   smsMessenger.SendSmsInBackground("+27213894839", "Well hello there from Xam.Messaging.Plugin");
+```
+
+**For Android, please add the `android.permission.SEND_SMS` permission to your Android manifest file.  For UWP, please add the `cellularMessaging` restricted capability to your package manifest file.  Also [read more about submitting an app using this restricted permission](https://docs.microsoft.com/en-us/windows/uwp/packaging/app-capability-declarations#special-and-restricted-capabilities) on the UWP platform.**

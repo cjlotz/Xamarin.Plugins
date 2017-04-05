@@ -1,5 +1,6 @@
 using Android.Content;
-using Uri = Android.Net.Uri;
+using Android.Net;
+using Android.Telephony;
 
 namespace Plugin.Messaging
 {
@@ -14,6 +15,7 @@ namespace Plugin.Messaging
         #region ISmsTask Members
 
         public bool CanSendSms => true;
+        public bool CanSendSmsInBackground => true;
 
         public void SendSms(string recipient = null, string message = null)
         {
@@ -26,11 +28,22 @@ namespace Plugin.Messaging
                     smsUri = Uri.Parse("smsto:" + recipient);
                 else
                     smsUri = Uri.Parse("smsto:");
-                
+
                 var smsIntent = new Intent(Intent.ActionSendto, smsUri);
                 smsIntent.PutExtra("sms_body", message);
 
                 smsIntent.StartNewActivity();
+            }
+        }
+
+        public void SendSmsInBackground(string recipient, string message = null)
+        {
+            message = message ?? string.Empty;
+
+            if (CanSendSmsInBackground)
+            {
+                var smsManager = SmsManager.Default;
+                smsManager.SendTextMessage(recipient, null, message, null, null);
             }
         }
 

@@ -25,6 +25,11 @@
     android:layout_height="wrap_content"
     android:text="Send SMS to multiple" />
   <Button
+    android:id="@+id/ButtonSendBackgroundSms"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Send SMS in background" />
+  <Button
     android:id="@+id/ButtonSendEmail"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
