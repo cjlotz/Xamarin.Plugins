@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:Plugin.Messaging.Forms;assembly=Plugin.Messaging.Forms"
+	x:Class="Plugin.Messaging.Forms.Main">
+
+	<ContentPage.BindingContext>
+        <local:MainViewModel />
+	</ContentPage.BindingContext>
+		
+    <StackLayout Spacing="5" Orientation="Vertical">
+        <Button Text="Make Phone Call" Command="{Binding MakePhoneCallCommand}"/>
+        <Button Text="Send SMS" Command="{Binding SendSmsCommand}"/>
+        <Button Text="Send Multiple SMS" Command="{Binding SendMultipleSmsCommand}"/>			
+        <Button Text="Send Email" Command="{Binding SendEmailCommand}"/>			
+        <Button Text="Send HTML Email" Command="{Binding SendHtmlEmailCommand}"/>			
+    </StackLayout>
+		
+</ContentPage>
