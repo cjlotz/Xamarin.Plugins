@@ -109,15 +109,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Plugin.Messaging.WinPhoneRT\EmailTask.cs">
-      <Link>EmailTask.cs</Link>
-    </Compile>
-    <Compile Include="..\Plugin.Messaging.WinPhoneRT\PhoneCallTask.cs">
-      <Link>PhoneCallTask.cs</Link>
-    </Compile>
-    <Compile Include="..\Plugin.Messaging.WinPhoneRT\SmsTask.cs">
-      <Link>SmsTask.cs</Link>
-    </Compile>
     <Compile Include="..\Plugin.Messaging\EmailAttachment.cs">
       <Link>EmailAttachment.cs</Link>
     </Compile>
@@ -130,7 +121,10 @@
     <Compile Include="..\Plugin.Messaging\MessagingPlugin.cs">
       <Link>MessagingPlugin.cs</Link>
     </Compile>
+    <Compile Include="EmailTask.cs" />
+    <Compile Include="PhoneCallTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmsTask.cs" />
     <EmbeddedResource Include="Properties\Plugin.Messaging.rd.xml" />
   </ItemGroup>
   <ItemGroup>

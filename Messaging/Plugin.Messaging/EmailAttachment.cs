@@ -3,6 +3,7 @@ using System.IO;
 
 namespace Plugin.Messaging
 {
+    /// <inheritdoc />
     public class EmailAttachment : IEmailAttachment
     {
 
@@ -56,6 +57,11 @@ namespace Plugin.Messaging
         public Foundation.NSUrl File { get; }
 #endif
 
+        /// <summary>
+        ///     Create new attachment
+        /// </summary>
+        /// <param name="filePath">Full file path to attachment</param>
+        /// <param name="contentType">Content type for the attachement</param>
         public EmailAttachment(string filePath, string contentType) 
         {
             if (string.IsNullOrWhiteSpace(filePath))
@@ -71,8 +77,13 @@ namespace Plugin.Messaging
 
         #region IEmailAttachment Members
 
+        /// <inheritdoc />
         public string ContentType { get; }
+
+        /// <inheritdoc />
         public string FileName { get; }
+
+        /// <inheritdoc />
         public string FilePath { get; }
 
         #endregion

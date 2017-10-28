@@ -17,7 +17,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>Plugin.Messaging.UWP.Sample_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>80B4FBD9E8FC51A6653314A1AE58E6CB5818509E</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>CE3CDCAD9E8D942323CAA23B4E9A00F013066A20</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -108,7 +108,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="Plugin.Messaging.UWP.Sample_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
@@ -129,6 +128,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plugin.Messaging.Abstractions\Plugin.Messaging.Abstractions.csproj">
+      <Project>{8d48334d-c5b2-46ef-99c2-92adf072f81f}</Project>
+      <Name>Plugin.Messaging.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugin.Messaging.UWP\Plugin.Messaging.UWP.csproj">
+      <Project>{4cddcb48-ad3f-4c62-ad13-c004260df40b}</Project>
+      <Name>Plugin.Messaging.UWP</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

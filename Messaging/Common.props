@@ -1,0 +1,11 @@
+<Project>
+	<PropertyGroup>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+	    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<LangVersion>7.1</LangVersion>
+	</PropertyGroup>
+</Project>

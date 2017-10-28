@@ -1,5 +1,13 @@
 ## Change Log ##
 
+### [5.0.0] ###
+- Upgrade to .NET Standard
+- **Breaking Change**: Remove Windows Store support
+- Android: Update to 25.3.1 Support Libraries
+- Android: Add support for formatting number using country's default convention via `PhoneSettings.DefaultCountryIso`. Only available for API 21 and later.
+- Android: Fix HTML formatting on Android N (API 24) and later
+- UWP: Updated to latest UWP platform
+
 ### [4.0.0] ###
 - Add support for sending SMS to multiple recipients
 - Android+UWP: Add support for sending SMS without user interaction via the `ISmsTask.CanSendSmsInBackground` and `ISmsTask.SendSmsInBackground`

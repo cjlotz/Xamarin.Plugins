@@ -65,9 +65,22 @@ namespace Plugin.Messaging
                 // NOTE: http://stackoverflow.com/questions/13756200/send-html-email-with-gmail-4-2-1
 
                 if (((EmailMessage) email).IsHtml)
-                    emailIntent.PutExtra(Intent.ExtraText, Html.FromHtml(email.Message));
+                {
+                    ISpanned html;
+                    if (Build.VERSION.SdkInt >= BuildVersionCodes.N)
+                    {
+                        html = Html.FromHtml(email.Message, FromHtmlOptions.ModeLegacy);
+                    }
+                    else
+                    {
+                        html = Html.FromHtml(email.Message);                        
+                    }
+                    emailIntent.PutExtra(Intent.ExtraText, html);
+                }
                 else
+                {
                     emailIntent.PutExtra(Intent.ExtraText, email.Message);
+                }
 
                 if (email.Attachments.Count > 0)
                 {

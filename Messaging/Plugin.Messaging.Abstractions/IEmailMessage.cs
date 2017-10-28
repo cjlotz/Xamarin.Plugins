@@ -2,6 +2,9 @@
 
 namespace Plugin.Messaging
 {
+    /// <summary>
+    ///     Abstraction for sending e-mail
+    /// </summary>
     public interface IEmailMessage
     {
         /// <summary>

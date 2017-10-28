@@ -1,5 +1,8 @@
 ﻿namespace Plugin.Messaging
 {
+    /// <summary>
+    ///     Abstraction to access the <see cref="IEmailTask"/>, <see cref="IPhoneCallTask"/> and <see cref="ISmsTask"/> functionality
+    /// </summary>
     public interface IMessaging
     {
         /// <summary>

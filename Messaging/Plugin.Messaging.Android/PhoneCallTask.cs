@@ -1,6 +1,7 @@
 using System;
 using Android.App;
 using Android.Content;
+using Android.OS;
 using Android.Telephony;
 using Uri = Android.Net.Uri;
 
@@ -33,8 +34,17 @@ namespace Plugin.Messaging
 
             if (CanMakePhoneCall)
             {
-                var phoneNumber = PhoneNumberUtils.FormatNumber(number);
-
+                string phoneNumber = number;
+                if (Build.VERSION.SdkInt < BuildVersionCodes.Lollipop)
+                {
+                    phoneNumber = PhoneNumberUtils.FormatNumber(number);
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(Settings.DefaultCountryIso))
+                        phoneNumber = PhoneNumberUtils.FormatNumber(number, Settings.DefaultCountryIso);
+                }
+                    
                 var dialIntent = ResolveDialIntent(phoneNumber);
                 dialIntent.StartNewActivity();
             }

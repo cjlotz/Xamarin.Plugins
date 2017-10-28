@@ -44,6 +44,9 @@ namespace Plugin.Messaging
     {
         private static readonly Lazy<IMessaging> _implementation = new Lazy<IMessaging>(CreateMessaging, System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
+        /// <summary>
+        ///     Get singleton <see cref="IMessaging"/> instance
+        /// </summary>
         public static IMessaging Current
         {
             get
@@ -59,7 +62,7 @@ namespace Plugin.Messaging
 
         private static IMessaging CreateMessaging()
         {
-#if PORTABLE
+#if NETSTANDARD1_0
             return null;
 #else
             return new MessagingImplementation();
@@ -76,7 +79,7 @@ namespace Plugin.Messaging
     {
         public MessagingImplementation()
         {
-#if PORTABLE
+#if NETSTANDARD1_0
             EmailMessenger = null;
             PhoneDialer = null;
             SmsMessenger = null;

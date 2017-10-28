@@ -62,6 +62,11 @@ namespace Plugin.Messaging
         /// </remarks>
         public bool AutoDial { get; set; } = false;
 
+        /// <summary>
+        ///     If the Phone number doesn't have a country code, the phone will be formatted using the default country's convention.
+        /// </summary>
+        public string DefaultCountryIso { get; set; }
+
         #endregion
     }
 }

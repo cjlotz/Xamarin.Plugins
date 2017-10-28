@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>4.0.0</version>
+       <version>5.0.0</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
@@ -17,9 +17,12 @@
           Messaging plugin for Xamarin and Windows to make a phone call, send a sms or send an e-mail using the default messaging applications on the different mobile platforms.
        </description>
        <dependencies>
+         <group targetFramework="netstandard1.0">
+           <dependency id="NETStandard.Library" version="1.6.1" />
+         </group>         
           <group targetFramework="MonoAndroid10">
-            <dependency id="Xamarin.Android.Support.v4" version="23.3.0" />
-          </group>       
+            <dependency id="Xamarin.Android.Support.Core.Utils" version="25.3.1"/>
+          </group>
        </dependencies>
        <releaseNotes>
          Full release notes available at https://github.com/cjlotz/Xamarin.Plugins/blob/master/ChangeLog.md
@@ -27,43 +30,17 @@
        <tags>xamarin, xamarin.forms, android, ios, winrt, email, sms, phonedialer</tags>
    </metadata>
    <files>
-     <!--Core-->
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.Abstractions.dll" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.Abstractions.xml" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.Abstractions.pdb" />
-     <file src="Plugin.Messaging\bin\Release\Plugin.Messaging.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.dll" />
-     <file src="Plugin.Messaging\bin\Release\Plugin.Messaging.xml" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.xml" />
-     <file src="Plugin.Messaging\bin\Release\Plugin.Messaging.pdb" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Messaging.pdb" />
-
-     <!--Win Store -->
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\win8\Plugin.Messaging.Abstractions.dll" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\win8\Plugin.Messaging.Abstractions.xml" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\win8\Plugin.Messaging.Abstractions.pdb" />
-     <file src="Plugin.Messaging.WinStore\bin\Release\Plugin.Messaging.dll" target="lib\win8\Plugin.Messaging.dll" />
-     <file src="Plugin.Messaging.WinStore\bin\Release\Plugin.Messaging.xml" target="lib\win8\Plugin.Messaging.xml" />
-     <file src="Plugin.Messaging.WinStore\bin\Release\Plugin.Messaging.pdb" target="lib\win8\Plugin.Messaging.pdb" />
+     <!--Standard/PCL-->
+     <file src="Plugin.Messaging\bin\Release\netstandard1.0\Plugin.Messaging.*" target="lib\netstandard1.0" />
      
      <!--Xamarin.Android-->
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\MonoAndroid10\Plugin.Messaging.Abstractions.dll" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\MonoAndroid10\Plugin.Messaging.Abstractions.xml" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\MonoAndroid10\Plugin.Messaging.Abstractions.pdb" />
-     <file src="Plugin.Messaging.Android\bin\Release\Plugin.Messaging.dll" target="lib\MonoAndroid10\Plugin.Messaging.dll" />
-     <file src="Plugin.Messaging.Android\bin\Release\Plugin.Messaging.xml" target="lib\MonoAndroid10\Plugin.Messaging.xml" />
-     <file src="Plugin.Messaging.Android\bin\Release\Plugin.Messaging.pdb" target="lib\MonoAndroid10\Plugin.Messaging.pdb" />
+     <file src="Plugin.Messaging.Android\bin\Release\Plugin.Messaging.*" target="lib\MonoAndroid10" />
 
      <!--Xamarin.iOS Unified-->
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.dll" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.xml" />
-     <file src="Plugin.Messaging.iOSUnified\bin\iPhone\Release\Plugin.Messaging.dll" target="lib\Xamarin.iOS10\Plugin.Messaging.dll" />
-     <file src="Plugin.Messaging.iOSUnified\bin\iPhone\Release\Plugin.Messaging.xml" target="lib\Xamarin.iOS10\Plugin.Messaging.xml" />
+     <file src="Plugin.Messaging.iOSUnified\bin\iPhone\Release\Plugin.Messaging.*" target="lib\Xamarin.iOS10" />
    
      <!--UWP-->
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.dll" target="lib\UAP10\Plugin.Messaging.Abstractions.dll" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.xml" target="lib\UAP10\Plugin.Messaging.Abstractions.xml" />
-     <file src="Plugin.Messaging.Abstractions\bin\Release\Plugin.Messaging.Abstractions.pdb" target="lib\UAP10\Plugin.Messaging.Abstractions.pdb" />
-     <file src="Plugin.Messaging.UWP\bin\Release\Plugin.Messaging.dll" target="lib\UAP10\Plugin.Messaging.dll" />
-     <file src="Plugin.Messaging.UWP\bin\Release\Plugin.Messaging.xml" target="lib\UAP10\Plugin.Messaging.xml" />
-     <file src="Plugin.Messaging.UWP\bin\Release\Plugin.Messaging.pdb" target="lib\UAP10\Plugin.Messaging.pdb" />
+     <file src="Plugin.Messaging.UWP\bin\Release\Plugin.Messaging.*" target="lib\UAP10" />
      
    </files>
 </package>

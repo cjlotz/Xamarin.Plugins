@@ -109,7 +109,6 @@
     <Compile Include="AppDelegate.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RootViewController.designer.cs">
@@ -120,14 +119,6 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Plugin.Messaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.4.0.0-beta\lib\Xamarin.iOS10\Plugin.Messaging.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Plugin.Messaging.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Messaging.4.0.0-beta\lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -144,6 +135,18 @@
       <Visible>False</Visible>
       <Version>0.7.7</Version>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plugin.Messaging.Abstractions\Plugin.Messaging.Abstractions.csproj">
+      <Project>{8d48334d-c5b2-46ef-99c2-92adf072f81f}</Project>
+      <Name>Plugin.Messaging.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugin.Messaging.iOSUnified\Plugin.Messaging.iOSUnified.csproj">
+      <Project>{805582fd-96e6-47b9-88ad-aeb97e2226c8}</Project>
+      <Name>Plugin.Messaging.iOSUnified</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -10,6 +10,9 @@ namespace Plugin.Messaging
     {
         private readonly EmailMessage _email;
 
+        /// <summary>
+        ///     Create instance of message builder to construct e-mail message
+        /// </summary>
         public EmailMessageBuilder()
         {
             _email = new EmailMessage();
@@ -17,6 +20,11 @@ namespace Plugin.Messaging
 
         #region Methods
 
+        /// <summary>
+        ///     Add <paramref name="bcc"/> to Bcc recipients of e-mail message
+        /// </summary>
+        /// <param name="bcc">Email address of recipient to Bcc on e-mail message</param>
+        /// <returns></returns>
         public EmailMessageBuilder Bcc(string bcc)
         {
             if (!string.IsNullOrWhiteSpace(bcc))
@@ -25,12 +33,22 @@ namespace Plugin.Messaging
             return this;
         }
 
+        /// <summary>
+        ///     Add <paramref name="bcc"/> to Bcc recipients of e-mail message
+        /// </summary>
+        /// <param name="bcc">Email addresses of recipient to Bcc on e-mail message</param>
+        /// <returns></returns>
         public EmailMessageBuilder Bcc(IEnumerable<string> bcc)
         {
             _email.RecipientsBcc.AddRange(bcc);
             return this;
         }
 
+        /// <summary>
+        ///     Set the body (text) of the e-mail message
+        /// </summary>
+        /// <param name="body">Text of the e-mail message</param>
+        /// <returns></returns>
         public EmailMessageBuilder Body(string body)
         {
             if (!string.IsNullOrEmpty(body))
@@ -39,6 +57,11 @@ namespace Plugin.Messaging
             return this;
         }
 
+        /// <summary>
+        ///     Set the body (text) of the e-mail message as HTML snippet
+        /// </summary>
+        /// <param name="htmlBody">Html text of the e-mail message</param>
+        /// <returns></returns>
         public EmailMessageBuilder BodyAsHtml(string htmlBody)
         {
 #if __ANDROID__ || __IOS__
@@ -127,11 +150,20 @@ namespace Plugin.Messaging
 
 #endif
 
+        /// <summary>
+        ///     Create instance of <see cref="IEmailMessage"/>
+        /// </summary>
+        /// <returns>New <see cref="IEmailMessage"/></returns>
         public IEmailMessage Build()
         {
             return _email;
         }
 
+        /// <summary>
+        ///     Add <paramref name="cc"/> to Cc recipients of e-mail message
+        /// </summary>
+        /// <param name="cc">Email address of recipient to Cc on e-mail message</param>
+        /// <returns></returns>
         public EmailMessageBuilder Cc(string cc)
         {
             if (!string.IsNullOrWhiteSpace(cc))
@@ -140,12 +172,22 @@ namespace Plugin.Messaging
             return this;
         }
 
+        /// <summary>
+        ///     Add <paramref name="cc"/> to Cc recipients of e-mail message
+        /// </summary>
+        /// <param name="cc">Email addresses of recipient to Cc on e-mail message</param>
+        /// <returns></returns>
         public EmailMessageBuilder Cc(IEnumerable<string> cc)
         {
             _email.RecipientsCc.AddRange(cc);
             return this;
         }
 
+        /// <summary>
+        ///     Set the subject of the e-mail message
+        /// </summary>
+        /// <param name="subject">Subject of the e-mail message</param>
+        /// <returns></returns>
         public EmailMessageBuilder Subject(string subject)
         {
             if (!string.IsNullOrEmpty(subject))
@@ -154,6 +196,11 @@ namespace Plugin.Messaging
             return this;
         }
 
+        /// <summary>
+        ///     Add <paramref name="to"/> to To recipients of e-mail message
+        /// </summary>
+        /// <param name="to">Email address of recipient to send e-mail message to</param>
+        /// <returns></returns>
         public EmailMessageBuilder To(string to)
         {
             if (!string.IsNullOrWhiteSpace(to))
@@ -162,6 +209,11 @@ namespace Plugin.Messaging
             return this;
         }
 
+        /// <summary>
+        ///     Add <paramref name="to"/> to To recipients of e-mail message
+        /// </summary>
+        /// <param name="to">Email addresses of recipients to send e-mail message to</param>
+        /// <returns></returns>
         public EmailMessageBuilder To(IEnumerable<string> to)
         {
             _email.Recipients.AddRange(to);

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Windows.ApplicationModel.Calls;
 
 namespace Plugin.Messaging
@@ -32,6 +32,6 @@ namespace Plugin.Messaging
                 PhoneCallManager.ShowPhoneCallUI(number, name ?? "");
         }
 
-#endregion
+        #endregion
     }
 }

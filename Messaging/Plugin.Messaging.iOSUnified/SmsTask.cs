@@ -44,8 +44,7 @@ namespace Plugin.Messaging
                 {
                     _smsController.Finished -= handler;
 
-                    var uiViewController = sender as UIViewController;
-                    if (uiViewController == null)
+                    if (!(sender is UIViewController uiViewController))
                     {
                         throw new ArgumentException("sender");
                     }

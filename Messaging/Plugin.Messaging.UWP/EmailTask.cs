@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using Windows.ApplicationModel.Email;
 using Windows.Storage.Streams;
@@ -27,10 +27,10 @@ namespace Plugin.Messaging
             if (CanSendEmail)
             {
                 var mail = new Windows.ApplicationModel.Email.EmailMessage
-                           {
-                               Subject = email.Subject,
-                               Body = email.Message
-                           };
+                {
+                    Subject = email.Subject,
+                    Body = email.Message
+                };
 
                 foreach (var recipient in email.Recipients)
                 {
