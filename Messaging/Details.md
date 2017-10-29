@@ -35,7 +35,7 @@ public interface IPhoneCallTask
 ```
 
 ### Using the API 
-The messaging API's can be accessed on the different mobile platforms using the `CrossMessaging` singleton or `MessagingPlugin` static class.  Have a look at the `Plugin.Messaging.Samples.sln` for samples that illustrate using the API on the different platforms. Here are some snippets from the samples that illustrate how to access the API from within an `Activity`, `UIViewController` or Windows `Page`.  
+The messaging API's can be accessed on the different mobile platforms using the `CrossMessaging` singleton class.  Have a look at the `Plugin.Messaging.Samples.sln` for samples that illustrate using the API on the different platforms. Here are some snippets from the samples that illustrate how to access the API from within an `Activity`, `UIViewController` or Windows `Page`.  
 
 ```csharp
 // Make Phone Call
