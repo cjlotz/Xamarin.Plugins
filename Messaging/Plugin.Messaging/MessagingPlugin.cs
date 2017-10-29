@@ -3,41 +3,6 @@
 namespace Plugin.Messaging
 {
     /// <summary>
-    ///     Container API for accessing the various Messaging plugin task API's
-    /// </summary>
-    [Obsolete("Use CrossMessaging instead")]
-    public static class MessagingPlugin
-    {
-        #region Properties
-
-        /// <summary>
-        ///     Gets an instance of the platform implementation for the <see cref="IEmailTask" />
-        /// </summary>
-        public static IEmailTask EmailMessenger => CrossMessaging.Current.EmailMessenger;
-
-        /// <summary>
-        ///     Gets an instance of the platform implementation for the <see cref="IPhoneCallTask" />
-        /// </summary>
-        public static IPhoneCallTask PhoneDialer => CrossMessaging.Current.PhoneDialer;
-
-        /// <summary>
-        ///     Gets an instance of the platform implementation for the <see cref="ISmsTask" />
-        /// </summary>
-        public static ISmsTask SmsMessenger => CrossMessaging.Current.SmsMessenger;
-
-        #endregion
-
-        #region Methods
-
-        internal static Exception NotImplementedInReferenceAssembly()
-        {
-            return new NotImplementedException("This functionality is not implemented in the portable version of this assembly.  You should reference the Xam.Plugins.Messaging NuGet package from your main application project in order to reference the platform-specific implementation.");
-        }
-
-        #endregion
-    }
-
-    /// <summary>
     /// Cross platform Messaging implementation
     /// </summary>
     public static class CrossMessaging

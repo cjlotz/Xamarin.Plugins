@@ -67,24 +67,7 @@ if (emailMessenger.CanSendEmail)
 }           
 ```
 
-### Platform specific API's
-
-Sending HTML e-mail and adding e-mail attachments are only supported on some platforms.  Use the ```IEmailTask.CanSendEmailAttachments``` and ```IEmailTask.CanSendEmailBodyAsHtml``` API's to test whether the feature is available for the platform in your PCL code.  
-
-#### HTML Content (iOS, Android) ###
-
-To add HTML body content use ```EmailMessageBuilder.BodyAsHtml```.  
-
-```csharp
-// Construct HTML email (iOS and Android only)
-var email = new EmailMessageBuilder()
-  .To("to.plugins@xamarin.com")
-  .Subject("Xamarin Messaging Plugin")
-  .BodyAsHtml("Well hello there from <a>Xam.Messaging.Plugin</a>")
-  .Build();
-```
-
-#### Attachments (iOS, Android, UWP) ####
+### Attachments ###
 
 To add attachments, use the ```EmailMessageBuilder.WithAttachment``` overloads.  There are platform specific overloads that will allow you to attach a `Windows.Storage.IStorageFile` (**UWP**), `Java.IO.File` (**Android**) and `Foundation.NSUrl` (**iOS**).  Alternatively use the `WithAttachment(string, string)` overload to attach a file from within a PCL project. 
 
@@ -118,23 +101,52 @@ var email = new EmailMessageBuilder()
   .Build();
 ```
 
+### Platform specific API's
+
+The following features are not supported on all platforms. 
+
+#### HTML Content (iOS, Android) ###
+
+To add HTML body content use ```EmailMessageBuilder.BodyAsHtml```.  
+
+```csharp
+// Construct HTML email (iOS and Android only)
+var email = new EmailMessageBuilder()
+  .To("to.plugins@xamarin.com")
+  .Subject("Xamarin Messaging Plugin")
+  .BodyAsHtml("Well hello there from <a>Xam.Messaging.Plugin</a>")
+  .Build();
+```
+Use the ```IEmailTask.CanSendEmailBodyAsHtml``` API's to test whether the feature is available for the platform in your PCL code.  
+
 #### Strict Mode (Android) ####
 
 By default when sending an email using the `IEmailTask`, the plugin presents a list of all apps capable of handling the `Send` intent. This presents all kinds of apps that are not pure email apps.  If you wish to filter the list to only include email apps, you can change the plugin behavior by:
 
 ```csharp
-// Available in Android project
+// Available ONLY in Android project (not in PCL/.NET Standard project)
 CrossMessaging.Current.Settings().Email.UseStrictMode = true;
 ```
-
 **Unfortunately StrictMode does not seems to play nicely with adding attachments, so sending attachments using StrictMode is currently not supported**
+
+#### Formatting Phone Numbers (Android) ####
+
+By default when making a phone call using the `IPhoneCallTask`, the plugin will format the number using the [`formatNumber`](https://developer.android.com/reference/android/telephony/PhoneNumberUtils.html#formatNumber(java.lang.String)) API that formats the number according to the country rules for the number. The API has been deprecated in API 21. To support formatting the number on API 21 or later a new `DefaultCountryIso` setting has been introduced to use the new [`formatNumber`](https://developer.android.com/reference/android/telephony/PhoneNumberUtils.html#formatNumber(java.lang.String,java.lang.String)) API.
+
+```csharp
+// Available ONLY in Android project (not in PCL/.NET Standard project)
+
+// The ISO 3166-1 two letters country code whose convention will be used if the given number doesn't  have the country code.
+CrossMessaging.Current.Settings().Phone.DefaultCountryIso = "ZA";
+```
 
 #### AutoDial (Android) ####
 
 By default phoning a number using the `IPhoneCallTask`, the plugin only shows a phone dialer with the number populated. If you want the plugin to automatically dial the number, you can change the plugin behavior by:
 
 ```csharp
-// Available in Android project
+// Available ONLY in Android project (not in PCL/.NET Standard project)
+
 CrossMessaging.Current.Settings().Phone.AutoDial = true;
 ```
 

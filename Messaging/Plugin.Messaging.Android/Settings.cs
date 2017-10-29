@@ -65,6 +65,10 @@ namespace Plugin.Messaging
         /// <summary>
         ///     If the Phone number doesn't have a country code, the phone will be formatted using the default country's convention.
         /// </summary>
+        /// <remarks>
+        ///     The ISO 3166-1 two letters country code whose convention will be used if the given number doesn't have the country code.
+        ///     Only available on API 21 or later.
+        /// </remarks>
         public string DefaultCountryIso { get; set; }
 
         #endregion

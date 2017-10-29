@@ -2,11 +2,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Messaging.Abstractions", "Plugin.Messaging.Abstractions\Plugin.Messaging.Abstractions.csproj", "{B4292775-3BB9-4FF2-8D20-B3D483BF1701}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Messaging.Abstractions", "Plugin.Messaging.Abstractions\Plugin.Messaging.Abstractions.csproj", "{B4292775-3BB9-4FF2-8D20-B3D483BF1701}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Messaging.Android", "Plugin.Messaging.Android\Plugin.Messaging.Android.csproj", "{F419AD4F-942A-4FE7-8E90-6E15BD85C1D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Messaging", "Plugin.Messaging\Plugin.Messaging.csproj", "{1B90D67A-34EF-4E81-BAC6-72C117C3643F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Messaging", "Plugin.Messaging\Plugin.Messaging.csproj", "{1B90D67A-34EF-4E81-BAC6-72C117C3643F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Messaging.iOSUnified", "Plugin.Messaging.iOSUnified\Plugin.Messaging.iOSUnified.csproj", "{805582FD-96E6-47B9-88AD-AEB97E2226C8}"
 EndProject
@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		ChangeLog.md = ChangeLog.md
 		Common.props = Common.props
+		Details.md = Details.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global

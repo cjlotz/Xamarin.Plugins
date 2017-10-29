@@ -5,20 +5,15 @@ The Messaging plugin makes it possible to make a phone call, send a sms or send 
 
 ## Setup
 * Available on NuGet: https://www.nuget.org/packages/Xam.Plugins.Messaging [![NuGet](https://img.shields.io/nuget/v/Plugin.Permissions.svg?label=NuGet)](https://www.nuget.org/packages/Xam.Plugins.Messaging/)
-* Install into your PCL project and Client projects.
+* Install into your PCL or .NET Standard project and Client projects.
 
 **Platform Support**
 
 |Platform|Supported|Version|
 | ------------------- | :-----------: | :------------------: |
-|Xamarin.iOS|No||
 |Xamarin.iOS Unified|Yes|iOS 7+|
 |Xamarin.Android|Yes|API 14+|
-|Windows Phone Silverlight|No||
-|Windows Phone RT|No||
-|Windows Store RT|Yes|8.1+|
 |Windows 10 UWP|Yes|10+|
-|Xamarin.Mac|No||
 
 ### Release Notes
 Change log history [available here](ChangeLog.md)

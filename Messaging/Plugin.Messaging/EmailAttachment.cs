@@ -7,14 +7,11 @@ namespace Plugin.Messaging
     public class EmailAttachment : IEmailAttachment
     {
 
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
+#if WINDOWS_UWP
 
         public EmailAttachment(Windows.Storage.IStorageFile file)
         {
-            if (file == null)
-                throw new ArgumentNullException(nameof(file));
-
-            File = file;
+            File = file ?? throw new ArgumentNullException(nameof(file));
             FilePath = file.Path;
             FileName = file.Name;
             ContentType = file.ContentType;
@@ -44,14 +41,14 @@ namespace Plugin.Messaging
 
         public EmailAttachment(Foundation.NSUrl file)
         {
-            if (file == null)
-                throw new ArgumentNullException(nameof(file));
-
-            File = file;
+            File = file ?? throw new ArgumentNullException(nameof(file));
             FilePath = file.Path;
             FileName = Foundation.NSFileManager.DefaultManager.DisplayName(file.Path);
             string id = MobileCoreServices.UTType.CreatePreferredIdentifier(MobileCoreServices.UTType.TagClassFilenameExtension, file.PathExtension, null);
-            ContentType = MobileCoreServices.UTType.CopyAllTags(id, MobileCoreServices.UTType.TagClassMIMEType)[0];
+            string[] mimeTypes = MobileCoreServices.UTType.CopyAllTags(id, MobileCoreServices.UTType.TagClassMIMEType);
+
+            if (mimeTypes.Length > 0)
+                ContentType = mimeTypes[0];
         }
 
         public Foundation.NSUrl File { get; }

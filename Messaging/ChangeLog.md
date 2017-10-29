@@ -2,11 +2,13 @@
 
 ### [5.0.0] ###
 - Upgrade to .NET Standard
-- **Breaking Change**: Remove Windows Store support
-- Android: Update to 25.3.1 Support Libraries
-- Android: Add support for formatting number using country's default convention via `PhoneSettings.DefaultCountryIso`. Only available for API 21 and later.
+- Android: Update to newer Support Libraries (v25.3.1)
+- Android: Fix support for formatting number using country's default convention via `PhoneSettings.DefaultCountryIso`. Only available for API 21 and later.
 - Android: Fix HTML formatting on Android N (API 24) and later
+- iOS: Improve `IPhoneCallTask.CanMakePhoneCall` on iOS to check support of url and connection to a carrier (#68)
 - UWP: Updated to latest UWP platform
+- **Breaking Change**: Remove Windows Store support
+- **Breaking Change**: Remove deprecated `MessagingPlugin` facade
 
 ### [4.0.0] ###
 - Add support for sending SMS to multiple recipients
