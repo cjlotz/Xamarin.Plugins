@@ -12,7 +12,7 @@ var platform = Argument("platform", "Any%20CPU");
 
 // NuGet Packaging
 var versionNumber = Argument<string>("versionNumber", null);
-var buildNumber = Argument("buildNumber", 0);
+var buildNumber = Argument<int>("buildNumber", 0);
 var buildTag = Argument<string>("buildTag", null);
 
 // =====================
@@ -50,7 +50,7 @@ Task("Build")
     Information($"Configuration: {configuration}");
     Information($"Platform: {platform}");
     
-    DotNetBuild($"./{projectName}.sln", settings =>
+    MSBuild($"./{projectName}.sln", settings =>
         settings.SetConfiguration(configuration)
 			.SetVerbosity(Verbosity.Minimal)
             .WithTarget("Build")
@@ -65,7 +65,7 @@ Task("BuildSamples")
     Information($"Configuration: {configuration}");
     Information($"Platform: {platform}");
     
-    DotNetBuild($"./{projectName}.Samples.sln", settings =>
+    MSBuild($"./{projectName}.Samples.sln", settings =>
         settings.SetConfiguration(configuration)
 			.SetVerbosity(Verbosity.Minimal)
             .WithTarget("Build")
@@ -147,6 +147,7 @@ Task("Package")
 	});
 
     // Build Xamarin component package
+    /*
 	var yamlDir = "./Component/";	
 	StartProcess("./xamarin-component/xamarin-component.exe", $"package {yamlDir}");
 
@@ -155,6 +156,7 @@ Task("Package")
 	var newFile = File($"./output/{file}");
 	CopyFile(oldFile, newFile);
     DeleteFile(oldFile);
+    */
 });
 
 RunTarget(target)

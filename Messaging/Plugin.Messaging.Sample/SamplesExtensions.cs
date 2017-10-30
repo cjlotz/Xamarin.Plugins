@@ -20,12 +20,9 @@
                 .Bcc(new[] { "bcc1.plugins@xamarin.com", "bcc2.plugins@xamarin.com" })
                 .Subject("Xamarin Messaging Plugin");
 
-#if __ANDROID__ || __IOS__
-
             if (sendAsHtml)
                 builder.BodyAsHtml("Well hello there from <b>Xam.Messaging.Plugin</b>");
-#endif
-            if (!sendAsHtml)
+            else
                 builder.Body("Well hello there from Xam.Messaging.Plugin");
 
             return builder;

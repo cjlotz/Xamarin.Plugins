@@ -82,14 +82,14 @@ namespace Plugin.Messaging
         /// </summary>
         /// <param name="filePath">Full path to the file to attach</param>
         /// <param name="contentType">File content type (image/jpeg etc.)</param>
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
+#if WINDOWS_UWP
         /// <remarks>On Windows, apps cannot access files by <paramref name="filePath"/> unless they reside in <see cref="Windows.Storage.ApplicationData"/>. To attach any other file, use
         /// <see cref="WithAttachment(Windows.Storage.IStorageFile)"/> overload.
         /// </remarks>            
 #endif
         public EmailMessageBuilder WithAttachment(string filePath, string contentType)
         {
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
+#if WINDOWS_UWP
 
             var file = System.Threading.Tasks.Task.Run(async () =>
             {
@@ -136,7 +136,7 @@ namespace Plugin.Messaging
             return this;
         }
 
-#elif WINDOWS_PHONE_APP || WINDOWS_UWP
+#elif WINDOWS_UWP
 
         /// <summary>
         ///     Add the <paramref name="file"/> as an attachment
