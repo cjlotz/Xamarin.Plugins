@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Plugin.Messaging\Plugin.Messaging.csproj" />
+    <ProjectReference Include="..\Plugin.Messaging.Abstractions\Plugin.Messaging.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

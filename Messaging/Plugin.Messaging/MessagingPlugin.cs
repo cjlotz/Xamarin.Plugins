@@ -10,6 +10,11 @@ namespace Plugin.Messaging
         private static readonly Lazy<IMessaging> _implementation = new Lazy<IMessaging>(CreateMessaging, System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
         /// <summary>
+        /// Gets if the plugin is supported on the current platform.
+        /// </summary>
+        public static bool IsSupported => _implementation.Value != null; 
+
+        /// <summary>
         ///     Get singleton <see cref="IMessaging"/> instance
         /// </summary>
         public static IMessaging Current
