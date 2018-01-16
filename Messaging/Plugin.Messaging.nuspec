@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Xam.Plugins.Messaging</id>
-       <version>5.0.0</version>
+       <version>5.1.0-beta</version>
        <title>Messaging Plugin for Xamarin and Windows</title>
        <authors>Carel Lotz</authors>
        <owners>Carel Lotz</owners>
@@ -25,7 +25,7 @@
           </group>
        </dependencies>
        <releaseNotes>
-         Full release notes available at https://github.com/cjlotz/Xamarin.Plugins/blob/master/ChangeLog.md
+         Full release notes available at https://github.com/cjlotz/Xamarin.Plugins/blob/master/Messaging/ChangeLog.md
        </releaseNotes>
        <tags>xamarin, xamarin.forms, android, ios, winrt, email, sms, phonedialer</tags>
    </metadata>

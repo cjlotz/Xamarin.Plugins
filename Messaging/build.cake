@@ -133,7 +133,7 @@ Task("Version")
 
 Task("Package")
 	.IsDependentOn("Version")	
-	.IsDependentOn("Rebuild")	
+	//.IsDependentOn("Rebuild")	
     .Does(() =>
 {
 	CleanDirectory("./output");
