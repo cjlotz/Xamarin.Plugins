@@ -1,11 +1,6 @@
 using System;
-#if __UNIFIED__
 using MessageUI;
 using UIKit;
-#else
-using MonoTouch.MessageUI;
-using MonoTouch.UIKit;
-#endif
 
 namespace Plugin.Messaging
 {

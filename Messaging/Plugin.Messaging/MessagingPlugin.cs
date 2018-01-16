@@ -58,6 +58,11 @@ namespace Plugin.Messaging
             EmailMessenger = new EmailTask(Settings.Email);
             PhoneDialer = new PhoneCallTask(Settings.Phone);
             SmsMessenger = new SmsTask();            
+#elif __IOS__
+            Settings = new Settings();
+            EmailMessenger = new EmailTask(Settings.Email);
+            PhoneDialer = new PhoneCallTask();
+            SmsMessenger = new SmsTask();            
 #else
             EmailMessenger = new EmailTask();
             PhoneDialer = new PhoneCallTask();
@@ -65,7 +70,7 @@ namespace Plugin.Messaging
 #endif
         }
 
-#if __ANDROID__
+#if __ANDROID__ || __IOS__
         public Settings Settings { get; }
 #endif
         public IEmailTask EmailMessenger { get; }

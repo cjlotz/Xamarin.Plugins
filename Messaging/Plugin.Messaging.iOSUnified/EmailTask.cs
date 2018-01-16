@@ -1,24 +1,18 @@
 using System;
 using System.Linq;
-#if __UNIFIED__
 using Foundation;
 using MessageUI;
-using UIKit;
-#else
-using MonoTouch.Foundation;
-using MonoTouch.MessageUI;
-using MonoTouch.UIKit;
-#endif
 
 namespace Plugin.Messaging
 {
     internal class EmailTask : IEmailTask
     {
-        public EmailTask()
+        public EmailTask(EmailSettings settings)
         {
+            Settings = settings;
         }
 
-        private MFMailComposeViewController _mailController;
+        //private MFMailComposeViewController _mailController;
 
         #region IEmailTask Members
 
@@ -33,6 +27,7 @@ namespace Plugin.Messaging
 
             if (CanSendEmail)
             {
+                 MFMailComposeViewController _mailController;                
                 _mailController = new MFMailComposeViewController();
                 _mailController.SetSubject(email.Subject);
                 _mailController.SetMessageBody(email.Message, ((EmailMessage) email).IsHtml);
@@ -52,23 +47,7 @@ namespace Plugin.Messaging
                         _mailController.AddAttachmentData(NSData.FromUrl(attachment.File), attachment.ContentType, attachment.FileName);
                 }
 
-                EventHandler<MFComposeResultEventArgs> handler = null;
-                handler = (sender, e) =>
-                {
-                    _mailController.Finished -= handler;
-
-                    var uiViewController = sender as UIViewController;
-                    if (uiViewController == null)
-                    {
-                        throw new ArgumentException("sender");
-                    }
-
-                    uiViewController.DismissViewController(true, () => { });
-                };
-
-                _mailController.Finished += handler;
-
-                _mailController.PresentUsingRootViewController();
+                Settings.EmailPresenter.PresentMailComposeViewController(_mailController);
             }
         }
 
@@ -76,6 +55,12 @@ namespace Plugin.Messaging
         {
             SendEmail(new EmailMessage(to, subject, message));
         }
+
+        #endregion
+
+        #region Properties
+
+        private EmailSettings Settings { get; }
 
         #endregion
     }

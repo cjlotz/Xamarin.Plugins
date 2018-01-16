@@ -1,13 +1,17 @@
 using System;
 using System.Linq;
-#if __UNIFIED__
 using UIKit;
-#else
-using MonoTouch.UIKit;
-#endif
 
 namespace Plugin.Messaging
 {
+    public static class SettingsExtensions
+    {
+        public static Settings Settings(this IMessaging messaging)
+        {
+            return ((MessagingImplementation)CrossMessaging.Current).Settings;
+        }
+    }
+
     internal static class MessagingExtensions
     {
         #region Methods

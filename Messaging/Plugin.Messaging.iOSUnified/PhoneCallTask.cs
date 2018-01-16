@@ -1,13 +1,7 @@
 using System;
-#if __UNIFIED__
 using Foundation;
 using UIKit;
 using CoreTelephony;
-#else
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using MonoTouch.CoreTelephony;
-#endif
 
 namespace Plugin.Messaging
 {

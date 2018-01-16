@@ -1,5 +1,8 @@
 ## Change Log ##
 
+### [5.1.0] ###
+- iOS: Added `IEmailPresenter` interface with `DefaultEmailPresenter` implementation to allow for custom navigation scenarios [#78]
+
 ### [5.0.0] ###
 - Upgrade to .NET Standard
 - Android: Update to newer Support Libraries (v25.3.1)

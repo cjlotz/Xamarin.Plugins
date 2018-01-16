@@ -163,3 +163,20 @@ if (smsMessenger.CanSendSmsInBackground)
 ```
 
 **For Android, please add the `android.permission.SEND_SMS` permission to your Android manifest file.  For UWP, please add the `cellularMessaging` restricted capability to your package manifest file.  Also [read more about submitting an app using this restricted permission](https://docs.microsoft.com/en-us/windows/uwp/packaging/app-capability-declarations#special-and-restricted-capabilities) on the UWP platform.**
+
+#### Custom Navigation (iOS) ####
+
+By default when sending an email using the `IEmailTask`, the plugin presents the `MFMailComposeViewController` using internal logic that first locates the current visible `ViewController` before using `ViewController.PresentViewController` to show the mail compose view.  To allow users to provide their own navigation logic, create your own implementation for the `IEmailPresenter` interface.  Set this to replace the plugin's `DefaultEmailPresenter` as the default presenter to use for the plugin.
+
+```csharp
+// Available ONLY in iOS project (not in PCL/.NET Standard project)
+public class MyCustomEmailPresenter : IEmailPresenter
+{
+  public void PresentMailComposeViewController(MFMailComposeViewController mailController)
+  {
+    ...
+  }
+}
+
+CrossMessaging.Current.Settings().Email.EmailPresenter = new MyCustomEmailPresenter();
+```
