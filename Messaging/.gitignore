@@ -156,7 +156,6 @@ sql/
 .vs/*
 project.lock.json
 [Oo]utput/
-[Cc]omponents/
 ClientBin/
 [Ss]tyle[Cc]op.*
 ~$*
