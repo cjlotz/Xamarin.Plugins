@@ -8,9 +8,9 @@ using System.Reflection;
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Plugin.Messaging")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("5.0.0.10")]
-[assembly: AssemblyInformationalVersion("5.0.0")]
-[assembly: AssemblyCopyright("Copyright (c) 2017")]
+[assembly: AssemblyFileVersion("5.1.0.11")]
+[assembly: AssemblyInformationalVersion("5.1.0-beta")]
+[assembly: AssemblyCopyright("Copyright (c) 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyConfiguration("RELEASE")]
 
