@@ -1,5 +1,3 @@
-#addin "Cake.FileHelpers"
-
 // =====================
 //  Arguments
 // =====================
@@ -126,9 +124,6 @@ Task("Version")
         FileVersion = asmVersion,
         InformationalVersion = packageVersion
     });
-
-	ReplaceRegexInFiles("./Component/component.yaml", @"version: \d+\.\d+\.\d+\.\d+", $"version: {asmVersion}");
-	ReplaceRegexInFiles("./Component/component.yaml", $@"Xam.Plugins.Messaging, Version=\d+\.\d+\.\d+\.\d+", $"Xam.Plugins.Messaging, Version={asmVersion}");
 });
 
 Task("Package")
@@ -145,18 +140,6 @@ Task("Package")
 		OutputDirectory = "./output/",
 		BasePath = "./",
 	});
-
-    // Build Xamarin component package
-    /*
-	var yamlDir = "./Component/";	
-	StartProcess("./xamarin-component/xamarin-component.exe", $"package {yamlDir}");
-
-	var file = $"Xam.Plugins.Messaging-{versionNumber}.{buildNumber}.xam";
-    var oldFile = File($"./Component/{file}");
-	var newFile = File($"./output/{file}");
-	CopyFile(oldFile, newFile);
-    DeleteFile(oldFile);
-    */
 });
 
 RunTarget(target)
