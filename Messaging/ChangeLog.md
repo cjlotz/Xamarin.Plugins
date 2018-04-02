@@ -2,6 +2,7 @@
 
 ### [5.2.0] ###
 - Added experimental support for the Tizen platform
+- iOS: Added `ISmsPresenter` interface with `DefaultSmsPresenter` implementation to allow for custom navigation scenarios [#80]
 
 ### [5.1.0] ###
 - iOS: Added `IEmailPresenter` interface with `DefaultEmailPresenter` implementation to allow for custom navigation scenarios [#78]

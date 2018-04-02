@@ -166,7 +166,7 @@ if (smsMessenger.CanSendSmsInBackground)
 
 #### Custom Navigation (iOS) ####
 
-By default when sending an email using the `IEmailTask`, the plugin presents the `MFMailComposeViewController` using internal logic that first locates the current visible `ViewController` before using `ViewController.PresentViewController` to show the mail compose view.  To allow users to provide their own navigation logic, create your own implementation for the `IEmailPresenter` interface.  Set this to replace the plugin's `DefaultEmailPresenter` as the default presenter to use for the plugin.
+By default when sending an email using the `IEmailTask` or an sms using the `ISmsTask`, the plugin presents the `MFMailComposeViewController` or `MFMessageComposeViewController` using internal logic that first locates the current visible `ViewController` before using `ViewController.PresentViewController` to show the mail/message compose view.  To allow users to provide their own navigation logic, create your own implementation for the `IEmailPresenter` or `ISmsPresenter` interface.  Set this to replace the plugin's `DefaultEmailPresenter` or `DefaultSmsPresenter` as the default presenter to use for the plugin.
 
 ```csharp
 // Available ONLY in iOS project (not in PCL/.NET Standard project)
@@ -178,5 +178,15 @@ public class MyCustomEmailPresenter : IEmailPresenter
   }
 }
 
+// Available ONLY in iOS project (not in PCL/.NET Standard project)
+public class MyCustomSmsPresenter : ISmsPresenter
+{
+  public void PresentMessageComposeViewController(MFMessageComposeViewController smsController)
+  {
+    ...
+  }
+}
+
 CrossMessaging.Current.Settings().Email.EmailPresenter = new MyCustomEmailPresenter();
+CrossMessaging.Current.Settings().Sms.SmsPresenter = new MyCustomSmsPresenter();
 ```
