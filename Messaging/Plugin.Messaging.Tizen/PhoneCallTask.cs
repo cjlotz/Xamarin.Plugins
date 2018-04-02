@@ -7,15 +7,15 @@ namespace Plugin.Messaging
 {
 	internal class PhoneCallTask : IPhoneCallTask
 	{
-		static PhonenumberUtils utils = null;
-		static bool isTelephonySupported = false;
+	    private static PhonenumberUtils _utils;
+	    private static bool _isTelephonySupported;
 
 		public PhoneCallTask()
 		{
-			Information.TryGetValue("http://tizen.org/feature/network.telephony", out isTelephonySupported);
+			Information.TryGetValue("http://tizen.org/feature/network.telephony", out _isTelephonySupported);
 			try
 			{
-				utils = new PhonenumberUtils();
+				_utils = new PhonenumberUtils();
 			}
 			catch
 			{
@@ -23,15 +23,9 @@ namespace Plugin.Messaging
 			}
 		}
 
-		public bool CanMakePhoneCall
-		{
-			get
-			{
-				return isTelephonySupported == true && utils != null;
-			}
-		}
+		public bool CanMakePhoneCall => _isTelephonySupported && _utils != null;
 
-		public void MakePhoneCall(string number, string name = null)
+	    public void MakePhoneCall(string number, string name = null)
 		{
 			if (string.IsNullOrWhiteSpace(number))
 				throw new ArgumentNullException(nameof(number));
@@ -40,7 +34,7 @@ namespace Plugin.Messaging
 			{
 				AppControl appControl = new AppControl();
 				appControl.Operation = AppControlOperations.Dial;
-				appControl.Uri = "tel:" + utils.GetNormalizedNumber(number);
+				appControl.Uri = "tel:" + _utils.GetNormalizedNumber(number);
 				AppControl.SendLaunchRequest(appControl);
 			}
 		}

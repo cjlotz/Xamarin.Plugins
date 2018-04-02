@@ -9,17 +9,11 @@ namespace Plugin.Messaging
 		{
 		}
 
-		public bool CanSendSms
-		{
-			get { return true; }
-		}
+		public bool CanSendSms => true;
 
-		public bool CanSendSmsInBackground
-		{
-			get { return false; }
-		}
+	    public bool CanSendSmsInBackground => false;
 
-		public async void SendSms(string recipient = null, string message = null)
+	    public async void SendSms(string recipient = null, string message = null)
 		{
 			message = message ?? string.Empty;
 

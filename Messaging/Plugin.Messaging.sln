@@ -17,7 +17,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".builds", ".builds", "{934885F9-93E6-489B-A7EA-97A0CA2385B7}"
 	ProjectSection(SolutionItems) = preProject
 		build.cake = build.cake
-		Component\component.yaml = Component\component.yaml
 		Plugin.Messaging.nuspec = Plugin.Messaging.nuspec
 	EndProjectSection
 EndProject

@@ -10,22 +10,13 @@ namespace Plugin.Messaging
 		{
 		}
 
-		public bool CanSendEmail
-		{
-			get { return true; }
-		}
+		public bool CanSendEmail => true;
 
-		public bool CanSendEmailAttachments
-		{
-			get { return true; }
-		}
+	    public bool CanSendEmailAttachments => true;
 
-		public bool CanSendEmailBodyAsHtml
-		{
-			get { return false; }
-		}
+	    public bool CanSendEmailBodyAsHtml => false;
 
-		public async void SendEmail(IEmailMessage email)
+	    public async void SendEmail(IEmailMessage email)
 		{
 			if (email == null)
 				throw new ArgumentNullException(nameof(email));

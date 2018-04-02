@@ -1,5 +1,8 @@
 ## Change Log ##
 
+### [5.2.0] ###
+- Added experimental support for the Tizen platform
+
 ### [5.1.0] ###
 - iOS: Added `IEmailPresenter` interface with `DefaultEmailPresenter` implementation to allow for custom navigation scenarios [#78]
 
