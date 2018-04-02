@@ -1,7 +1,7 @@
 ## Change Log ##
 
 ### [5.2.0] ###
-- Added experimental support for the Tizen platform
+- Added experimental support for the Tizen platform [#77]. Thanks to [JongHeonChoi](https://github.com/JongHeonChoi)
 - iOS: Added `ISmsPresenter` interface with `DefaultSmsPresenter` implementation to allow for custom navigation scenarios [#80]
 - Android: Update to latest Support Libraries (v27.0.2)
 
