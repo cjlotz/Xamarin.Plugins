@@ -127,7 +127,7 @@ Task("Version")
 });
 
 Task("Package")
-	.IsDependentOn("Version")	
+	//.IsDependentOn("Version")	
 	//.IsDependentOn("Rebuild")	
     .Does(() =>
 {
