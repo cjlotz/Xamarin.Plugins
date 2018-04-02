@@ -2,7 +2,7 @@
 
   <!-- Property Group for Tizen Project -->
   <PropertyGroup>
-    <TargetFramework>tizen40</TargetFramework>
+    <TargetFramework>tizen4.0</TargetFramework>
     <TizenCreateTpkOnBuild>false</TizenCreateTpkOnBuild>
     <AssemblyName>Plugin.Messaging</AssemblyName>
     <RootNamespace>Plugin.Messaging</RootNamespace>
@@ -40,8 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plugin.Messaging.Abstractions\Plugin.Messaging.Abstractions.csproj">
-      <Project>{b4292775-3bb9-4ff2-8d20-b3d483bf1701}</Project>
-      <Name>Plugin.Messaging.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems" Label="Shared" />

@@ -62,7 +62,7 @@ namespace Plugin.Messaging
             Settings = new Settings();
             EmailMessenger = new EmailTask(Settings.Email);
             PhoneDialer = new PhoneCallTask();
-            SmsMessenger = new SmsTask();            
+            SmsMessenger = new SmsTask(Settings.Sms);            
 #else
             EmailMessenger = new EmailTask();
             PhoneDialer = new PhoneCallTask();

@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plugin.Messaging.Abstractions\Plugin.Messaging.Abstractions.csproj">
-      <Project>{b4292775-3bb9-4ff2-8d20-b3d483bf1701}</Project>
+      <Project>{8D48334D-C5B2-46EF-99C2-92ADF072F81F}</Project>
       <Name>Plugin.Messaging.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>

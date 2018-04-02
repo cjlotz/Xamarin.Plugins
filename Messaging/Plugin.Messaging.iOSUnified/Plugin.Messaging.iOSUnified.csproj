@@ -56,6 +56,7 @@
     <Compile Include="SmsTask.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="IEmailPresenter.cs" />
+    <Compile Include="ISmsPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plugin.Messaging.Abstractions\Plugin.Messaging.Abstractions.csproj">

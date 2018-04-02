@@ -8,6 +8,7 @@ namespace Plugin.Messaging
         public Settings()
         {
             Email = new EmailSettings();
+            Sms = new SmsSettings();
         }
 
         #region Properties
@@ -16,6 +17,11 @@ namespace Plugin.Messaging
         ///     Gets iOS email settings
         /// </summary>
         public EmailSettings Email { get; }
+
+        /// <summary>
+        ///     Gets iOS sms settings
+        /// </summary>
+        public SmsSettings Sms { get; }
 
         #endregion
     }
@@ -36,4 +42,22 @@ namespace Plugin.Messaging
 
         #endregion
     }
+
+    /// <summary>
+    ///     Sms settings for <see cref="ISmsTask" /> on the iOS platform
+    /// </summary>
+    public class SmsSettings
+    {
+        #region Properties
+
+        /// <summary>
+        ///     Mail presenter to use for showing MFMessageComposeViewController. 
+        ///     Defaults to <see cref="DefaultSmsPresenter"/>. Create custom
+        ///     implementation if default doesn't match your app navigation requirements.
+        /// </summary>
+        public ISmsPresenter SmsPresenter { get; set; } = new DefaultSmsPresenter();
+
+        #endregion
+    }
+
 }

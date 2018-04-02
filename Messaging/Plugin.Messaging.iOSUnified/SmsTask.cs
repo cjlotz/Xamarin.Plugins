@@ -8,8 +8,9 @@ namespace Plugin.Messaging
     {
         private MFMessageComposeViewController _smsController;
 
-        public SmsTask()
+        public SmsTask(SmsSettings settings)
         {
+            Settings = settings;
         }
 
         #region ISmsTask Members
@@ -34,22 +35,7 @@ namespace Plugin.Messaging
                 
                 _smsController.Body = message;
 
-                EventHandler<MFMessageComposeResultEventArgs> handler = null;
-                handler = (sender, args) =>
-                {
-                    _smsController.Finished -= handler;
-
-                    if (!(sender is UIViewController uiViewController))
-                    {
-                        throw new ArgumentException("sender");
-                    }
-
-                    uiViewController.DismissViewController(true, () => { });
-                };
-
-                _smsController.Finished += handler;
-
-                _smsController.PresentUsingRootViewController();
+                Settings.SmsPresenter.PresentMessageComposeViewController(_smsController);
             }
         }
 
@@ -57,6 +43,12 @@ namespace Plugin.Messaging
         {
             throw new PlatformNotSupportedException("Sending SMS in background not supported on iOS");
         }
+
+        #endregion
+
+        #region Properties
+
+        private SmsSettings Settings { get; }
 
         #endregion
     }
