@@ -14,6 +14,7 @@ The Messaging plugin makes it possible to make a phone call, send a sms or send 
 |Xamarin.iOS Unified|Yes|iOS 7+|
 |Xamarin.Android|Yes|API 14+|
 |Windows 10 UWP|Yes|10+|
+|Tizen|Yes|4.0+|
 
 ### Release Notes
 Change log history [available here](ChangeLog.md)

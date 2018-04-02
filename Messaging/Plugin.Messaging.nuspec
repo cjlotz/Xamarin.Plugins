@@ -41,6 +41,9 @@
    
      <!--UWP-->
      <file src="Plugin.Messaging.UWP\bin\Release\Plugin.Messaging.*" target="lib\UAP10" />
+
+     <!--Tizen-->
+     <file src="Plugin.Messaging.Tizen\bin\Release\tizen40\Plugin.Messaging.*" target="lib\tizen40" />
      
    </files>
 </package>

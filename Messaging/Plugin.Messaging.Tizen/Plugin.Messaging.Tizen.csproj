@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Property Group for Tizen Project -->
+  <PropertyGroup>
+    <TargetFramework>tizen40</TargetFramework>
+    <TizenCreateTpkOnBuild>false</TizenCreateTpkOnBuild>
+    <AssemblyName>Plugin.Messaging</AssemblyName>
+    <RootNamespace>Plugin.Messaging</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+  </PropertyGroup>
+
+  <!-- Include Nuget Package for Tizen Project building -->
+  <ItemGroup>
+    <PackageReference Include="Tizen.NET" Version="4.0.0">
+      <ExcludeAssets>Runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="Tizen.NET.Sdk" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Plugin.Messaging\EmailAttachment.cs">
+      <Link>EmailAttachment.cs</Link>
+    </Compile>
+    <Compile Include="..\Plugin.Messaging\EmailMessage.cs">
+      <Link>EmailMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Plugin.Messaging\EmailMessageBuilder.cs">
+      <Link>EmailMessageBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Plugin.Messaging\MessagingPlugin.cs">
+      <Link>MessagingPlugin.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plugin.Messaging.Abstractions\Plugin.Messaging.Abstractions.csproj">
+      <Project>{b4292775-3bb9-4ff2-8d20-b3d483bf1701}</Project>
+      <Name>Plugin.Messaging.Abstractions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\Plugin.Messaging.Shared\Plugin.Messaging.Shared.projitems" Label="Shared" />
+</Project>
