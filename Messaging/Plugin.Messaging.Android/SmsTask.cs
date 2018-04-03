@@ -43,7 +43,8 @@ namespace Plugin.Messaging
             if (CanSendSmsInBackground)
             {
                 var smsManager = SmsManager.Default;
-                smsManager.SendTextMessage(recipient, null, message, null, null);
+                var msgs = smsManager.DivideMessage(message);
+                smsManager.SendMultipartTextMessage(recipient, null, msgs, null, null);
             }
         }
 

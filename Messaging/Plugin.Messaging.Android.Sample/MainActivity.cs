@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -16,6 +17,7 @@ namespace Plugin.Messaging.Sample.Android
     {
         private const int RequestPhoneCall = 3;
         private const int RequestSendBackgroundSms = 4;
+        private const int RequestReadPhoneState = 5;
         private const int SelectPhotoPcl = 2;
         private const int SelectPhotoPlatform = 1;
 
@@ -142,10 +144,21 @@ namespace Plugin.Messaging.Sample.Android
         private void ButtonSendBackgroundSms_Click(object sender, EventArgs eventArgs)
         {
             // NOTE: requires android.permission.SEND_SMS permission in the Android manifest.
+            // NOTE: requires android.permission.READ_PHONE_STATE permission in the Android manifest.
 
+            var permissionChecks = new List<string>();
+            if (ContextCompat.CheckSelfPermission(this, "android.permission.READ_PHONE_STATE") != Permission.Granted)
+            {
+                permissionChecks.Add("android.permission.READ_PHONE_STATE");
+            }
             if (ContextCompat.CheckSelfPermission(this, "android.permission.SEND_SMS") != Permission.Granted)
             {
-                ActivityCompat.RequestPermissions(this, new[] { "android.permission.SEND_SMS" }, RequestSendBackgroundSms);
+                permissionChecks.Add("android.permission.SEND_SMS");
+            }
+
+            if (permissionChecks.Count > 0)
+            {
+                ActivityCompat.RequestPermissions(this, permissionChecks.ToArray(), RequestSendBackgroundSms);
             }
             else
             {

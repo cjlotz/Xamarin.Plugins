@@ -46,7 +46,7 @@
         {
             if (smsTask.CanSendSms)
             {
-                smsTask.SendSms("+27219330000", "Well hello there from Xam.Messaging.Plugin");
+                smsTask.SendSms("+27219330000", "Well hello there from Xam.Messaging.Plugin.  Some special characters. ÇÇẪ");
             }
         }
 
@@ -54,7 +54,7 @@
         {
             if (smsTask.CanSendSmsInBackground)
             {
-                smsTask.SendSmsInBackground("+27219330000", "Well hello there from Xam.Messaging.Plugin");
+                smsTask.SendSmsInBackground("+27219330000", "Well hello there from Xam.Messaging.Plugin. Some special characters. ÇÇẪ");
             }
         }
 
