@@ -1,14 +1,18 @@
 ## Change Log ##
 
 ### [5.2.0] ###
+
 - Added experimental support for the Tizen platform [#77]. Thanks to [JongHeonChoi](https://github.com/JongHeonChoi)
 - iOS: Added `ISmsPresenter` interface with `DefaultSmsPresenter` implementation to allow for custom navigation scenarios [#80]
+- Android: Fix sending of special characters as part of background SMS [#94]. **NOTE:** This requires `READ_PHONE_STATE` permission on some devices.
 - Android: Update to latest Support Libraries (v27.0.2)
 
 ### [5.1.0] ###
+
 - iOS: Added `IEmailPresenter` interface with `DefaultEmailPresenter` implementation to allow for custom navigation scenarios [#78]
 
 ### [5.0.0] ###
+
 - Upgrade to .NET Standard
 - Android: Update to newer Support Libraries (v25.3.1)
 - Android: Fix support for formatting number using country's default convention on API 21 and later. See  `PhoneSettings.DefaultCountryIso`. 

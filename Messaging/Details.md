@@ -105,7 +105,7 @@ var email = new EmailMessageBuilder()
 
 The following features are not supported on all platforms. 
 
-#### HTML Content (iOS, Android) ###
+#### HTML Content (iOS, Android)
 
 To add HTML body content use ```EmailMessageBuilder.BodyAsHtml```.  
 
@@ -119,7 +119,7 @@ var email = new EmailMessageBuilder()
 ```
 Use the ```IEmailTask.CanSendEmailBodyAsHtml``` API's to test whether the feature is available for the platform in your PCL code.  
 
-#### Strict Mode (Android) ####
+#### Strict Mode (Android)
 
 By default when sending an email using the `IEmailTask`, the plugin presents a list of all apps capable of handling the `Send` intent. This presents all kinds of apps that are not pure email apps.  If you wish to filter the list to only include email apps, you can change the plugin behavior by:
 
@@ -129,7 +129,7 @@ CrossMessaging.Current.Settings().Email.UseStrictMode = true;
 ```
 **Unfortunately StrictMode does not seems to play nicely with adding attachments, so sending attachments using StrictMode is currently not supported**
 
-#### Formatting Phone Numbers (Android) ####
+#### Formatting Phone Numbers (Android)
 
 By default when making a phone call using the `IPhoneCallTask`, the plugin will format the number using the [`formatNumber`](https://developer.android.com/reference/android/telephony/PhoneNumberUtils.html#formatNumber(java.lang.String)) API that formats the number according to the country rules for the number. The API has been deprecated in API 21. To support formatting the number on API 21 or later a new `DefaultCountryIso` setting has been introduced to use the new [`formatNumber`](https://developer.android.com/reference/android/telephony/PhoneNumberUtils.html#formatNumber(java.lang.String,java.lang.String)) API.
 
@@ -140,7 +140,7 @@ By default when making a phone call using the `IPhoneCallTask`, the plugin will 
 CrossMessaging.Current.Settings().Phone.DefaultCountryIso = "ZA";
 ```
 
-#### AutoDial (Android) ####
+#### AutoDial (Android)
 
 By default phoning a number using the `IPhoneCallTask`, the plugin only shows a phone dialer with the number populated. If you want the plugin to automatically dial the number, you can change the plugin behavior by:
 
@@ -162,9 +162,9 @@ if (smsMessenger.CanSendSmsInBackground)
    smsMessenger.SendSmsInBackground("+27213894839", "Well hello there from Xam.Messaging.Plugin");
 ```
 
-**For Android, please add the `android.permission.SEND_SMS` permission to your Android manifest file.  For UWP, please add the `cellularMessaging` restricted capability to your package manifest file.  Also [read more about submitting an app using this restricted permission](https://docs.microsoft.com/en-us/windows/uwp/packaging/app-capability-declarations#special-and-restricted-capabilities) on the UWP platform.**
+**For Android, please add the `android.permission.SEND_SMS` and `android.permission.READ_PHONE_STATE` permissions to your Android manifest file.  For UWP, please add the `cellularMessaging` restricted capability to your package manifest file.  Also [read more about submitting an app using this restricted permission](https://docs.microsoft.com/en-us/windows/uwp/packaging/app-capability-declarations#special-and-restricted-capabilities) on the UWP platform.**
 
-#### Custom Navigation (iOS) ####
+#### Custom Navigation (iOS)
 
 By default when sending an email using the `IEmailTask` or an sms using the `ISmsTask`, the plugin presents the `MFMailComposeViewController` or `MFMessageComposeViewController` using internal logic that first locates the current visible `ViewController` before using `ViewController.PresentViewController` to show the mail/message compose view.  To allow users to provide their own navigation logic, create your own implementation for the `IEmailPresenter` or `ISmsPresenter` interface.  Set this to replace the plugin's `DefaultEmailPresenter` or `DefaultSmsPresenter` as the default presenter to use for the plugin.
 
