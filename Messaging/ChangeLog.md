@@ -2,7 +2,7 @@
 
 ### [5.2.0] ###
 
-- Added experimental support for the Tizen platform [#77]. Thanks to [JongHeonChoi](https://github.com/JongHeonChoi)
+- Added initial support for the Tizen platform [#77]. Thanks to [JongHeonChoi](https://github.com/JongHeonChoi)
 - iOS: Added `ISmsPresenter` interface with `DefaultSmsPresenter` implementation to allow for custom navigation scenarios [#80]
 - Android: Fix sending of special characters as part of background SMS [#94]. **NOTE:** This requires `READ_PHONE_STATE` permission on some devices.
 - Android: Update to latest Support Libraries (v27.0.2)
