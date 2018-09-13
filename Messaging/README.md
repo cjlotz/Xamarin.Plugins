@@ -50,7 +50,7 @@ You also need to add a few additional configuration files to adhere to the new s
    <external-path name="external_files" path="." />
 </paths>
 ```
-
+Note : Make sure the file `file_paths.xml`is AndroidResource.
 ### Contributors
 
 * [cjlotz](https://github.com/cjlotz)
